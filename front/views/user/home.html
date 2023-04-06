@@ -1,3 +1,51 @@
-// Page d'accueil utilisateur classique,
-// Demander à être recruteur, accéder a la page de recruteur et accéder page admin.
-// Demande pour créer une organisation.
+<!DOCTYPE html>
+<link rel="stylesheet" href="../css/home.css">
+
+<html>
+    <body>
+    <div id="navbar"></div> 
+
+        <header>
+          <form>
+            <input type="text" id="job-title" placeholder="Offres, entreprises, mots-clé">
+            <input type="text" id="location" placeholder="Ville, code postal">
+            <button type="submit">Chercher</button>
+          </form>
+        </header>
+    
+        <main>
+          <section>
+            <fieldset>
+                <legend>Filtres :</legend>
+            
+                <div>
+                  <input type="checkbox" id="filtre_presentiel" name="filtre_presentiel">
+                  <label for="filtre_presentiel">Sur site</label>
+                </div>
+            
+                <div>
+                  <input type="checkbox" id="filtre_wfh" name="filtre_wfh">
+                  <label for="filtre_wfh">Télétravail</label>
+                </div>
+            </fieldset>
+          </section>
+          <section>
+            <h2>Featured Jobs</h2>
+            <ul>
+              <li>
+                <h3>Programmeur</h3>
+                <p></p>
+              </li>
+              <li>
+                <h3></h3>
+                <p></p>
+              </li>
+              <li>
+                <h3></h3>
+                <p></p>
+              </li>
+            </ul>
+          </section>
+        </main>
+      </body>
+</html>
