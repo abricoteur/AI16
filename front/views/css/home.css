@@ -128,5 +128,12 @@ body {
     text-decoration: underline;
   }
 
+  #jobs li {
+    border : ridge;
+    padding-left : 5%;
+    margin-bottom: 5px;
+    box-shadow:5px 3px 3px #0D47A1;
+  }
+
   
   
