@@ -24,7 +24,7 @@ module.exports = {
         }
     });
     },
-    creat: function (email, nom, prenom, pwd, tel,dateCreation, statut, role, id_orga, callback) {
+    create: function (email, nom, prenom, pwd, tel,dateCreation, statut, role, id_orga, callback) {
     //todo
         sql = "INSERT INTO Utilisateurs VALUES(email, nom, prenom, pwd, tel,dateCreation, statut, role, id_orga)";
         rows = db.query(sql, function(err,results){
