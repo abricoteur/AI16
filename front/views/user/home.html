@@ -1,3 +1,81 @@
-// Page d'accueil utilisateur classique,
-// Demander à être recruteur, accéder a la page de recruteur et accéder page admin.
-// Demande pour créer une organisation.
+<!DOCTYPE html>
+<link rel="stylesheet" href="../css/home.css">
+
+<html>
+    <body>
+    <div id="navbar"></div> 
+
+        <header>
+          <form>
+            <input type="text" id="job-title" placeholder="Offres, entreprises, mots-clé">
+            <input type="text" id="location" placeholder="Ville, code postal">
+            <button type="submit">Chercher</button>
+          </form>
+        </header>
+    
+        <main>
+          <section>
+            <fieldset>
+                <legend>Filtres :</legend>
+            
+                <div>
+                    <input type="checkbox" id="filtre_cdi" name="filtre_cdi">
+                    <label for="filtre_cdi">CDI</label>
+                  </div>
+              
+                  <div>
+                    <input type="checkbox" id="filtre_cdd" name="filtre_cdd">
+                    <label for="filtre_cdd">CDD</label>
+                  </div>
+
+                <hr>
+
+                <div>
+                    <input type="checkbox" id="filtre_fulltime" name="filtre_fulltime">
+                    <label for="filtre_fulltime">Temps plein </label>
+                  </div>
+              
+                  <div>
+                    <input type="checkbox" id="filtre_parttime" name="filtre_parttime">
+                    <label for="filtre_parttime">Temps partiel</label>
+                  </div>
+
+                  <hr>
+
+                <div>
+                  <input type="checkbox" id="filtre_presentiel" name="filtre_presentiel">
+                  <label for="filtre_presentiel">Sur site</label>
+                </div>
+            
+                <div>
+                  <input type="checkbox" id="filtre_wfh" name="filtre_wfh">
+                  <label for="filtre_wfh">Télétravail</label>
+                </div>
+
+            </fieldset>
+          </section>
+          <section id="jobs">
+            <h2>Pour vous :</h2>
+            <ul>
+              <li>
+                <h4>Programmeur</h4>
+                <h5>Auchan</h5>
+                <p>CDI - Temps plein - Télétravail </p>
+              </li>
+
+              <li>
+                <h4>Serveur</h4>
+                <h5>Mcdo</h5>
+                <p>CDD - Temps partiel - Sur site </p>
+              </li>
+
+              <li>
+                <h4>Programmeur</h4>
+                <h5>CGI</h5>
+                <p>CDI - Temps plein - Télétravail </p>
+              </li>
+            </ul>
+          </section>
+        </main>
+      </body>
+</html>
