@@ -1,0 +1,73 @@
+body {
+    height: 100vh;
+}
+
+main {
+    height: 100%;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.navbar-brand > img {
+    height: 7%;
+    width: 7%;
+    margin-right: 10px;
+}
+
+.navbar {
+    box-shadow: 0px 2px 3px lightgray;
+}
+
+.navbar-collapse {
+    flex-grow: 0 !important; 
+}
+
+.navbar-main-spacer {
+    padding: 28px;
+}
+
+.main-container {
+    min-height: 120px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: auto;
+    display: flex;
+}
+
+.orga-request-container {
+    width: 50%;
+}
+
+.request-container {
+    border : 1px solid grey;
+    width: 75%;
+    min-height: 50%;
+}
+
+.management-choices-container {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.manage-user-button, .manage-orga-button {
+    border: 1px solid blue;
+    border-radius: 15px;
+    background-color: white;
+    height: fit-content;
+    width: 60%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-user-button:hover, .manage-orga-button:hover {
+    background-color: blue;
+}
+
