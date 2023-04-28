@@ -1,0 +1,213 @@
+@use '../../utils/css/colors/colors';
+
+body {
+    height: 100vh;
+}
+
+main {
+    height: 100%;
+}
+
+//NAVBAR
+.navbar-brand {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.navbar-brand > img {
+    height: 7%;
+    width: 7%;
+    margin-right: 10px;
+}
+
+.navbar {
+    box-shadow: 0px 2px 3px lightgray;
+}
+
+.navbar-collapse {
+    flex-grow: 0 !important; 
+}
+
+.navbar-main-spacer {
+    padding: 28px;
+}
+
+.nav-item:hover {
+    background-color: rgb(243, 209, 157);
+}
+
+
+//CONTAINERS
+.main-container {
+    height: 100%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.left-container {
+    width: 50%;
+}
+
+.right-container {
+    width: 45%;
+    margin-left: 5%;
+}
+
+.request-container {
+    border : 1px solid grey;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.management-choices-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+//TEMPLATE MAIL ORGA
+
+.orga-request-template {
+    display: flex;
+    flex-direction: row;
+    min-height: 15%;
+    border: 1px solid grey;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.orga-request-template:hover {
+    background-color: antiquewhite;
+}
+
+.orga-request-template > div {
+    display: flex;
+}
+
+.sender-object {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.date-mail {
+    float: right;
+}
+
+
+//PAGINATION
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.pagination {
+    display: inline-block;
+}
+  
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+  
+.pagination a.active {
+    background-color: colors.$base-orange;
+    color: white;
+}
+  
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+//BUTTONS
+.manage-user-button, .manage-orga-button {
+    border: 1px solid colors.$base-orange;
+    border-radius: 15px;
+    background-color: white;
+    height: fit-content;
+    width: 45%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-user-button {
+    margin-right: 15px;
+}
+
+.manage-orga-button {
+    margin-left: 15px;
+}
+
+.manage-user-button:hover, .manage-orga-button:hover {
+    background-color: colors.$light-orange;
+}
+
+
+//TABLEAU DE BORD
+
+.stat-container > div {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.stat-title {
+    height: fit-content;
+}
+
+.stat-number {
+    margin-bottom: 1rem;
+}
+
+//TEXT FORMAT
+
+p {
+    font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+.f-f {
+    font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;;
+}
+
+.title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: colors.$base-orange;
+}
+
+.stat-title {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.date-mail, .sender-mail {
+    font-size: 0.7rem;
+}
+
+.object-mail {
+    font-size: 0.8rem;
+}
+
