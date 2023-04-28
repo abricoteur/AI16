@@ -1,4 +1,5 @@
 @use '../../utils/css/colors/colors';
+@use '../../utils/css/fonts/fonts';
 
 body {
     height: 100vh;
@@ -185,11 +186,11 @@ main {
 //TEXT FORMAT
 
 p {
-    font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-family: fonts.$base-font;
 }
 
 .f-f {
-    font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;;
+    font-family: fonts.$base-font;
 }
 
 .title {
