@@ -23,20 +23,23 @@
 
               <div class="navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
+                  <li class="nav-item hov">
                     <a class="f-f nav-link active" aria-current="page" href="#">Gérer les utilisateurs</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item hov">
                     <a class="f-f nav-link active" aria-current="page" href="#">Gérer les organisations</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item hov">
                     <a class="f-f nav-link active" href="#">Mon Profil</a>
                   </li>
                   <li class="nav-item">
-                    <a class="f-f nav-link active" href="#">Se connecter</a>
+                    <div class="separator"></div>
                   </li>
-                  <li class="nav-item">
-                    <a class="f-f nav-link active" href="#">Créer un compte</a>
+                  <li class="nav-item hov">
+                    <a class="f-f nav-link active login-item" href="#">Se connecter</a>
+                  </li>
+                  <li class="nav-item hov">
+                    <a class="f-f nav-link active account-item" href="#">Créer un compte</a>
                   </li>
                 </ul>
               </div>
@@ -46,12 +49,17 @@
         <div class="navbar-main-spacer"></div>
 
         <div class="main-container">
+
+
+          <div class="f-f title">
+            <p>Demandes de création d'organisation en attentes</p>
+          </div>
+          <hr>
+
+          <div class="messagerie-container">
             <div class="left-container">
+
               <div class="orga-request-container">
-                  <div class="f-f title">
-                      <p>Demandes de création d'organisation en attentes</p>
-                  </div>
-                  <hr>
 
                   <div class="request-container">
                     <table>
@@ -89,48 +97,66 @@
                     </div>
                   </div>  
               </div>
+
             </div> 
 
             <div class="right-container">
-              <div class="recap-container">
 
-                  <div class="f-f title">
-                    Tableau de bord
-                  </div>
-                  <hr>
+              <div class="email-content-container">
+                <p class="mail-content">
+                  Cher/Chère [nom],\n
 
-                  <div class="stat-container">
-                    <div class="user-count">
-                      <p class="f-f stat-title">Nombre d'utilisateurs</p>
-                      <p class="f-f stat-number">239 293</p>
-                    </div>
-                    <div class="orga-count">
-                      <p class="f-f stat-title">Nombre d'entreprises</p>
-                      <p class="f-f stat-number">1294</p>
-                    </div>
-                    <div class="application-count">
-                      <p class="f-f stat-title">Nombre de candidatures</p>
-                      <p class="f-f stat-number">14 584</p>
-                    </div>
-                    <div class="recruiter-count">
-                      <p class="f-f stat-title">Nombre de recruteurs</p>
-                      <p class="f-f stat-number">328</p>
-                    </div>
-                  </div>
+                  J'espère que vous vous portez bien. Je voulais simplement prendre quelques instants pour vous remercier de votre soutien et de votre aide récente. Votre contribution a été inestimable et m'a permis de surmonter certains des défis auxquels je faisais face.
+                  Je suis extrêmement reconnaissant(e) pour tout ce que vous avez fait, et je ne peux vous remercier suffisamment. Si vous avez besoin d'aide ou d'assistance à l'avenir, sachez que je suis là pour vous. N'hésitez pas à me contacter à tout moment si vous avez des questions ou des préoccupations.
+                  Encore une fois, merci beaucoup pour tout ce que vous avez fait. Je suis honoré(e) de vous connaître et de compter sur votre soutien.
+                  Sincèrement,
 
+                  [Votre nom]
+                </p>
               </div>
 
-              <div class="management-choices-container">
-                <div class="f-f manage-user-button">
-                    Gérer les utilisateurs
-                </div>
-                <div class="f-f manage-orga-button">
-                    Gérer les organisations
-                </div>
-              </div>
             </div> 
-            
+          </div>
 
+          <div class="recap-spacer"></div>
+
+          <div class="recap-container">
+
+            <div class="f-f title">
+              Tableau de bord
+            </div>
+            <hr>
+
+            <div class="stat-container">
+              <div class="user-count">
+                <p class="f-f stat-title">Nombre d'utilisateurs</p>
+                <p class="f-f stat-number">239 293</p>
+              </div>
+              <div class="orga-count">
+                <p class="f-f stat-title">Nombre d'entreprises</p>
+                <p class="f-f stat-number">1294</p>
+              </div>
+              <div class="application-count">
+                <p class="f-f stat-title">Nombre de candidatures</p>
+                <p class="f-f stat-number">14 584</p>
+              </div>
+              <div class="recruiter-count">
+                <p class="f-f stat-title">Nombre de recruteurs</p>
+                <p class="f-f stat-number">328</p>
+              </div>
+            </div>
+
+            <div class="management-choices-container">
+              <div class="f-f manage-user-button">
+                  Gérer les utilisateurs
+              </div>
+              <div class="f-f manage-orga-button">
+                  Gérer les organisations
+              </div>
+            </div>
+
+          </div>
+            
         </div>
 
 

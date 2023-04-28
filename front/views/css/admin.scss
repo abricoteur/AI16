@@ -34,28 +34,55 @@ main {
     padding: 28px;
 }
 
-.nav-item:hover {
+.hov:hover {
     background-color: rgb(243, 209, 157);
 }
 
+.nav-item > a {
+    font-size: 0.85rem;
+}
+
+.login-item {
+    border-radius: 10px;
+    margin-right: 2px;
+}
+
+.account-item {
+    border-radius: 10px;
+}
+
+.separator {
+    border: 1px solid rgb(204, 204, 204);
+    width: 1px;
+    height: 33px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
 
 //CONTAINERS
 .main-container {
-    height: 100%;
     margin-left: 15%;
     margin-right: 15%;
     margin-top: auto;
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.messagerie-container {
+    display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .left-container {
     width: 50%;
+    height: fit-content;
 }
 
 .right-container {
-    width: 45%;
-    margin-left: 5%;
+    width: 50%;
+    height: fit-content;
 }
 
 .request-container {
@@ -77,8 +104,20 @@ main {
 .stat-container {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
 }
+
+.email-content-container {
+    border : 1px solid grey;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.recap-spacer {
+    padding: 15px;
+}
+
 
 //TEMPLATE MAIL ORGA
 
@@ -108,6 +147,10 @@ main {
 
 .date-mail {
     float: right;
+}
+
+.mail-content {
+    padding: 1rem;
 }
 
 
@@ -168,11 +211,11 @@ main {
 //TABLEAU DE BORD
 
 .stat-container > div {
-    width: 50%;
     height: 50%;
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-right: 10rem;
 }
 
 .stat-title {
@@ -197,6 +240,7 @@ p {
     font-size: 1.4rem;
     font-weight: bold;
     color: colors.$base-orange;
+    max-height: 2rem;
 }
 
 .stat-title {
