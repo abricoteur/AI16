@@ -199,6 +199,11 @@ main {
   background-color: #e79549;
 }
 
+.management-choices-container > div > a {
+  text-decoration: none;
+  color: black;
+}
+
 .stat-container > div {
   height: 50%;
   display: flex;
