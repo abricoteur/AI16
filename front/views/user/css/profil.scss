@@ -8,22 +8,58 @@ body {
     font-weight: bold;
     font-style: italic;
     font-size: 20px;
-  }
-  
-  .navbar-brand > img {
+    width: fit-content;
+}
+
+.navbar-brand > img {
     height: 7%;
     width: 7%;
     margin-right: 10px;
-  }
-  
-  .navbar {
+}
+
+.navbar {
     box-shadow: 0px 2px 3px lightgray;
-  }
-  
-  .navbar-collapse {
-    flex-grow: 0 !important;
-  }
-  
+}
+
+.navbar-collapse {
+    flex-grow: 0 !important; 
+}
+
+.navbar-main-spacer {
+    padding: 20px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.hov:hover {
+    background-color: rgb(243, 209, 157);
+}
+
+.nav-item > a {
+    font-size: 0.85rem;
+}
+
+.login-item {
+    border-radius: 10px;
+    margin-right: 2px;
+}
+
+.account-item {
+    border-radius: 10px;
+}
+
+.separator {
+    border: 1px solid rgb(204, 204, 204);
+    width: 1px;
+    height: 33px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.admin {
+    color: colors.$light-orange;
+    font-weight: bolder;
+}
 .form-control:focus {
     box-shadow: none;
     border-color: colors.$light-orange
