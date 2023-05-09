@@ -4,7 +4,26 @@
 body {
     background: colors.$light-orange;
 }
-
+.navbar-brand {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+  }
+  
+  .navbar-brand > img {
+    height: 7%;
+    width: 7%;
+    margin-right: 10px;
+  }
+  
+  .navbar {
+    box-shadow: 0px 2px 3px lightgray;
+  }
+  
+  .navbar-collapse {
+    flex-grow: 0 !important;
+  }
+  
 .form-control:focus {
     box-shadow: none;
     border-color: colors.$light-orange

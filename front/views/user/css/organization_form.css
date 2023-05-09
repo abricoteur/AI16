@@ -10,6 +10,26 @@ body {
   padding: 0 10px;
 }
 
+.navbar-brand {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.navbar-brand > img {
+  height: 7%;
+  width: 7%;
+  margin-right: 10px;
+}
+
+.navbar {
+  box-shadow: 0px 2px 3px lightgray;
+}
+
+.navbar-collapse {
+  flex-grow: 0 !important;
+}
+
 .wrapper {
   max-width: 500px;
   width: 100%;
