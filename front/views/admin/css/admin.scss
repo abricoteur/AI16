@@ -14,6 +14,7 @@ main {
     font-weight: bold;
     font-style: italic;
     font-size: 20px;
+    width: fit-content;
 }
 
 .navbar-brand > img {
@@ -31,7 +32,9 @@ main {
 }
 
 .navbar-main-spacer {
-    padding: 28px;
+    padding: 20px;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 .hov:hover {
@@ -57,6 +60,11 @@ main {
     height: 33px;
     margin-left: 1rem;
     margin-right: 1rem;
+}
+
+.admin {
+    color: colors.$light-orange;
+    font-weight: bolder;
 }
 
 //CONTAINERS
