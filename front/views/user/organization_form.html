@@ -1,1 +1,83 @@
-// Demander la création d'une organisation.
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/organization_form.css">
+        <title>Happy Hire</title>
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fcfcfc;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="../../img/job-promotion.png">Happy Hire</a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item hov title">
+                <a class="f-f nav-link active" aria-current="page" href="admin.html"><p class="admin">Administration</p></a>
+              </li>
+              <li class="nav-item">
+                <div class="separator"></div>
+              </li>
+              <li class="nav-item hov">
+                <a class="f-f nav-link active" aria-current="page" href="user_management.html">Gérer les utilisateurs</a>
+              </li>
+              <li class="nav-item hov">
+                <a class="f-f nav-link active" aria-current="page" href="organization_management.html">Gérer les organisations</a>
+              </li>
+              <li class="nav-item hov">
+                <a class="f-f nav-link active" href="#">Mon Profil</a>
+              </li>
+              <li class="nav-item">
+                <div class="separator"></div>
+              </li>
+              <li class="nav-item hov">
+                <a class="f-f nav-link active login-item" href="#">Se connecter</a>
+              </li>
+              <li class="nav-item hov">
+                <a class="f-f nav-link active account-item" href="#">Créer un compte</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    
+        <div class="wrapper">
+            <div class="title">
+              Créer une organisation
+            </div>
+            <div class="form">
+               <div class="inputfield">
+                  <label>Nom</label>
+                  <input type="text" class="input">
+               </div>  
+                <div class="inputfield">
+                  <label>SIREN</label>
+                  <input type="text" class="input">
+               </div>  
+               <div class="inputfield">
+                  <label>Siège social</label>
+                  <input type="text" class="input">
+               </div>  
+                <div class="inputfield">
+                  <label>Type d'organisation</label>
+                  <div class="custom_select">
+                    <select>
+                      <option value="">Selectionner</option>
+                      <option value="male">Lucratif</option>
+                      <option value="female">Non lucratif</option>
+                    </select>
+                  </div>
+               </div> 
+              <div class="inputfield">
+                <input type="submit" value="Soumettre" class="btn">
+              </div>
+            </div>
+        </div>
+    </body>
+</html>
