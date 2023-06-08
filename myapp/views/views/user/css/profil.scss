@@ -1,0 +1,40 @@
+@use '../../../utils/css/colors/colors';
+@use '../../../utils/css/fonts/fonts';
+
+body {
+    background: colors.$light-orange;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: colors.$light-orange
+}
+
+.profile-button {
+    background: colors.$light-orange;
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: colors.$light-orange;
+}
+
+.profile-button:focus {
+    background: colors.$light-orange;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: colors.$light-orange;
+    box-shadow: none
+}
+
+.back:hover {
+    color: colors.$light-orange;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}

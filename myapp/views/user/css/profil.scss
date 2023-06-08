@@ -1,0 +1,95 @@
+@use '../../../utils/css/colors/colors';
+@use '../../../utils/css/fonts/fonts';
+
+body {
+    background: colors.$light-orange;
+}
+.navbar-brand {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+    width: fit-content;
+}
+
+.navbar-brand > img {
+    height: 7%;
+    width: 7%;
+    margin-right: 10px;
+}
+
+.navbar {
+    box-shadow: 0px 2px 3px lightgray;
+}
+
+.navbar-collapse {
+    flex-grow: 0 !important; 
+}
+
+.navbar-main-spacer {
+    padding: 20px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.hov:hover {
+    background-color: rgb(243, 209, 157);
+}
+
+.nav-item > a {
+    font-size: 0.85rem;
+}
+
+.login-item {
+    border-radius: 10px;
+    margin-right: 2px;
+}
+
+.account-item {
+    border-radius: 10px;
+}
+
+.separator {
+    border: 1px solid rgb(204, 204, 204);
+    width: 1px;
+    height: 33px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.admin {
+    color: colors.$light-orange;
+    font-weight: bolder;
+}
+.form-control:focus {
+    box-shadow: none;
+    border-color: colors.$light-orange
+}
+
+.profile-button {
+    background: colors.$light-orange;
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: colors.$light-orange;
+}
+
+.profile-button:focus {
+    background: colors.$light-orange;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: colors.$light-orange;
+    box-shadow: none
+}
+
+.back:hover {
+    color: colors.$light-orange;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
