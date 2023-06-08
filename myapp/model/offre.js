@@ -10,6 +10,12 @@ module.exports = {
         return false;
     },
 
+    offreFromOrga: function (id_orga, callback) {
+        db.query("select * from Offres where id_orga= ?, status=\"Publiée\"",id_orga, function(err, results){
+            if(err) throw err;
+            callback(results);
+        });},
+
     areValid: function (email, password, callback) {
         //todo
         return false;

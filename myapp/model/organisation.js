@@ -1,32 +1,37 @@
 var db = require('./db.js');
 module.exports = {
-    read: function (email, callback) {
-        //todo
-        return false;
+    read: function (siren, callback) {
+        db.query("select * from Organisations where siren= ?",siren, function(err, results){
+            if(err) throw err;
+            callback(results);
+        });
     },
 
     readall: function (callback) {
-        //todo
-        return false;
+        db.query("select * from Organisations", function(err, results){
+            if(err) throw err;
+            callback(results);
+        });
     },
 
-    areValid: function (email, password, callback) {
-        //todo
-        return false;
+    create: function (siren, nom, domaine, ceo, createdBy, description, adress, siege_social ,callback) {
+        db.query("INSERT INTO Organisations VALUES(?,?,?,?,?,?,?,?)",[siren, nom, domaine, ceo, createdBy, description, adress, siege_social], function(err,results){
+            if(err) throw err;
+            callback(results);
+        });
     },
 
-    create: function (email, nom, prenom, pwd, type, callback) {
-        //todo
-        return false;
+    update: function (siren, nom, domaine, ceo, description, adress, siege_social, callback) {
+        db.query("UPDATE Organisations SET nom=?, domaine=?, ceo=?, description=?, adress=?, siege_social=? WHERE siren=?",[nom, domaine, ceo, description, adress, siege_social, siren], function(err,results){
+            if(err) throw err;
+            callback(results);
+        });
     },
 
-    update: function (email, nom, prenom, password, type, callback) {
-        //todo
-        return false;
-    },
-
-    delete: function(email, nom, prenom, password, type, callback) {
-        //todo
-        return false;
+    delete: function(siren,callback) {
+        db.query("DELETE FROM Organisations WHERE siren = ?",siren, function(err,results){
+            if(err) throw err;
+            callback(results);
+        });     
     }
 }

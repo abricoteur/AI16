@@ -1,12 +1,10 @@
 var db = require('./db.js');
 module.exports = {
-    readOrgaRequest: function (email, nom, prenom) {
-        db.query("select * from Request WHERE type=\"create_orga\" and email=? and prenom=? and nom=?",email,nom,prenom, function
-        (err, results) {
-            if (err) throw err;
+    readOrgaCreationRequest: function (callback) {
+        db.query("select * from RequestCreateOrganisation where status=\"pending\"", function(err, results){
+            if(err) throw err;
             callback(results);
-        });
-    },
+        });},
 
     userCount: function () {
         db.query("select COUNT(*) from Utilisateurs", function
