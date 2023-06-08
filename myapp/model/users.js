@@ -14,7 +14,7 @@ module.exports = {
         });
     },
     
-    recruteurFromOrga: function (id_orga, callback) {
+    recruteursFromOrga: function (id_orga, callback) {
         db.query("select * from Utilisateurs where id_orga= ?, role=\"recruteur\"",id_orga, function(err, results){
             if(err) throw err;
             callback(results);
@@ -32,21 +32,8 @@ module.exports = {
             callback(results);
         });},
 
-    areValid: function (email, password, callback) {
-    sql = "SELECT pwd FROM USERS WHERE email = ?";
-    rows = db.query(sql, email, function (err, results) {
-        if (err) throw err;
-        if (rows.length == 1 && rows[0].pwd === password) {
-            callback(true)
-        } else {
-            callback(false);
-        }
-    });
-    },
     create: function (email, nom, prenom, pwd, tel,dateCreation, status, role, id_orga, callback) {
-    //todo
-        sql = "INSERT INTO Utilisateurs VALUES(email, nom, prenom, pwd, tel,dateCreation, status, role, id_orga)";
-        rows = db.query(sql, function(err,results){
+        db.query("INSERT into Utilisateurs (email, nom, prenom, pwd, tel, dateCreation, status, role, id_orga) values(?,?,?,?,?,?,?,?,?)",[email, nom, prenom, pwd, tel, dateCreation, status, role, id_orga], function(err, results){
             if(err) throw err;
             callback(results);
         });

@@ -15,7 +15,7 @@ module.exports = {
     },
 
     create: function (siren, nom, domaine, ceo, createdBy, description, adress, siege_social ,callback) {
-        db.query("INSERT INTO Organisations VALUES(?,?,?,?,?,?,?,?)",[siren, nom, domaine, ceo, createdBy, description, adress, siege_social], function(err,results){
+        db.query("INSERT INTO Organisations (siren,nom, domaine, ceo, createdBy, description, adress, siege_social) VALUES(?,?,?,?,?,?,?,?)",[siren, nom, domaine, ceo, createdBy, description, adress, siege_social], function(err,results){
             if(err) throw err;
             callback(results);
         });
