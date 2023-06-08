@@ -6,7 +6,15 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var connexionRouter = require('./routes/connexion')
+var adminRouter = require('./routes/admin')
+var profilRouter = require('./routes/profil')
+var applicationManageRouter = require('./routes/application_management')
+var offersFormRouter = require('./routes/offers_form')
+var offersManageRouter = require('./routes/offers_management')
+var orgFormRouter = require('./routes/organization_form')
+var orgManageRouter = require('./routes/organization_management')
+var recruiterRouter = require('./routes/recruiter')
+var userManageRouter = require('./routes/user_management')
 
 var app = express();
 
@@ -23,6 +31,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/connexion', connexionRouter)
+app.use('/admin', adminRouter)
+app.use('/profil', profilRouter)
+app.use('/application_management', applicationManageRouter)
+app.use('/offers_form', offersFormRouter)
+app.use('/offers_management', offersManageRouter)
+app.use('/organization_form', orgFormRouter)
+app.use('/organization_management', orgManageRouter)
+app.use('/recruiter', recruiterRouter)
+app.use('/user_management', userManageRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
