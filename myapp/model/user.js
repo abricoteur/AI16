@@ -8,7 +8,7 @@ module.exports = {
         });
     },
     readall: function (callback) {
-        db.query("select * from Utilisateurs", function (err, results) {
+        db.query("select * from utilisateurs", function (err, results) {
         if (err) throw err;
         callback(results);
         });
