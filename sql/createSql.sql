@@ -9,17 +9,18 @@ CREATE TABLE Organisations (
     siege_social VARCHAR(255)
 );
 
-CREATE TABLE RequestsCreateOrganisation (
-    request_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE demandes_creation_organisation (
+    request_id INT AUTO_INCREMENT,
     requester_id VARCHAR(100) NOT NULL,
     status ENUM('pending', 'accepted', 'rejected') NOT NULL,
     date DATE NOT NULL,
     message TEXT,
     object TEXT,
-    siren INT PRIMARY KEY,
+    siren INT,
     nom VARCHAR(255) NOT NULL,
     domaine VARCHAR(255) NOT NULL,
-    siege_social VARCHAR(255)
+    siege_social VARCHAR(255),
+	PRIMARY KEY (request_id, siren),
     FOREIGN KEY (requester_id) REFERENCES Utilisateurs(email)
 );
 
@@ -32,7 +33,7 @@ CREATE TABLE Offres (
     rythme VARCHAR(255),
     salaire VARCHAR(255),
     description TEXT,
-    status ENUM('pending','hidden', 'accepted') NOT NULL
+    status ENUM('pending','hidden', 'accepted') NOT NULL,
     date DATE NOT NULL,
     liste_piece VARCHAR(255) NOT NULL,
     siren INT NOT NULL,
