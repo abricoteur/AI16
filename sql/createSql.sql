@@ -28,7 +28,7 @@ CREATE TABLE Utilisateurs (
     dateCreation DATE NOT NULL,
     role ENUM('Recruteur', 'Candidat', 'Administrateur') NOT NULL,
     id_orga INT NOT NULL,
-    FOREIGN KEY (id_orga) REFERENCES Organisations(siren)
+    FOREIGN KEY (id_orga) REFERENCES Organisations(siren) ON DELETE CASCADE
 );
 
 
@@ -44,7 +44,7 @@ CREATE TABLE Demandes_Creation_Organisation (
     nom VARCHAR(255) NOT NULL,
     domaine VARCHAR(255) NOT NULL,
     siege_social VARCHAR(255),
-    FOREIGN KEY (requester_id) REFERENCES Utilisateurs(email)
+    FOREIGN KEY (requester_id) REFERENCES Utilisateurs(email) ON DELETE CASCADE
 );
 
 -- Create Offres table
@@ -61,7 +61,7 @@ CREATE TABLE Offres (
     date DATE NOT NULL,
     liste_piece VARCHAR(255) NOT NULL,
     siren INT NOT NULL,
-    FOREIGN KEY (siren) REFERENCES Organisations(siren)
+    FOREIGN KEY (siren) REFERENCES Organisations(siren) ON DELETE CASCADE
 );
 
 
@@ -73,9 +73,9 @@ CREATE TABLE Candidatures (
     siren INT NOT NULL,
     id_user VARCHAR(100) NOT NULL,
     id_offre INT NOT NULL,
-    FOREIGN KEY (id_user) REFERENCES Utilisateurs(email),
-    FOREIGN KEY (id_offre) REFERENCES Offres(id),
-    FOREIGN KEY (siren) REFERENCES Organisations(siren),
+    FOREIGN KEY (id_user) REFERENCES Utilisateurs(email) ON DELETE CASCADE,
+    FOREIGN KEY (id_offre) REFERENCES Offres(id) ON DELETE CASCADE,
+    FOREIGN KEY (siren) REFERENCES Organisations(siren) ON DELETE CASCADE,
     UNIQUE (id_user, id_offre)
 );
 
@@ -84,5 +84,5 @@ CREATE TABLE Pieces (
     id INT PRIMARY KEY AUTO_INCREMENT,
     file LONGBLOB NOT NULL,
     id_candidature INT NOT NULL,
-    FOREIGN KEY (id_candidature) REFERENCES Candidatures(id)
+    FOREIGN KEY (id_candidature) REFERENCES Candidatures(id) ON DELETE CASCADE
 );
