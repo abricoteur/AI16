@@ -32,8 +32,8 @@ module.exports = {
             callback(results);
         });},
 
-    create: function (email, nom, prenom, pwd, tel,dateCreation, status, role, id_orga, callback) {
-        db.query("INSERT into Utilisateurs (email, nom, prenom, pwd, tel, dateCreation, status, role, id_orga) values(?,?,?,?,?,?,?,?,?)",[email, nom, prenom, pwd, tel, dateCreation, status, role, id_orga], function(err, results){
+    create: function (email, nom, prenom, pwd, tel, status, role, id_orga, callback) {
+        db.query("INSERT into Utilisateurs (email, nom, prenom, mdp, tel, status, role, id_orga) values(?,?,?,?,?,?,?,?,?)",[email, nom, prenom, pwd, tel, status, role, id_orga], function(err, results){
             if(err) throw err;
             callback(results);
         });
