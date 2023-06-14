@@ -4,7 +4,7 @@ var userModel = require('../model/users.js')
 
 router.get('/', function (req, res, next) {
     result=userModel.readall(function(result){
-        res.render('organization_mangement', { title: 'Page admin', organization_management: result});
+        res.render('organization_management', { title: 'Page admin', organization_management: result});
     });
 });
 
