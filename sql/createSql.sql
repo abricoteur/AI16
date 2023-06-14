@@ -1,9 +1,9 @@
 -- Drop tables if they exist
 DROP TABLE IF EXISTS Pieces;
 DROP TABLE IF EXISTS Candidatures;
+DROP TABLE IF EXISTS Demandes_Creation_Organisation;
 DROP TABLE IF EXISTS Utilisateurs;
 DROP TABLE IF EXISTS Offres;
-DROP TABLE IF EXISTS Demandes_Creation_Organisation;
 DROP TABLE IF EXISTS Organisations;
 
 -- Create Organisations table
@@ -17,6 +17,20 @@ CREATE TABLE Organisations (
     adress VARCHAR(255) NOT NULL,
     siege_social VARCHAR(255)
 );
+
+-- Create Utilisateurs table
+CREATE TABLE Utilisateurs (
+    email VARCHAR(100) PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    mdp VARCHAR(255) NOT NULL,
+    prenom VARCHAR(255) NOT NULL,
+    tel VARCHAR(255),
+    dateCreation DATE NOT NULL,
+    role ENUM('Recruteur', 'Candidat', 'Administrateur') NOT NULL,
+    id_orga INT NOT NULL,
+    FOREIGN KEY (id_orga) REFERENCES Organisations(siren)
+);
+
 
 -- Create Demandes_Creation_Organisation table
 CREATE TABLE Demandes_Creation_Organisation (
@@ -50,18 +64,6 @@ CREATE TABLE Offres (
     FOREIGN KEY (siren) REFERENCES Organisations(siren)
 );
 
--- Create Utilisateurs table
-CREATE TABLE Utilisateurs (
-    email VARCHAR(100) PRIMARY KEY,
-    nom VARCHAR(255) NOT NULL,
-    mdp VARCHAR(255) NOT NULL,
-    prenom VARCHAR(255) NOT NULL,
-    tel VARCHAR(255),
-    dateCreation DATE NOT NULL,
-    role ENUM('Recruteur', 'Candidat', 'Administrateur') NOT NULL,
-    id_orga INT NOT NULL,
-    FOREIGN KEY (id_orga) REFERENCES Organisations(siren)
-);
 
 -- Create Candidatures table
 CREATE TABLE Candidatures (
