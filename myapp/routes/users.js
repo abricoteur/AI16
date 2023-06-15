@@ -20,7 +20,7 @@ router.get('/nvUser', function (req, res, next) {
         if (err) throw err;
 
         // Hash the password
-        bcrypt.hash(data.pwd, salt, function (err, hashedPassword) {
+        bcrypt.hash(data.mdp, salt, function (err, hashedPassword) {
             if (err) throw err;
 
             // Create the user with the hashed password
@@ -31,10 +31,13 @@ router.get('/nvUser', function (req, res, next) {
     });
 });
 
-router.get('/checkUser', function (req, res, next) {
+router.post('/checkUser', function (req, res, next) {
     var data = req.body; // Access the POST data sent from the client
 
-    result=userModel.read(data.email, function(user){
+    result=userModel.read(data.email, function(data_user){
+        const user = data_user[0];
+        console.log(user.mdp)
+        console.log(data.mdp)
         const hashedPassword = user.mdp;
 
         const providedPassword = data.mdp;
@@ -43,9 +46,9 @@ router.get('/checkUser', function (req, res, next) {
             if (err) throw err;
         
             if (result) {
-                res.render('offers_form', { title: 'Page Accueil Utilisateur', offers_form: result})
+                res.render('home', { title: 'Page Accueil Utilisateur', result: result})
             } else {
-                res.render('connexion', { title: 'Page Accueil Utilisateur', login: result})
+                res.render('connexion', { title: 'Page Connexion Utilisateur', result: result})
             }
         });
     });
