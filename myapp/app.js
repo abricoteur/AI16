@@ -6,12 +6,10 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var connexionRouter = require('./routes/connexion');
 var adminRouter = require('./routes/admin');
 var profilRouter = require('./routes/profil');
 var applicationManageRouter = require('./routes/application_management');
 var homeRouter = require('./routes/home');
-var createUserRouter = require('./routes/createUser');
 var offersFormRouter = require('./routes/offers_form');
 var offersManageRouter = require('./routes/offers_management');
 var orgFormRouter = require('./routes/organization_form');
@@ -33,12 +31,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/connexion', connexionRouter);
 app.use('/admin', adminRouter);
 app.use('/profil', profilRouter);
 app.use('/application_management', applicationManageRouter);
 app.use('/home', homeRouter);
-app.use('/createUser', createUserRouter);
 app.use('/offers_form', offersFormRouter);
 app.use('/offers_management', offersManageRouter);
 app.use('/organization_form', orgFormRouter);
