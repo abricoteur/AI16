@@ -43,7 +43,7 @@ router.get('/checkUser', function (req, res, next) {
             if (err) throw err;
         
             if (result) {
-                res.render('offers_form', { title: 'Page Accueil Utilisateur', offers_form: result})
+                res.render('home', { title: 'Page Accueil Utilisateur', home: result})
             } else {
                 res.render('connexion', { title: 'Page Accueil Utilisateur', login: result})
             }
