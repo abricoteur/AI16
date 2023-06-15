@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var userModel = require('../model/users.js')
 const bcrypt = require('bcrypt');
-const userModel = require('../model/user.js');
 /* GET users listing. */
 router.get('/', function (req, res, next) {
     res.send('respond with a resource');
