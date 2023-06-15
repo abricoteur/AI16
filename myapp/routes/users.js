@@ -46,7 +46,11 @@ router.post('/checkUser', function (req, res, next) {
             if (err) throw err;
         
             if (result) {
+<<<<<<< HEAD
                 res.render('home', { title: 'Page Accueil Utilisateur', result: result})
+=======
+                res.render('home', { title: 'Page Accueil Utilisateur', home: result})
+>>>>>>> 18599af18d0cecf17b0284cc6f789cea1e1aa706
             } else {
                 res.render('connexion', { title: 'Page Connexion Utilisateur', result: result})
             }
