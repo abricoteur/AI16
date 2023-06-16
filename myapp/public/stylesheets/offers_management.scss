@@ -63,10 +63,12 @@ p {
 .login-item {
     border-radius: 10px;
     margin-right: 2px;
+    visibility: hidden;
 }
 
 .account-item {
     border-radius: 10px;
+    visibility: hidden;
 }
 
 .separator {
@@ -117,7 +119,34 @@ p {
     border: 2px solid colors.$light-orange;
 }
 
+.title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
 //SEARCH AREA
+
+.new-offer-btn > a {
+    text-decoration: none;
+    color: colors.$light-orange;
+    padding: 20px;
+}
+
+.new-offer-btn > a:hover {
+    color: colors.$light-orange;
+}
+
+.new-offer-btn {
+    border: 2px solid colors.$light-grey;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.new-offer-btn:hover {
+    border: 2px solid colors.$light-orange;
+}
 
 .search-bars {
     display: flex;
