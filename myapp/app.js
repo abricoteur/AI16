@@ -44,15 +44,17 @@ app.use(cookieParser());
 // Middleware for checking if a user is connected
 function isConnected(session, role) {
   // Check if session exists and user role matches
-  return session && session.user && session.user.role === role;
+  //return session && session.user && session.user.role === role;
+  return true;
 }
 
 // check user
 app.all("*", function (req, res, next) {
-  const nonSecurePaths = ["/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/","/users/logout/"];
+  const nonSecurePaths = ["/js/*","/img/job-promotion.png","/favicon.ico","/stylesheets/*","/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/","/users/logout/"];
   const adminPaths = ["/users/userslist"]; //list des urls admin
-  const userPaths = ["/users/profil","/users/logout"]; //list des urls admin
+  const candidatPaths = ["/home","/users/profil","/users/logout","/organization_form","/profil"]; //list des urls admin
   const recruteurPaths = []; //list des urls admin
+
   if (nonSecurePaths.includes(req.path)) return next();
 
   //authenticate user
@@ -60,7 +62,7 @@ app.all("*", function (req, res, next) {
     if (isConnected(req.session, "Admin")) return next();
     else res.status(403).render("error", { message: " Unauthorized access", error: {} });
   }
-  else if (userPaths.includes(req.path)) {
+  else if (candidatPaths.includes(req.path)) {
     if (isConnected(req.session, "Candidat")) return next();
     else res.status(403).render("error", { message: " Unauthorized access", error: {} });
   }

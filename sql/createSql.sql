@@ -24,6 +24,7 @@ CREATE TABLE Utilisateurs (
     nom VARCHAR(255) NOT NULL,
     mdp VARCHAR(255) NOT NULL,
     prenom VARCHAR(255) NOT NULL,
+    dateCreation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     tel VARCHAR(255),
     role ENUM('Recruteur', 'Candidat', 'Administrateur') NOT NULL,
     id_orga INT,
@@ -54,13 +55,13 @@ CREATE TABLE Offres (
     type_metier VARCHAR(255),
     lieu VARCHAR(255) NOT NULL,
     rythme VARCHAR(255),
-    salaire VARCHAR(255),
+    salaire INT(255),
     description TEXT,
     status ENUM('pending', 'hidden', 'accepted') NOT NULL,
-    date DATE NOT NULL,
-    liste_piece VARCHAR(255) NOT NULL,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     siren INT NOT NULL,
-    FOREIGN KEY (siren) REFERENCES Organisations(siren) ON DELETE CASCADE
+    FOREIGN KEY (siren) REFERENCES Organisations(siren) ON DELETE CASCADE,
+    entreprise VARCHAR(255) NOT NULL
 );
 
 

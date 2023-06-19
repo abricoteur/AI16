@@ -7,12 +7,43 @@ module.exports = {
         });
     },
 
-    readall: function (callback) {
-        db.query("select * from Offres", function(err, results){
-            if(err) throw err;
+    readall: function (filtre_all, filtre_domaine, filtre_salaire, filtre_lieu, callback) {
+        let sql = "SELECT * FROM Offres JOIN Organisations ON Offres.siren = Organisations.siren WHERE 1=1";
+
+        let params = [];
+
+        console.log(filtre_all);
+    
+        if (filtre_all !== undefined) {
+            sql += " AND (Offres.nom LIKE ? OR Offres.responsable LIKE ? OR Offres.type_metier LIKE ? OR Offres.rythme LIKE ? OR Offres.entreprise LIKE ? OR Offres.description LIKE ? OR Organisations.description LIKE ? OR Offres.lieu LIKE ? OR Offres.siren LIKE ?)";
+            const filterPattern = `%${filtre_all}%`;
+            params.push(filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern,filterPattern,);
+        }
+        
+        
+        if (filtre_domaine !== undefined) {
+            sql += " AND domaine = ?";
+            params.push(filtre_domaine);
+        }
+        
+        if (filtre_salaire !== undefined) {
+            sql += " AND salaire >= ?";
+            params.push(filtre_salaire);
+        }
+        
+        if (filtre_lieu !== undefined) {
+            sql += " AND lieu LIKE ?";
+            params.push(`%${filtre_lieu}%`);
+        }
+        
+    
+        db.query(sql, params, function(err, results) {
+            if (err) throw err;
             callback(results);
         });
     },
+    
+    
 
     offreFromOrga: function (siren, callback) {
         db.query("select * from Offres where siren= ?, status=\"pending\"",siren, function(err, results){
