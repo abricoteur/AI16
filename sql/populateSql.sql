@@ -1,58 +1,41 @@
--- SQLite
--- Populate the Organisation table
-INSERT INTO Organisation (siren, nom, type, siege_social)
-VALUES (123456789, 'Company A', 'Type A', 'Headquarters A'),
-       (987654321, 'Company B', 'Type B', 'Headquarters B');
+-- Table Organisations
+INSERT INTO Organisations (siren, nom, domaine, ceo, createdBy, description, adress, siege_social)
+VALUES
+    (123456789, 'Organisation 1', 'Domaine 1', 'CEO 1', 'Created By 1', 'Description 1', 'Adresse 1', 'Siège social 1'),
+    (987654321, 'Organisation 2', 'Domaine 2', 'CEO 2', 'Created By 2', 'Description 2', 'Adresse 2', 'Siège social 2'),
+    (111111111, 'Organisation 3', 'Domaine 3', 'CEO 3', 'Created By 3', 'Description 3', 'Adresse 3', 'Siège social 3'),
+    (222222222, 'Organisation 4', 'Domaine 4', 'CEO 4', 'Created By 4', 'Description 4', 'Adresse 4', 'Siège social 4');
+    
+    -- Table Utilisateurs
+INSERT INTO Utilisateurs (email, nom, mdp, prenom, tel, role, id_orga)
+VALUES
+    ('user1@example.com', 'Nom 1', 'mdp1', 'Prénom 1', '',  'Recruteur', 123456789),
+    ('user2@example.com', 'Nom 2', 'mdp2', 'Prénom 2', '', 'Candidat', 987654321),
+    ('user3@example.com', 'Nom 3', 'mdp3', 'Prénom 3', '',  'Administrateur', 111111111),
+    ('user4@example.com', 'Nom 4', 'mdp4', 'Prénom 4', '', 'Candidat', 222222222);
 
--- Populate the Offre table
-INSERT INTO Offre (id, nom, statut, responsable, type_metier, lieu, rythme, salaire, description, etat, date, liste_piece, id_orga)
-VALUES (1, 'Job A', 'Statut A', 'John Doe', 'Type A', 'Location A', 'Rythme A', 'Salaire A', 'Description A', 'Publiée', '2023-01-01', 'Piece A', 123456789),
-       (2, 'Job B', 'Statut B', 'Jane Smith', 'Type B', 'Location B', 'Rythme B', 'Salaire B', 'Description B', 'Non publiée', '2023-02-01', 'Piece B', 987654321),
-       (3, 'Job C', 'Statut C', 'John Doe', 'Type C', 'Location C', 'Rythme C', 'Salaire C', 'Description C', 'Publiée', '2023-03-01', 'Piece C', 123456789),
-       (4, 'Job D', 'Statut D', 'Jane Smith', 'Type D', 'Location D', 'Rythme D', 'Salaire D', 'Description D', 'Publiée', '2023-04-01', 'Piece D', 987654321);
 
--- Populate the Utilisateurs table
-INSERT INTO Utilisateurs (email, nom, mdp, prenom, tel, dateCreation, statut, Role, id_orga)
-VALUES ('user1@example.com', 'User1', 'password1', 'John', '1234567890', '2023-01-01', 'actif', 'Recruteur', 123456789),
-       ('user2@example.com', 'User2', 'password2', 'Jane', '9876543210', '2023-02-01', 'actif', 'Candidat', 987654321),
-       ('user3@example.com', 'User3', 'password3', 'Alice', '5555555555', '2023-03-01', 'inactif', 'Candidat', 987654321),
-       ('user4@example.com', 'User4', 'password4', 'Bob', '9999999999', '2023-04-01', 'actif', 'Administrateur', 123456789);
+-- Table demandes_creation_organisation
+INSERT INTO Demandes_Creation_Organisation (requester_id, status, date, message, object, siren, nom, domaine, siege_social)
+VALUES
+    ('user1@example.com', 'pending', '2023-06-11', 'Message 1', 'Object 1', 123456789, 'Organisation 1', 'Domaine 1', 'Siège social 1'),
+    ('user2@example.com', 'accepted', '2023-06-10', 'Message 2', 'Object 2', 987654321, 'Organisation 2', 'Domaine 2', 'Siège social 2'),
+    ('user2@example.com', 'rejected', '2023-06-09', 'Message 3', 'Object 3', 111111111, 'Organisation 3', 'Domaine 3', 'Siège social 3'),
+    ('user1@example.com', 'pending', '2023-06-08', 'Message 4', 'Object 4', 222222222, 'Organisation 4', 'Domaine 4', 'Siège social 4');
 
--- Populate the Candidature table
-INSERT INTO Candidature (id, date, id_user, id_offre)
-VALUES (1, '2023-03-01', 'user2@example.com', 1),
-       (2, '2023-04-01', 'user1@example.com', 2),
-       (3, '2023-04-15', 'user3@example.com', 3),
-       (4, '2023-05-01', 'user2@example.com', 4);
+-- Table Offres
+INSERT INTO Offres (nom, responsable, type_metier, lieu, rythme, salaire, description, status, date, liste_piece, siren)
+VALUES
+    ('Offre 1', 'Responsable 1', 'Type métier 1', 'Lieu 1', 'Rythme 1', 'Salaire 1', 'Description 1', 'pending', '2023-06-11', 'Liste pièce 1', 123456789),
+    ('Offre 2', 'Responsable 2', 'Type métier 2', 'Lieu 2', 'Rythme 2', 'Salaire 2', 'Description 2', 'accepted', '2023-06-10', 'Liste pièce 2', 987654321),
+    ('Offre 3', 'Responsable 3', 'Type métier 3', 'Lieu 3', 'Rythme 3', 'Salaire 3', 'Description 3', 'hidden', '2023-06-09', 'Liste pièce 3', 111111111),
+    ('Offre 4', 'Responsable 4', 'Type métier 4', 'Lieu 4', 'Rythme 4', 'Salaire 4', 'Description 4', 'pending', '2023-06-08', 'Liste pièce 4', 222222222);
 
--- Populate the Piece table
-INSERT INTO Piece (id, file, id_candidature)
-VALUES (1, 'Piece A File', 1),
-       (2, 'Piece B File', 2),
-       (3, 'Piece C File', 3),
-              (4, 'Piece D File', 4);
 
--- Additional data for the Organisation table
-INSERT INTO Organisation (siren, nom, type, siege_social)
-VALUES (135792468, 'Company C', 'Type C', 'Headquarters C'),
-       (246813579, 'Company D', 'Type D', 'Headquarters D');
-
--- Additional data for the Offre table
-INSERT INTO Offre (id, nom, statut, responsable, type_metier, lieu, rythme, salaire, description, etat, date, liste_piece, id_orga)
-VALUES (5, 'Job E', 'Statut E', 'John Doe', 'Type E', 'Location E', 'Rythme E', 'Salaire E', 'Description E', 'Non publiée', '2023-05-01', 'Piece E', 135792468),
-       (6, 'Job F', 'Statut F', 'Jane Smith', 'Type F', 'Location F', 'Rythme F', 'Salaire F', 'Description F', 'Publiée', '2023-06-01', 'Piece F', 246813579);
-
--- Additional data for the Utilisateurs table
-INSERT INTO Utilisateurs (email, nom, mdp, prenom, tel, dateCreation, statut, Role, id_orga)
-VALUES ('user5@example.com', 'User5', 'password5', 'Alice', '1111111111', '2023-05-01', 'actif', 'Candidat', 135792468),
-       ('user6@example.com', 'User6', 'password6', 'Bob', '2222222222', '2023-06-01', 'actif', 'Recruteur', 246813579);
-
--- Additional data for the Candidature table
-INSERT INTO Candidature (id, date, id_user, id_offre)
-VALUES (5, '2023-06-01', 'user5@example.com', 5),
-       (6, '2023-06-15', 'user6@example.com', 6);
-
--- Additional data for the Piece table
-INSERT INTO Piece (id, file, id_candidature)
-VALUES (5, 'Piece E File', 5),
-       (6, 'Piece F File', 6);
+-- Table Candidatures
+INSERT INTO Candidatures (status, date, siren, id_user, id_offre)
+VALUES
+    ('pending', '2023-06-11', 123456789, 'user1@example.com', 1),
+    ('accepted', '2023-06-10', 987654321, 'user2@example.com', 2),
+    ('rejected', '2023-06-09', 111111111, 'user3@example.com', 3),
+    ('pending', '2023-06-08', 222222222, 'user4@example.com', 4);
