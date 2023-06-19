@@ -11,28 +11,28 @@
             <div class="title">
               Créer un compte
             </div>
-            <form action="" method="POST" class="form">
+            <form action="/users/nvUser" method="POST" class="form">
                <div class="inputfield">
                   <label>Nom</label>
-                  <input type="text" class="input">
+                  <input name="nom" type="text" class="input">
                </div>  
                 <div class="inputfield">
                   <label>Prénom</label>
-                  <input type="text" class="input">
+                  <input name="prenom" type="text" class="input">
                </div>  
                <div class="inputfield">
                   <label>Email</label>
-                  <input type="text" class="input">
+                  <input name="email" type="text" class="input">
                </div>  
                <div class="inputfield">
-                <label>Mots de passe</label>
-                <input type="text" class="input">
+                <label>Mot de passe</label>
+                <input name="mdp" type="text" class="input">
                 </div>  
                 <div class="inputfield">
                     <label>Téléphone</label>
-                    <input type="text" class="input">
+                    <input name="tel" type="text" class="input">
                 </div>  
-                <input id="status" name="status" type="hidden" value="utilisateur">
+                <input id="role" name="role" type="hidden" value="Candidat">
               <div class="inputfield">
                 <input type="submit" value="Soumettre" class="btn">
               </div>
