@@ -18,7 +18,7 @@
   <main>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fcfcfc;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/job-promotion.png">Happy Hire</a>
+        <a class="navbar-brand" href="home"><img src="img/job-promotion.png">Happy Hire</a>
               <div class="navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item hov title">
@@ -33,17 +33,11 @@
                   <li class="nav-item hov">
                     <a class="f-f nav-link active" aria-current="page" href="organization_management">Gérer les organisations</a>
                   </li>
-                  <li class="nav-item hov">
-                    <a class="f-f nav-link active" href="profil">Mon Profil</a>
-                  </li>
                   <li class="nav-item">
                     <div class="separator"></div>
                   </li>
                   <li class="nav-item hov">
-                    <a class="f-f nav-link active login-item" href="connexion">Se connecter</a>
-                  </li>
-                  <li class="nav-item hov">
-                    <a class="f-f nav-link active account-item" href="connexion">Créer un compte</a>
+                    <a class="f-f nav-link active profil-item" href="profil">Mon Profil</a>
                   </li>
                 </ul>
               </div>
@@ -181,21 +175,9 @@
   </main>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="js/dropdown.js">
+
+</script>
 </body>
 
 </html>
-
-<script>
-
-  $('.dropdown-el').click(function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $(this).toggleClass('expanded');
-    $('#' + $(e.target).attr('for')).prop('checked', true);
-  });
-
-  $(document).click(function () {
-    $('.dropdown-el').removeClass('expanded');
-  });
-
-</script>

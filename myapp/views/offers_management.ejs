@@ -14,101 +14,95 @@
   </head>
   <body style="background-color: rgb(245, 245, 245);">
     <main>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fcfcfc;">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#"><img src="../../img/job-promotion.png">Happy Hire</a>
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fcfcfc;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="home"><img src="img/job-promotion.png">Happy Hire</a>
 
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-              <div class="navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item hov title">
-                    <a class="f-f nav-link active" aria-current="page" href="admin"><p class="admin">Administration</p></a>
-                  </li>
-                  <li class="nav-item">
-                    <div class="separator"></div>
-                  </li>
-                  <li class="nav-item hov">
-                    <a class="f-f nav-link active" aria-current="page" href="user_management">Gérer les utilisateurs</a>
-                  </li>
-                  <li class="nav-item hov">
-                    <a class="f-f nav-link active" aria-current="page" href="organization_management">Gérer les organisations</a>
-                  </li>
-                  <li class="nav-item hov">
-                    <a class="f-f nav-link active" href="profil">Mon Profil</a>
-                  </li>
-                  <li class="nav-item">
-                    <div class="separator"></div>
-                  </li>
-                  <li class="nav-item hov">
-                    <a class="f-f nav-link active login-item" href="connexion">Se connecter</a>
-                  </li>
-                  <li class="nav-item hov">
-                    <a class="f-f nav-link active account-item" href="connexion">Créer un compte</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-        </nav>
+          <div class="navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item hov title">
+                <a class="f-f nav-link active" aria-current="page" href="recruiter"><p class="admin">Recruteur</p></a>
+              </li>
+              <li class="nav-item">
+                <div class="separator"></div>
+              </li>
+              <li class="nav-item hov title">
+                <a class="f-f nav-link active" aria-current="page" href="#">Nom de l'entreprise</a>
+              </li>
+              <li class="nav-item hov">
+                <a class="f-f nav-link active" aria-current="page" href="offers_management">Gérer les offres</a>
+              </li>
+              <li class="nav-item hov">
+                <a class="f-f nav-link active" aria-current="page" href="application_management">Voir les candidatures</a>
+              </li>
+              <li class="nav-item">
+                <div class="separator"></div>
+              </li>
+              <li class="nav-item hov">
+                <a class="f-f nav-link active" href="profil">Mon Profil</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
         <div class="navbar-main-spacer"></div>
 
         <div class="main-container">
 
-            <div class="f-f title">
-              <p>Liste des organisations</p>
+            <div class="f-f title title-container">
+              <div>Vos offres</div>
+              <div class="new-offer-btn"><a href="offers_form">Nouvelle offre +</a></div>
             </div>
 
             <hr>
 
             <div class="search-container">
 
-                <div class="search-bars">
-                  <div class="wh"><input placeholder="Quoi ?"></div>
-                  <div class="wh"><input placeholder="Où ?"></div>
-                  <div class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                  </div>
+              <div class="search-bars">
+                <div class="wh"><input placeholder="Quoi ?"></div>
+                <div class="wh"><input placeholder="Où ?"></div>
+                <div class="search-icon">
+                  <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
+              </div>
 
-                <div class="filters">
+              <div class="filters">
 
-                  <span class="dropdown-el">
-                    <input type="radio" name="domaine" value="Agroalimentaire" checked="checked" id="sort-Agroalimentaire"><label for="sort-Agroalimentaire">Agroalimentaire</label>
-                    <input type="radio" name="domaine" value="Banque/Assurance" id="sort-banque"><label for="sort-banque">Banque/Assurance</label>
-                    <input type="radio" name="domaine" value="Industrie pharmaceutique" id="sort-pharma"><label for="sort-pharma">Industrie pharmaceutique</label>
-                    <input type="radio" name="domaine" value="Informatique / Télécoms" id="sort-info"><label for="sort-info">Informatique / Télécoms</label>
-                    <input type="radio" name="domaine" value="Electronique / Electricité" id="sort-elec"><label for="sort-elec">Electronique / Electricité</label>
-                    <input type="radio" name="domaine" value="Commerce / Distribution" id="sort-commerce"><label for="sort-commerce">Commerce / Distribution</label>
-                  </span>
+                <span class="dropdown-el">
+                  <input type="radio" name="domaine" value="Agroalimentaire" checked="checked" id="sort-Agroalimentaire"><label for="sort-Agroalimentaire">Agroalimentaire</label>
+                  <input type="radio" name="domaine" value="Banque/Assurance" id="sort-banque"><label for="sort-banque">Banque/Assurance</label>
+                  <input type="radio" name="domaine" value="Industrie pharmaceutique" id="sort-pharma"><label for="sort-pharma">Industrie pharmaceutique</label>
+                  <input type="radio" name="domaine" value="Informatique / Télécoms" id="sort-info"><label for="sort-info">Informatique / Télécoms</label>
+                  <input type="radio" name="domaine" value="Electronique / Electricité" id="sort-elec"><label for="sort-elec">Electronique / Electricité</label>
+                  <input type="radio" name="domaine" value="Commerce / Distribution" id="sort-commerce"><label for="sort-commerce">Commerce / Distribution</label>
+                </span>
 
-                  <span class="dropdown-el">
-                    <input type="radio" name="taille" value="10" checked="checked" id="sort-10"><label for="sort-10">- de 10 employés</label>
-                    <input type="radio" name="taille" value="50" id="sort-50"><label for="sort-50">10 à 50 employés</label>
-                    <input type="radio" name="taille" value="100" id="sort-100"><label for="sort-100">50 de 100 employés</label>
-                    <input type="radio" name="taille" value="250" id="sort-250"><label for="sort-250">100 de 250 employés</label>
-                    <input type="radio" name="taille" value="1000" id="sort-1000"><label for="sort-1000">250 de 1000 employés</label>
-                    <input type="radio" name="taille" value="5000" id="sort-5000"><label for="sort-5000">1000 de 5000 employés</label>
-                  </span>
+                <span class="dropdown-el">
+                  <input type="radio" name="salaire" value="Y" checked="checked" id="Y"><label for="sort-X">Estimation du salaire</label>
+                  <input type="radio" name="salaire" value="1500" id="1500"><label for="1500">1500€ +</label>
+                  <input type="radio" name="salaire" value="1750" id="1750"><label for="1750">1750€ +</label>
+                  <input type="radio" name="salaire" value="2000" id="2000"><label for="2000">2000€ +</label>
+                  <input type="radio" name="salaire" value="3000" id="3000"><label for="3000">3000€ +</label>
+                  <input type="radio" name="salaire" value="5000" id="5000"><label for="sort-1000">5000€ +</label>
+                  <input type="radio" name="salaire" value="7500" id="7500"><label for="sort-5000">7500€ +</label>
+                </span>
 
-                  <span class="dropdown-el">
-                    <input type="radio" name="recrute" value="y" checked="checked" id="sort-y"><label for="sort-y">Recrute</label>
-                    <input type="radio" name="recrute" value="n" id="sort-n"><label for="sort-n">Ne recrute pas</label>
-                  </span>
+                <span class="dropdown-el">
+                  <input type="radio" name="rayon" value="1" checked="checked" id="sort-1"><label for="sort-1">Dans un rayon de 10 KM</label>
+                  <input type="radio" name="rayon" value="2" id="sort-2"><label for="sort-2">Dans un rayon de 20 KM</label>
+                  <input type="radio" name="rayon" value="4" id="sort-4"><label for="sort-4">Dans un rayon de 40 KM</label>
+                  <input type="radio" name="rayon" value="7" id="sort-7"><label for="sort-7">Dans un rayon de 75 KM</label>
+                  <input type="radio" name="rayon" value="10" id="sort-0"><label for="sort-0">Dans un rayon de 100 KM</label>
+                </span>
 
-                  <span class="dropdown-el">
-                    <input type="radio" name="rayon" value="1" checked="checked" id="sort-1"><label for="sort-1">Dans un rayon de 10 KM</label>
-                    <input type="radio" name="rayon" value="2" id="sort-2"><label for="sort-2">Dans un rayon de 20 KM</label>
-                    <input type="radio" name="rayon" value="4" id="sort-4"><label for="sort-4">Dans un rayon de 40 KM</label>
-                    <input type="radio" name="rayon" value="7" id="sort-7"><label for="sort-7">Dans un rayon de 75 KM</label>
-                    <input type="radio" name="rayon" value="10" id="sort-0"><label for="sort-0">Dans un rayon de 100 KM</label>
-                  </span>
+              </div>
 
-                </div>
-
-            </div>
+          </div>
 
             <hr>
 
@@ -119,70 +113,52 @@
               <div class="data-table">
 
                 <div class="data-item">
-                  <p class="orga-name f-f">Thales Group</p>
+                  <p class="orga-name f-f">Développeur mobile H/F</p>
                   <p class="f-f">
-                    <span class="subtitle">PDG :</span>Patrice Caine
-                      <a class="f-f ml" href="#">
-                      <span class="subtitle">Crée sur HH par :</span>Mennessier Lucas &#10138;
-                    </a> 
+                    <p class="job-info"><span class="subtitle">Entreprise : </span> Thales Group </p>
+                    <p class="job-info"><span class="subtitle">Lieu : </span>Ermont </p>
+                    <p class="job-info"><span class="subtitle">Contact recruteur : </span>lucas.mennessier@mail.com </p>
+                    <p class="job-info"><span class="subtitle">Salaire : </span>2000€ + </p>
                   </p>
                   <p>
-                    <a class="f-f" href="#">
-                      <span class="count">6</span>
-                      recruteurs &#10138;</a>
-                    <a class="f-f ml" href="#">
-                      <span class="count">16</span> 
-                      offres ouvertes &#10138;</a></p>
 
                   <div class="manage-orga-btns">
-                      <span class="f-f">Modifier &#9998;</span>
-                      <span class="f-f">Supprimer &#10005;</span>
+                      <span class="f-f">Modifier &#10138;</span>
+                      <span class="f-f">Supprimer X</span>
                   </div>
                 </div>
 
                 <div class="data-item">
-                  <p class="orga-name f-f">Thales Group</p>
+                  <p class="orga-name f-f">Développeur mobile H/F</p>
                   <p class="f-f">
-                    <span class="subtitle">PDG :</span>Patrice Caine
-                      <a class="f-f ml" href="#">
-                      <span class="subtitle">Crée sur HH par :</span>Mennessier Lucas &#10138;
-                    </a> 
+                    <p class="job-info"><span class="subtitle">Entreprise : </span> Thales Group </p>
+                    <p class="job-info"><span class="subtitle">Lieu : </span>Ermont </p>
+                    <p class="job-info"><span class="subtitle">Contact recruteur : </span>lucas.mennessier@mail.com </p>
+                    <p class="job-info"><span class="subtitle">Salaire : </span>2000€ + </p>
                   </p>
                   <p>
-                    <a class="f-f" href="#">
-                      <span class="count">6</span>
-                      recruteurs &#10138;</a>
-                    <a class="f-f ml" href="#">
-                      <span class="count">16</span> 
-                      offres ouvertes &#10138;</a></p>
 
-                  <div class="manage-orga-btns">
-                      <span class="f-f">Modifier &#9998;</span>
-                      <span class="f-f">Supprimer &#10005;</span>
+                    <div class="manage-orga-btns">
+                      <span class="f-f">Modifier &#10138;</span>
+                      <span class="f-f">Supprimer X</span>
                   </div>
                 </div>
 
                 <div class="data-item">
-                  <p class="orga-name f-f">Thales Group</p>
+                  <p class="orga-name f-f">Développeur mobile H/F</p>
                   <p class="f-f">
-                    <span class="subtitle">PDG :</span>Patrice Caine
-                      <a class="f-f ml" href="#">
-                      <span class="subtitle">Crée sur HH par :</span>Mennessier Lucas &#10138;
-                    </a> 
+                    <p class="job-info"><span class="subtitle">Entreprise : </span> Thales Group </p>
+                    <p class="job-info"><span class="subtitle">Lieu : </span>Ermont </p>
+                    <p class="job-info"><span class="subtitle">Contact recruteur : </span>lucas.mennessier@mail.com </p>
+                    <p class="job-info"><span class="subtitle">Salaire : </span>2000€ + </p>
                   </p>
                   <p>
-                    <a class="f-f" href="#">
-                      <span class="count">6</span>
-                      recruteurs &#10138;</a>
-                    <a class="f-f ml" href="#">
-                      <span class="count">16</span> 
-                      offres ouvertes &#10138;</a></p>
 
-                  <div class="manage-orga-btns">
-                      <span class="f-f">Modifier &#9998;</span>
-                      <span class="f-f">Supprimer &#10005;</span>
+                    <div class="manage-orga-btns">
+                      <span class="f-f">Modifier &#10138;</span>
+                      <span class="f-f">Supprimer X</span>
                   </div>
-                </div>  
+                </div>
 
                 <div class="pagination-container">
                   <div class="pagination">
@@ -199,19 +175,19 @@
               <div class="orga-form-container">
                 <div class="wrapper">
                   <div class="title orga-name-form">
-                    Nom de l'entreprise
+                    Intitulé du Poste
                   </div>
                   <div class="form">
                      <div class="inputfield">
-                        <label>SIREN</label>
+                        <label>Nom de l'entreprise</label>
                         <input type="text" class="input" readonly="readonly">
                      </div>  
                      <div class="inputfield">
-                        <label>Nom du PDG</label>
+                        <label>Contact du recruteur</label>
                         <input type="text" class="input" readonly="readonly">
                      </div>  
                     <div class="inputfield">
-                        <label>Créateur sur HH</label>
+                        <label>Lieu</label>
                         <input type="text" class="input" readonly="readonly">
                      </div> 
                       <div class="inputfield">
@@ -229,11 +205,11 @@
                         </div>
                      </div> 
                       <div class="inputfield">
-                        <label>Address</label>
+                        <label>Salaire</label>
                         <input type="text" class="input" readonly="readonly">
                      </div> 
                     <div class="inputfield">
-                        <label>Phone Number</label>
+                        <label>Date de publication</label>
                         <input type="text" class="input" readonly="readonly">
                      </div> 
                     <div class="inputfield">
@@ -256,6 +232,6 @@
     </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="js/offers_management.js"></script>
+    <script src="js/dropdown.js"></script>
   </body>
 </html>

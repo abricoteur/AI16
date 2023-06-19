@@ -4,7 +4,7 @@ $('.dropdown-el').click(function(e) {
     $(this).toggleClass('expanded');
     $('#'+$(e.target).attr('for')).prop('checked',true);
 });
-
+  
 $(document).click(function() {
     $('.dropdown-el').removeClass('expanded');
 });

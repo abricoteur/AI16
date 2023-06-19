@@ -57,10 +57,12 @@ p {
 .login-item {
   border-radius: 10px;
   margin-right: 2px;
+  visibility: hidden;
 }
 
 .account-item {
   border-radius: 10px;
+  visibility: hidden;
 }
 
 .separator {
@@ -107,6 +109,33 @@ p {
 }
 
 .orga-form-container:hover {
+  border: 2px solid #e79549;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.new-offer-btn > a {
+  text-decoration: none;
+  color: #e79549;
+  padding: 20px;
+}
+
+.new-offer-btn > a:hover {
+  color: #e79549;
+}
+
+.new-offer-btn {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.new-offer-btn:hover {
   border: 2px solid #e79549;
 }
 

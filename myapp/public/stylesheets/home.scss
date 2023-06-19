@@ -63,12 +63,14 @@ p {
 .login-item {
     border-radius: 10px;
     margin-right: 2px;
-    visibility: hidden;
 }
 
 .account-item {
-    visibility: hidden;
     border-radius: 10px;
+}
+
+.profil-item {
+    visibility: collapse;
 }
 
 .separator {
@@ -245,6 +247,10 @@ p {
 
 .count {
     font-weight: bold;
+}
+
+.job-info {
+    margin: 0.2rem;
 }
 
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Accueil</title>
-    <link rel="stylesheet" href="../../public/stylesheets/offers_form.css">
+    <link rel="stylesheet" href="stylesheets/home.css">
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Latest compiled JavaScript -->
@@ -16,7 +16,7 @@
     <main>
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fcfcfc;">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#"><img src="../../img/job-promotion.png">Happy Hire</a>
+              <a class="navbar-brand" href="#"><img src="img/job-promotion.png">Happy Hire</a>
 
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,14 +36,15 @@
                   <li class="nav-item hov">
                     <a class="f-f nav-link active" href="profil">Mon Profil</a>
                   </li>
-                  <div class="separator"></div>
-                </li>
-                <li class="nav-item hov">
-                  <a class="f-f nav-link active login-item" href="connexion">Se connecter</a>
-                </li>
-                <li class="nav-item hov">
-                  <a class="f-f nav-link active account-item" href="connexion">Créer un compte</a>
-                </li>
+                  <li class="nav-item">
+                    <div class="separator"></div>
+                  </li>
+                  <li class="nav-item hov">
+                    <a class="f-f nav-link active login-item" href="connexion">Se connecter</a>
+                  </li>
+                  <li class="nav-item hov">
+                    <a class="f-f nav-link active account-item" href="connexion">Créer un compte</a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -240,18 +241,6 @@
     </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script>
-        $('.dropdown-el').click(function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            $(this).toggleClass('expanded');
-            $('#'+$(e.target).attr('for')).prop('checked',true);
-        });
-
-        $(document).click(function() {
-            $('.dropdown-el').removeClass('expanded');
-        });
-  
-    </script>
+    <script src="js/home.js"></script>
   </body>
 </html>
