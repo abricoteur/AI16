@@ -7,12 +7,12 @@ VALUES
     (222222222, 'Organisation 4', 'Domaine 4', 'CEO 4', 'Created By 4', 'Description 4', 'Adresse 4', 'Siège social 4');
     
     -- Table Utilisateurs
-INSERT INTO Utilisateurs (email, nom, mdp, prenom, tel, dateCreation, role, id_orga)
+INSERT INTO Utilisateurs (email, nom, mdp, prenom, tel, role, id_orga)
 VALUES
-    ('user1@example.com', 'Nom 1', 'mdp1', 'Prénom 1', '123456789', '2023-06-11', 'Recruteur', 123456789),
-    ('user2@example.com', 'Nom 2', 'mdp2', 'Prénom 2', '987654321', '2023-06-10', 'Candidat', 987654321),
-    ('user3@example.com', 'Nom 3', 'mdp3', 'Prénom 3', '111111111', '2023-06-09', 'Administrateur', 111111111),
-    ('user4@example.com', 'Nom 4', 'mdp4', 'Prénom 4', '222222222', '2023-06-08', 'Candidat', 222222222);
+    ('user1@example.com', 'Nom 1', 'mdp1', 'Prénom 1', '',  'Recruteur', 123456789),
+    ('user2@example.com', 'Nom 2', 'mdp2', 'Prénom 2', '', 'Candidat', 987654321),
+    ('user3@example.com', 'Nom 3', 'mdp3', 'Prénom 3', '',  'Administrateur', 111111111),
+    ('user4@example.com', 'Nom 4', 'mdp4', 'Prénom 4', '', 'Candidat', 222222222);
 
 
 -- Table demandes_creation_organisation

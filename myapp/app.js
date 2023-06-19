@@ -1,7 +1,8 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
@@ -29,6 +30,49 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const deuxHeures = 1000 * 60 * 60 * 2;
+
+app.use(sessions({
+  secret: "votre secret ici hdhhdhhshshshsh",
+  saveUninitialized: true,
+  cookie: { maxAge: deuxHeures },
+  resave: false
+}));
+// cookie parser middleware
+app.use(cookieParser());
+
+// Middleware for checking if a user is connected
+function isConnected(session, role) {
+  // Check if session exists and user role matches
+  return session && session.user && session.user.role === role;
+}
+
+// check user
+app.all("*", function (req, res, next) {
+  const nonSecurePaths = ["/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/","/users/logout/"];
+  const adminPaths = ["/users/userslist"]; //list des urls admin
+  const userPaths = ["/users/profil","/users/logout"]; //list des urls admin
+  const recruteurPaths = []; //list des urls admin
+  if (nonSecurePaths.includes(req.path)) return next();
+
+  //authenticate user
+  if (adminPaths.includes(req.path)) {
+    if (isConnected(req.session, "Admin")) return next();
+    else res.status(403).render("error", { message: " Unauthorized access", error: {} });
+  }
+  else if (userPaths.includes(req.path)) {
+    if (isConnected(req.session, "Candidat")) return next();
+    else res.status(403).render("error", { message: " Unauthorized access", error: {} });
+  }
+  else if (recruteurPaths.includes(req.path)) {
+    if (isConnected(req.session, "Recuteur")) return next();
+    else res.status(403).render("error", { message: " Unauthorized access", error: {} });
+  } else {
+    res.redirect("/users/connexion");
+  }
+});
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
@@ -43,12 +87,12 @@ app.use('/recruiter', recruiterRouter);
 app.use('/user_management', userManageRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
