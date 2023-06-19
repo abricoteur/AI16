@@ -25,9 +25,8 @@ CREATE TABLE Utilisateurs (
     mdp VARCHAR(255) NOT NULL,
     prenom VARCHAR(255) NOT NULL,
     tel VARCHAR(255),
-    dateCreation DATE NOT NULL,
     role ENUM('Recruteur', 'Candidat', 'Administrateur') NOT NULL,
-    id_orga INT NOT NULL,
+    id_orga INT,
     FOREIGN KEY (id_orga) REFERENCES Organisations(siren) ON DELETE CASCADE
 );
 
