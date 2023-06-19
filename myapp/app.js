@@ -65,7 +65,7 @@ app.all("*", function (req, res, next) {
     else res.status(403).render("error", { message: " Unauthorized access", error: {} });
   }
   else if (recruteurPaths.includes(req.path)) {
-    if (isConnected(req.session, "Recuteur")) return next();
+    if (isConnected(req.session, "Recruteur")) return next();
     else res.status(403).render("error", { message: " Unauthorized access", error: {} });
   } else {
     res.redirect("/users/connexion");

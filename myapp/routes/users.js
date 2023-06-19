@@ -66,10 +66,6 @@ router.post('/checkUser', function (req, res, next) {
         bcrypt.compare(providedPassword, hashedPassword, function (err, passwordMatch) {
             if (err) throw err;
 
-<<<<<<< HEAD
-            if (result) {
-                res.render('home', { title: 'Page Accueil Utilisateur', result: result})
-=======
             if (passwordMatch) {
                     req.session.user = {
                         mail: user.email,
@@ -79,7 +75,6 @@ router.post('/checkUser', function (req, res, next) {
                 
 
                 return res.render('home', { title: 'Page Accueil Utilisateur', result: result })
->>>>>>> e324f6affcb8c91a573465467f9599f1cf61f826
             } else {
                 return res.render('connexion', { title: 'Page Connexion Utilisateur', result: result })
             }

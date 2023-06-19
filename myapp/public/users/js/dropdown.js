@@ -8,4 +8,5 @@ $('.dropdown-el').click(function(e) {
 $(document).click(function() {
     $('.dropdown-el').removeClass('expanded');
 });
-  
+
+
