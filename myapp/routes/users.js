@@ -53,22 +53,43 @@ router.post('/checkUser', function (req, res, next) {
 
     result = userModel.read(data.email, function (data_user) {
         const user = data_user[0];
-        console.log(user.mdp)
-        console.log(data.mdp)
+
+        if (!user) {
+            // User not found
+            return res.render('connexion', { title: 'Page Connexion Utilisateur', result: false });
+          }
+
         const hashedPassword = user.mdp;
 
         const providedPassword = data.mdp;
 
-        bcrypt.compare(providedPassword, hashedPassword, function (err, result) {
+        bcrypt.compare(providedPassword, hashedPassword, function (err, passwordMatch) {
             if (err) throw err;
 
+<<<<<<< HEAD
             if (result) {
-                res.render('home', { title: 'Page Accueil Utilisateur', result: result })
+                res.render('home', { title: 'Page Accueil Utilisateur', result: result})
+=======
+            if (passwordMatch) {
+                    req.session.user = {
+                        mail: user.email,
+                        role: user.role
+                    };
+                    console.log(req.session)
+                
+
+                return res.render('home', { title: 'Page Accueil Utilisateur', result: result })
+>>>>>>> e324f6affcb8c91a573465467f9599f1cf61f826
             } else {
-                res.render('connexion', { title: 'Page Connexion Utilisateur', result: result })
+                return res.render('connexion', { title: 'Page Connexion Utilisateur', result: result })
             }
         });
     });
+});
+
+router.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
 });
 
 
