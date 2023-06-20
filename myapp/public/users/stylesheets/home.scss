@@ -117,6 +117,10 @@ p {
     margin-left: 1rem;
 }
 
+.orga-form-container > .wrapper {
+    display: none;
+}
+
 .orga-form-container:hover {
     border: 2px solid colors.$light-orange;
 }
@@ -185,6 +189,8 @@ p {
     flex-direction: column;
     flex-wrap: nowrap;
     width: 40%;
+    height: 100vh;
+    overflow: scroll;
     align-items: flex-start;
 }
 
