@@ -13,7 +13,7 @@ module.exports = {
         let params = [];
     
         if (filtre_all !== undefined) {
-            sql += " AND (Offres.nom LIKE ? OR Offres.responsable LIKE ? OR Offres.type_metier LIKE ? OR Offres.rythme LIKE ? OR Offres.entreprise LIKE ? OR Offres.description LIKE ? OR Organisations.description LIKE ? OR Offres.lieu LIKE ? OR Offres.siren LIKE ?)";
+            sql += " AND (Offres.nom LIKE ? OR Offres.responsable LIKE ? OR Offres.type_metier LIKE ? OR Offres.rythme LIKE ? OR Offres.entreprise LIKE ? OR Offres.description LIKE ? OR Offres.lieu LIKE ? OR Offres.siren LIKE ? OR Organisations.nom LIKE ?)";
             const filterPattern = `%${filtre_all}%`;
             params.push(filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern,filterPattern,);
         }
