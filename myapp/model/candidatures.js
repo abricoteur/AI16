@@ -1,11 +1,17 @@
 var db = require('./db.js');
 module.exports = {
-    read: function (id_candidature , callback) {
-        db.query("select * from Candidatures where id= ?",id_candidature , function(err, results){
+    read: function (email, callback) {
+        const query = `
+            SELECT Candidatures.status as candidature_status, 
+                   Offres.status as offre_status, Candidatures.*, Offres.*  
+            FROM Candidatures 
+            INNER JOIN Offres ON Candidatures.id_offre = Offres.id
+            WHERE Candidatures.id_user = ?`;
+    
+        db.query(query, [email], function(err, results) {
             if(err) throw err;
             callback(results);
-        }
-    );
+        });
     },
 
     readall: function (callback) {
