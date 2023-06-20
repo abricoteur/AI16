@@ -20,4 +20,21 @@ router.post('/postuler', function (req, res, next) {
     });
 });
 
+router.get('/delete', function (req, res, next) {
+    const id = req.query.candidature_id;
+    const user_email = req.session.user.email;
+
+    candidaturesModel.delete(id, user_email)
+        .then(() => {
+            res.send('<script>window.location.href="/candidature";</script>')
+        })
+        .catch(err => {
+            console.log(err);
+            // Handle error appropriately, possibly send a response to client
+        });
+});
+
+
+
+
 module.exports = router;

@@ -153,47 +153,56 @@
         </div>
 
         <div class="orga-form-container">
-          <% offres.forEach((offre)=> { %>
-          <div class="wrapper">
-            <div class="title orga-name-form">
-              <%= offre.nom %>
+  <% offres.forEach((offre) => { %>
+    <div class="wrapper">
+      <div class="title orga-name-form">
+        <%= offre.nom %>
+      </div>
+      <form action="/candidature/postuler" method="POST" class="form">
+        <div class="form">
+          <div class="inputfield">
+            <label>Nom de l'entreprise</label>
+            <input type="text" value="<%= offre.entreprise %>" class="input" readonly="readonly">
+          </div>  
+          <div class="inputfield">
+            <label>Contact du recruteur</label>
+            <input type="text" value="<%= offre.responsable %>" class="input" readonly="readonly">
+          </div>  
+          <div class="inputfield">
+            <label>Lieu</label>
+            <input type="text" value="<%= offre.lieu %>" class="input" readonly="readonly">
+          </div> 
+          <div class="inputfield">
+            <label>Domaine</label>
+            <div class="custom_select">
+              <select name="type_metier">
+                <option value=""><%= offre.type_metier %></option>
+              </select>
             </div>
-            <div class="form">
-               <div class="inputfield">
-                  <label>Nom de l'entreprise</label>
-                  <input type="text" value="<%= offre.entreprise %>" class="input" readonly="readonly">
-               </div>  
-               <div class="inputfield">
-                  <label>Contact du recruteur</label>
-                  <input type="text" value="<%= offre.responsable %>" class="input" readonly="readonly">
-               </div>  
-              <div class="inputfield">
-                  <label>Lieu</label>
-                  <input type="text" value="<%= offre.lieu %>" class="input" readonly="readonly">
-               </div> 
-                <div class="inputfield">
-                  <label>Domaine</label>
-                  <div class="custom_select">
-                    <select>
-                      <option value=""><%= offre.type_metier %></option>
-                    </select>
-                  </div>
-               </div> 
-                <div class="inputfield">
-                  <label>Salaire</label>
-                  <input type="text" value="<%= offre.salaire %>" class="input" readonly="readonly">
-               </div>
-              <div class="inputfield">
-                  <label>Description</label>
-                  <textarea class="textarea" readonly="readonly"><%= offre.description %></textarea>
-               </div> 
-              <div class="inputfield">
-                <input type="submit" value="Postulez" class="btn">
-              </div>
-            </div>
+          </div> 
+          <div class="inputfield">
+            <label>Salaire</label>
+            <input type="text" value="<%= offre.salaire %>" class="input" readonly="readonly">
           </div>
-          <% }) %>
+          <div class="inputfield">
+            <label>Description</label>
+            <textarea class="textarea" readonly="readonly"><%= offre.description %></textarea>
+          </div> 
+          <div class="inputfield">
+            <label>Message</label>
+            <textarea name="message" class="textarea"><%= offre.candidature_message %></textarea>
+          </div>
+          <input type="hidden" name="id_offre" value="<%= offre.id %>">
+          <input type="hidden" name="siren" value="<%= offre.siren %>">
+          <div class="inputfield">
+            <button type="submit" class="btn btn-primary">Postuler</button>
+          </div>
         </div>
+      </form>
+    </div>
+  <% }) %>
+</div>
+
       </div>
 
     </div>
