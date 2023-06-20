@@ -69,6 +69,7 @@ CREATE TABLE Candidatures (
     siren INT NOT NULL,
     id_user VARCHAR(100) NOT NULL,
     id_offre INT NOT NULL,
+    message TEXT,
     FOREIGN KEY (id_user) REFERENCES Utilisateurs(email) ON DELETE CASCADE,
     FOREIGN KEY (id_offre) REFERENCES Offres(id) ON DELETE CASCADE,
     FOREIGN KEY (siren) REFERENCES Organisations(siren) ON DELETE CASCADE,
