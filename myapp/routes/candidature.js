@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var userModel = require('../model/users.js')
+var candidaturesModel = require('../model/candidatures.js')
 
 router.get('/', function (req, res, next) {
-    result=userModel.readall(function(result){
-        res.render('candidature', { title: 'Page application', candidature: result});
+    email = req.session.user.email;
+    result=candidaturesModel.read(email, function(result){
+        console.log(result)
+        res.render('candidature', { candidatures: result});
     });
 });
 

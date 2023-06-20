@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var userModel = require('../model/users.js')
+var offresModel = require('../model/offres.js')
 
 router.get('/', function (req, res, next) {
-    result=userModel.readall(function(result){
-        res.render('offers_details', { title: 'Page application', offers_details: result});
+    var data = req.body; // Access the POST data sent from the client
+    result=offresModel.read(data.offer_id, function(result){
+        console.log(result)
+        res.render('offers_details', { title: 'Page application', offer_details: result});
     });
 });
 
