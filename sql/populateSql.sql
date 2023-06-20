@@ -16,7 +16,7 @@ VALUES ('recruiter@example.com', 'Recruiter', 'password', 'RecruiterFirstName', 
        -- Add rows to Utilisateurs table
 INSERT INTO Utilisateurs (email, nom, mdp, prenom, role)
 VALUES ('candidate@example.com', 'Candidate', 'password', 'CandidateFirstName', 'Candidat'),
-       ('admin@example.com', 'Admin', 'password', 'AdminFirstName', 'Administrateur');
+       ('admin@example.com', 'Admin', 'passoword', 'AdminFirstName', 'Administrateur');
 
 
 -- Add rows to Demandes_Creation_Organisation table
