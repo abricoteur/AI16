@@ -17,6 +17,7 @@ var orgFormRouter = require('./routes/organization_form');
 var orgManageRouter = require('./routes/organization_management');
 var recruiterRouter = require('./routes/recruiter');
 var userManageRouter = require('./routes/user_management');
+var candidatureManageRouter = require('./routes/candidature');
 
 var app = express();
 
@@ -51,15 +52,15 @@ function isConnected(session, role) {
 // check user
 app.all("*", function (req, res, next) {
   const nonSecurePaths = ["/js/*","/img/job-promotion.png","/favicon.ico","/stylesheets/*","/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/","/users/logout/"];
-  const adminPaths = ["/users/userslist"]; //list des urls admin
-  const candidatPaths = ["/home","/users/profil","/users/logout","/organization_form","/profil"]; //list des urls admin
-  const recruteurPaths = []; //list des urls admin
+  const adminPaths = ["/users/userslist","/admin", "/organization_management","/user_management"]; //list des urls admin
+  const candidatPaths = ["/home","/users/profil","/users/logout","/organization_form","/profil","/candidature"]; //list des urls admin
+  const recruteurPaths = ["/recruiter", "/offers_management", "/application_management"]; //list des urls admin
 
   if (nonSecurePaths.includes(req.path)) return next();
 
   //authenticate user
   if (adminPaths.includes(req.path)) {
-    if (isConnected(req.session, "Admin")) return next();
+    if (isConnected(req.session, "Administrateur")) return next();
     else res.status(403).render("error", { message: " Unauthorized access", error: {} });
   }
   else if (candidatPaths.includes(req.path)) {
@@ -87,6 +88,7 @@ app.use('/organization_form', orgFormRouter);
 app.use('/organization_management', orgManageRouter);
 app.use('/recruiter', recruiterRouter);
 app.use('/user_management', userManageRouter);
+app.use('/candidature', candidatureManageRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
