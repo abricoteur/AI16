@@ -18,6 +18,7 @@ var orgManageRouter = require('./routes/organization_management');
 var recruiterRouter = require('./routes/recruiter');
 var userManageRouter = require('./routes/user_management');
 var candidatureManageRouter = require('./routes/candidature');
+var offersDetailsManageRouter = require('./routes/offers_details');
 
 var app = express();
 
@@ -53,7 +54,7 @@ function isConnected(session, role) {
 app.all("*", function (req, res, next) {
   const nonSecurePaths = ["/js/*","/img/job-promotion.png","/favicon.ico","/stylesheets/*","/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/","/users/logout/"];
   const adminPaths = ["/users/userslist","/admin", "/organization_management","/user_management"]; //list des urls admin
-  const candidatPaths = ["/home","/users/profil","/users/logout","/organization_form","/profil","/candidature"]; //list des urls admin
+  const candidatPaths = ["/home","/users/profil","/users/logout","/organization_form","/profil","/candidature","/offers_details"]; //list des urls admin
   const recruteurPaths = ["/recruiter", "/offers_management", "/application_management"]; //list des urls admin
 
   if (nonSecurePaths.includes(req.path)) return next();
@@ -89,6 +90,8 @@ app.use('/organization_management', orgManageRouter);
 app.use('/recruiter', recruiterRouter);
 app.use('/user_management', userManageRouter);
 app.use('/candidature', candidatureManageRouter);
+app.use('/offers_details', offersDetailsManageRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
