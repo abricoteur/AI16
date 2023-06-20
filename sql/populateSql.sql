@@ -34,5 +34,4 @@ VALUES ('Développeur', 'responsable1', 'City1', 'pending', 123456789, 'Google',
 -- Add rows to Candidatures table (we will assume Offres have IDs 1,2,3 for these examples)
 INSERT INTO Candidatures (status, date, siren, id_user, id_offre)
 VALUES ('pending', CURDATE(), 123456789, 'candidate@example.com', 1),
-       ('accepted', CURDATE(), 123456789, 'candidate@example.com', 2),
-       ('rejected', CURDATE(), 123456789, 'candidate@example.com', 3);
+       ('accepted', CURDATE(), 123456789, 'candidate@example.com', 2);
