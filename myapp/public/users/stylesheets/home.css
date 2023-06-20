@@ -170,12 +170,13 @@ p {
 
 .data-table {
   display: flex;
+  flex-direction: column;
   flex-wrap: nowrap;
+  width: 40%;
   align-items: flex-start;
 }
 
 .data-item {
-  margin-right: 20px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
