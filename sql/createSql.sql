@@ -64,12 +64,12 @@ CREATE TABLE Offres (
 -- Create Candidatures table
 CREATE TABLE Candidatures (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    status ENUM('pending', 'accepted', 'rejected') NOT NULL,
-    date DATE NOT NULL,
+    status ENUM('pending', 'accepted', 'rejected') NOT NULL DEFAULT 'pending',
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    message TEXT,
     siren INT NOT NULL,
     id_user VARCHAR(100) NOT NULL,
     id_offre INT NOT NULL,
-    message TEXT,
     FOREIGN KEY (id_user) REFERENCES Utilisateurs(email) ON DELETE CASCADE,
     FOREIGN KEY (id_offre) REFERENCES Offres(id) ON DELETE CASCADE,
     FOREIGN KEY (siren) REFERENCES Organisations(siren) ON DELETE CASCADE,
@@ -78,8 +78,9 @@ CREATE TABLE Candidatures (
 
 -- Create Pieces table
 CREATE TABLE Pieces (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_email VARCHAR(100) NOT NULL,
     file LONGBLOB NOT NULL,
-    id_candidature INT NOT NULL,
-    FOREIGN KEY (id_candidature) REFERENCES Candidatures(id) ON DELETE CASCADE
+    filename VARCHAR(255) NOT NULL,
+    PRIMARY KEY(user_email),
+    FOREIGN KEY (user_email) REFERENCES Utilisateurs(email) ON DELETE CASCADE
 );

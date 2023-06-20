@@ -44,12 +44,18 @@ module.exports = {
     },
 
 
-    create: function (id_user, id_offre, callback) {
-        db.query("INSERT INTO Candidatures (id_user, id_offre) VALUES(?,?)",[id_user, id_offre], function(err,results){
-            if(err) throw err;
+    create: function (email, id_offre, siren, message, callback) {
+        const query = `
+            INSERT INTO Candidatures (id_user, id_offre, siren, message)
+            VALUES (?, ?, ?, ?)
+            ON DUPLICATE KEY UPDATE message = ?`;
+    
+        db.query(query, [email, id_offre, siren, message, message], function(err, results) {
+            if (err) throw err;
             callback(results);
         });
     },
+    
 
     delete: function(id_candidature , id_user, callback) {
         db.query("DELETE FROM Candidatures WHERE id_user = ? AND id = ?",[id_user, id_candidature], function(err,results){
