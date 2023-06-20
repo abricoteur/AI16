@@ -29,8 +29,8 @@ module.exports = {
         });
     },
 
-    update: function (email, nom, prenom, tel, status, role, id_orga, callback) {
-        db.query("update Utilisateurs set nom=?, prenom=?, tel=?, role=? where email= ?", [nom, prenom, tel, role, email], function (err, results) {
+    update: function (email, nom, prenom, tel, callback) {
+        db.query("update Utilisateurs set nom=?, prenom=?, tel=? where email= ?", [nom, prenom, tel, email], function (err, results) {
             if (err) throw err;
             callback(results);
         });

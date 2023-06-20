@@ -10,7 +10,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fcfcfc;">
-    <div class="container-fluid">   
+    <div class="container-fluid">
       <a class="navbar-brand" href="#"><img src="img/job-promotion.png">Happy Hire</a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -53,65 +53,63 @@
         <div class="form">
           <div class="inputfield">
             <label>Nom</label>
-            <input style="border: none;" type="text" value="Mennessier Lucas" class="input" readonly="readonly">
+            <input style="border: none;" type="text" value="<%= offre.nom %>" class="input" readonly="readonly">
           </div>
           <div class="inputfield">
             <label>Responsable</label>
-            <input style="border: none;" type="text" value="Alix Li" class="input" readonly="readonly">
+            <input style="border: none;" type="text" value="<%= offre.responsable %>" class="input" readonly="readonly">
           </div>
           <div class="inputfield">
             <label>Lieu</label>
-            <input style="border: none;" type="text" value="14 rue des capitations LEVALLOIS 92044" class="input" readonly="readonly">
+            <input style="border: none;" type="text" value="<%= offre.lieu %>" class="input" readonly="readonly">
           </div>
           <div class="inputfield">
             <label>Salaire</label>
-            <input style="border: none;" type="text" value="1000$/m" class="input" readonly="readonly">
+            <input style="border: none;" type="text" value="<%= offre.salaire %>" class="input" readonly="readonly">
           </div>
           <div class="inputfield">
-            <label>Datee</label>
-            <input style="border: none;" type="text" value="10/10/2023" class="input" readonly="readonly">
+            <label>Date</label>
+            <input style="border: none;" type="text" value="<%= offre.date %>" class="input" readonly="readonly">
           </div>
           <div class="inputfield">
             <label>Entreprise</label>
-            <input style="border: none;" type="text" value="CGI" class="input" readonly="readonly">
+            <input style="border: none;" type="text" value="<%= offre.entreprise %>" class="input" readonly="readonly">
           </div>
           <div class="inputfield">
             <label>Rythme</label>
-            <input style="border: none;" type="text" value="2j/3" class="input" readonly="readonly">
+            <input style="border: none;" type="text" value="<%= offre.rythme %>" class="input" readonly="readonly">
           </div>
           <div class="inputfield">
             <label>Type Métier</label>
-            <input style="border: none;" type="text" value="ok" class="input" readonly="readonly">
+            <input style="border: none;" type="text" value="<%= offre.type_metier %>" class="input" readonly="readonly">
           </div>
           <div class="inputfield">
             <label>Description</label>
             <textarea style="border: none;" class="textarea" readonly="readonly">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia, felis ut volutpat ultrices, ipsum nisl volutpat erat, in pretium mauris est ac urna. Nunc odio metus, laoreet in metus a, suscipit scelerisque mauris. Aliquam erat volutpat. Curabitur mattis dolor id massa dapibus, a congue libero dapibus. Donec scelerisque pulvinar quam. Ut non molestie nisi, id placerat metus. Donec mattis malesuada turpis, id tristique mauris pulvinar eget. Quisque gravida dolor ac sapien fermentum, at tincidunt lorem rutrum. Nunc aliquet eros sit amet nisl tristique volutpat. Fusce posuere sit amet libero non mattis.
+              <%= offre.description %>
                 </textarea>
           </div>
         </div>
-        
-        </div>
-        <form action="" method="POST" class="form">
-            <div class="orga-form-container">
-                <div class="wrapper">
-                <div class="form">
-                    <div class="inputfield">
-                    <label>Message</label>
-                    <textarea class="textarea">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia, felis ut volutpat ultrices, ipsum nisl volutpat erat, in pretium mauris est ac urna. Nunc odio metus, laoreet in metus a, suscipit scelerisque mauris. Aliquam erat volutpat. Curabitur mattis dolor id massa dapibus, a congue libero dapibus. Donec scelerisque pulvinar quam. Ut non molestie nisi, id placerat metus. Donec mattis malesuada turpis, id tristique mauris pulvinar eget. Quisque gravida dolor ac sapien fermentum, at tincidunt lorem rutrum. Nunc aliquet eros sit amet nisl tristique volutpat. Fusce posuere sit amet libero non mattis.
-                    </textarea>
-                </div>
-                <div class="manage-orga-btns">
-                    <span class="f-f" onclick="window.location.href=''">Postuler</span>
-                </div>  
-                </div>
-                </div>
+
+      </div>
+      <form action="/candidature/postuler" method="POST" class="form">
+        <div class="orga-form-container">
+          <div class="wrapper">
+            <div class="form">
+              <div class="inputfield">
+                <label>Message</label>
+                <textarea name="message" class="textarea"><%= offre.candidature_message %></textarea>
+              </div>
+              <input type="hidden" name="id_offre" value="<%= offre.id %>">
+              <input type="hidden" name="siren" value="<%= offre.siren %>">
+              <button type="submit" class="btn btn-primary">Postuler</button>
             </div>
-        </form>
+          </div>
+        </div>
+      </form>
     </div>
-<% }) %>
-    
+    <% }) %>
+
 
 </body>
 
