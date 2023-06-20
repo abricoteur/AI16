@@ -146,13 +146,54 @@
               </p>
               <p>
               <div class="manage-orga-btns">
-                <span class="f-f" onclick="window.location.href='offers_details?offer_id=<%=offre.id %>'">Voir le détail &#10138;</span>
+                <span class="f-f">Voir le détail &#10138;</span>
               </div>
             </div>
             <% }) %>
-
         </div>
 
+        <div class="orga-form-container">
+          <% offres.forEach((offre)=> { %>
+          <div class="wrapper">
+            <div class="title orga-name-form">
+              <%= offre.nom %>
+            </div>
+            <div class="form">
+               <div class="inputfield">
+                  <label>Nom de l'entreprise</label>
+                  <input type="text" value="<%= offre.entreprise %>" class="input" readonly="readonly">
+               </div>  
+               <div class="inputfield">
+                  <label>Contact du recruteur</label>
+                  <input type="text" value="<%= offre.responsable %>" class="input" readonly="readonly">
+               </div>  
+              <div class="inputfield">
+                  <label>Lieu</label>
+                  <input type="text" value="<%= offre.lieu %>" class="input" readonly="readonly">
+               </div> 
+                <div class="inputfield">
+                  <label>Domaine</label>
+                  <div class="custom_select">
+                    <select>
+                      <option value=""><%= offre.type_metier %></option>
+                    </select>
+                  </div>
+               </div> 
+                <div class="inputfield">
+                  <label>Salaire</label>
+                  <input type="text" value="<%= offre.salaire %>" class="input" readonly="readonly">
+               </div>
+              <div class="inputfield">
+                  <label>Description</label>
+                  <textarea class="textarea" readonly="readonly"><%= offre.description %></textarea>
+               </div> 
+              <div class="inputfield">
+                <input type="submit" value="Postulez" class="btn">
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
       </div>
 
     </div>
@@ -163,6 +204,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="js/dropdown.js"></script>
+  <script src="js/forms_visibility.js"></script>
 
   <script>
     document.querySelector(".search-icon button").addEventListener("click", function () {
