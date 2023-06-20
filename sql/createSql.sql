@@ -11,10 +11,7 @@ CREATE TABLE Organisations (
     siren INT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
     domaine VARCHAR(255) NOT NULL,
-    ceo VARCHAR(255) NOT NULL,
     createdBy VARCHAR(100) NOT NULL,
-    description TEXT,
-    adress VARCHAR(255) NOT NULL,
     siege_social VARCHAR(255)
 );
 
@@ -35,17 +32,16 @@ CREATE TABLE Utilisateurs (
 -- Create Demandes_Creation_Organisation table
 CREATE TABLE Demandes_Creation_Organisation (
     request_id INT PRIMARY KEY AUTO_INCREMENT,
-    requester_id VARCHAR(100) NOT NULL,
-    status ENUM('pending', 'accepted', 'rejected') NOT NULL,
-    date DATE NOT NULL,
-    message TEXT,
-    object TEXT,
+    requester_email VARCHAR(100) NOT NULL,
+    status ENUM('pending', 'accepted', 'rejected') NOT NULL DEFAULT 'pending',
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     siren INT,
     nom VARCHAR(255) NOT NULL,
     domaine VARCHAR(255) NOT NULL,
     siege_social VARCHAR(255),
-    FOREIGN KEY (requester_id) REFERENCES Utilisateurs(email) ON DELETE CASCADE
+    FOREIGN KEY (requester_email) REFERENCES Utilisateurs(email) ON DELETE CASCADE
 );
+
 
 -- Create Offres table
 CREATE TABLE Offres (

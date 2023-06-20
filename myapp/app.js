@@ -54,8 +54,8 @@ function isConnected(session, role) {
 app.all("*", function (req, res, next) {
   const nonSecurePaths = ["/js/*","/img/job-promotion.png","/favicon.ico","/stylesheets/*","/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/","/users/logout/"];
   const adminPaths = ["/users/userslist","/admin", "/organization_management","/user_management"]; //list des urls admin
-  const candidatPaths = ["/home","/users/profil","/users/logout","/organization_form","/profil","/candidature","/offers_details"]; //list des urls admin
-  const recruteurPaths = ["/recruiter", "/offers_management", "/application_management"]; //list des urls admin
+  const candidatPaths = ["/home","/users/profil","/users/logout","/organization_form","/profil","/candidature","/organization_form/request","/offers_details"]; //list des urls candidats
+  const recruteurPaths = ["/recruiter", "/offers_management", "/application_management"]; //list des urls recruter
 
   if (nonSecurePaths.includes(req.path)) return next();
 
