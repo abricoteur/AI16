@@ -3,8 +3,8 @@ var router = express.Router();
 var userModel = require('../model/users.js')
 
 router.get('/', function (req, res, next) {
-    result=userModel.readall(function(result){
-        res.render('profil', { title: 'Page admin', profil: result});
+    result=userModel.read(req.session.user.email,function(result){
+        res.render('profil', { title: 'Page Profil Candidat', profil: result});
     });
 });
 

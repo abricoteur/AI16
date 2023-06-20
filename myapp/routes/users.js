@@ -99,17 +99,38 @@ router.post('/checkUser', function (req, res, next) {
 
         const providedPassword = data.mdp;
 
+        req.session.user = {
+            email: user.email,
+            role: user.role
+        };
+
+        return res.redirect('/home');
+
         bcrypt.compare(providedPassword, hashedPassword, function (err, passwordMatch) {
             if (err) throw err;
 
             if (passwordMatch) {
                 req.session.user = {
-                    mail: user.email,
+                    email: user.email,
                     role: user.role
                 };
 
 
-                return res.redirect('/home');
+                if(user.role=='administrateur'){
+                    return res.redirect('/admin');
+                }
+                else if(user.role=='candidat')
+                {
+                    return res.redirect('/home');
+                }
+                else if(user.role=='recruteur')
+                {
+                    return res.redirect('/recruiter');
+                }   
+                else {
+                    return res.redirect('/users/logout');
+                }
+                
             } else {
                 return res.redirect('/users/connexion');
             }

@@ -11,8 +11,6 @@ module.exports = {
         let sql = "SELECT * FROM Offres JOIN Organisations ON Offres.siren = Organisations.siren WHERE 1=1";
 
         let params = [];
-
-        console.log(filtre_all);
     
         if (filtre_all !== undefined) {
             sql += " AND (Offres.nom LIKE ? OR Offres.responsable LIKE ? OR Offres.type_metier LIKE ? OR Offres.rythme LIKE ? OR Offres.entreprise LIKE ? OR Offres.description LIKE ? OR Organisations.description LIKE ? OR Offres.lieu LIKE ? OR Offres.siren LIKE ?)";
