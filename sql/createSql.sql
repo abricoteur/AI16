@@ -10,7 +10,6 @@ DROP TABLE IF EXISTS Organisations;
 CREATE TABLE Organisations (
     siren INT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
-    domaine VARCHAR(255) NOT NULL,
     createdBy VARCHAR(100) NOT NULL,
     siege_social VARCHAR(255)
 );
@@ -48,12 +47,12 @@ CREATE TABLE Offres (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(255) NOT NULL,
     responsable VARCHAR(255) NOT NULL,
-    type_metier VARCHAR(255),
+    domaine VARCHAR(255),
     lieu VARCHAR(255) NOT NULL,
     rythme VARCHAR(255),
     salaire INT(255),
     description TEXT,
-    status ENUM('pending', 'hidden', 'accepted') NOT NULL,
+    status ENUM('pending', 'accepted') NOT NULL,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     siren INT NOT NULL,
     FOREIGN KEY (siren) REFERENCES Organisations(siren) ON DELETE CASCADE,
@@ -83,4 +82,18 @@ CREATE TABLE Pieces (
     filename VARCHAR(255) NOT NULL,
     PRIMARY KEY(user_email),
     FOREIGN KEY (user_email) REFERENCES Utilisateurs(email) ON DELETE CASCADE
+);
+
+-- Create Demandes_Creation_Organisation table
+CREATE TABLE Demandes_Role_Administrateur (
+    request_id INT PRIMARY KEY AUTO_INCREMENT,
+    requester_email VARCHAR(100) NOT NULL,
+    FOREIGN KEY (requester_email) REFERENCES Utilisateurs(email) ON DELETE CASCADE
+);
+
+-- Create Demandes_Creation_Organisation table
+CREATE TABLE Demandes_Role_Recruteur (
+    request_id INT PRIMARY KEY AUTO_INCREMENT,
+    requester_email VARCHAR(100) NOT NULL,
+    FOREIGN KEY (requester_email) REFERENCES Utilisateurs(email) ON DELETE CASCADE
 );
