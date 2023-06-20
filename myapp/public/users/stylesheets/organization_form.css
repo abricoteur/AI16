@@ -85,7 +85,7 @@ body {
 }
 
 .wrapper {
-  max-width: 500px;
+  max-width: 1000px;
   width: 100%;
   background: #fff;
   margin: 50px auto;
@@ -121,6 +121,7 @@ body {
 
 .wrapper .form .inputfield .input,
 .wrapper .form .inputfield .textarea {
+  border: none;
   width: 100%;
   outline: none;
   border: 1px solid #d5dbd9;
