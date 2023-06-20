@@ -1,16 +1,34 @@
--- Table Organisations
-INSERT INTO Organisations (siren, nom, domaine, ceo, createdBy, description, adress, siege_social)
-VALUES
-    (123456789, 'Organisation 1', 'Banque/Assurance', 'CEO 1', 'Created By 1', 'Description 1', 'Adresse 1', 'Siège social 1'),
-    (987654321, 'Organisation 2', 'Industrie pharmaceutique', 'CEO 2', 'Created By 2', 'Description 2', 'Adresse 2', 'Siège social 2'),
-    (111111111, 'Organisation 3', 'Informatique / Télécoms', 'CEO 3', 'Created By 3', 'Description 3', 'Adresse 3', 'Siège social 3'),
-    (222222222, 'Organisation 4', 'Commerce / Distribution', 'CEO 4', 'Created By 4', 'Description 4', 'Adresse 4', 'Siège social 4');
-    
+-- Add rows to Utilisateurs table
+INSERT INTO Utilisateurs (email, nom, mdp, prenom, role, id_orga)
+VALUES ('recruiter@example.com', 'Recruiter', 'password', 'RecruiterFirstName', 'Recruteur', 123456789),
+       ('candidate@example.com', 'Candidate', 'password', 'CandidateFirstName', 'Candidat', 123456789),
+       ('admin@example.com', 'Admin', 'password', 'AdminFirstName', 'Administrateur', 123456789);
 
--- Table Offres
-INSERT INTO Offres (nom, responsable, type_metier, lieu, rythme, salaire, description, status, date, siren, entreprise)
-VALUES
-    ('Offre 1', 'Responsable 1', 'Type métier 1', 'Lieu 1', 'Rythme 1', 'Salaire 1', 'Description 1', 'pending', '2023-06-11', 123456789, 'Organisation 1'),
-    ('Offre 2', 'Responsable 2', 'Type métier 2', 'Lieu 2', 'Rythme 2', 'Salaire 2', 'Description 2', 'accepted', '2023-06-10', 987654321, 'Organisation 2'),
-    ('Offre 3', 'Responsable 3', 'Type métier 3', 'Lieu 3', 'Rythme 3', 'Salaire 3', 'Description 3', 'hidden', '2023-06-09', 111111111, 'Organisation 3'),
-    ('Offre 4', 'Responsable 4', 'Type métier 4', 'Lieu 4', 'Rythme 4', 'Salaire 4', 'Description 4', 'pending', '2023-06-08', 222222222, 'Organisation 4');
+
+-- Add rows to Demandes_Creation_Organisation table
+INSERT INTO Demandes_Creation_Organisation (requester_email, status, siren, nom, domaine, siege_social)
+VALUES ('recruiter@example.com', 'pending', 111111111, 'Organisation2', 'Banque/Assurance', '456 Street, City, Country'),
+       ('recruiter@example.com', 'accepted', 222222222, 'Organisation3', 'Industrie pharmaceutique', '789 Street, City, Country'),
+       ('recruiter@example.com', 'rejected', 333333333, 'Organisation4', 'Commerce / Distribution', '012 Street, City, Country');
+
+-- Add rows to Organisations table
+INSERT INTO Organisations (siren, nom, domaine, createdBy, siege_social)
+VALUES (123456789, 'Google', 'Informatique / Télécoms', 'admin@example.com', '1600 Amphitheatre Parkway, Mountain View, CA, USA'),
+       (987654321, 'Apple Inc', 'Electronique / Electricité', 'admin@example.com', 'One Apple Park Way, Cupertino, CA, USA'),
+       (456123789, 'Pfizer', 'Industrie pharmaceutique', 'admin@example.com', '235 East 42nd Street, NY, USA'),
+       (654321987, 'AXA', 'Banque/Assurance', 'admin@example.com', '25 Avenue Matignon, Paris, France'),
+       (789456123, 'Nestle', 'Agroalimentaire', 'admin@example.com', 'Avenue Nestlé 55, Vevey, Switzerland'),
+       (321654987, 'Amazon', 'Commerce / Distribution', 'admin@example.com', '410 Terry Ave N, Seattle, WA, USA');
+
+
+-- Add rows to Offres table
+INSERT INTO Offres (nom, responsable, lieu, status, siren, entreprise)
+VALUES ('Offre1', 'responsable1', 'City1', 'pending', 123456789, 'Organisation1'),
+       ('Offre2', 'responsable2', 'City2', 'hidden', 123456789, 'Organisation1'),
+       ('Offre3', 'responsable3', 'City3', 'accepted', 123456789, 'Organisation1');
+
+-- Add rows to Candidatures table (we will assume Offres have IDs 1,2,3 for these examples)
+INSERT INTO Candidatures (status, date, siren, id_user, id_offre)
+VALUES ('pending', CURDATE(), 123456789, 'candidate@example.com', 1),
+       ('accepted', CURDATE(), 123456789, 'candidate@example.com', 2),
+       ('rejected', CURDATE(), 123456789, 'candidate@example.com', 3);

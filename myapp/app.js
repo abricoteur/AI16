@@ -52,7 +52,7 @@ function isConnected(session, role) {
 app.all("*", function (req, res, next) {
   const nonSecurePaths = ["/js/*","/img/job-promotion.png","/favicon.ico","/stylesheets/*","/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/","/users/logout/"];
   const adminPaths = ["/users/userslist"]; //list des urls admin
-  const candidatPaths = ["/home","/users/profil","/users/logout","/organization_form","/profil"]; //list des urls admin
+  const candidatPaths = ["/home","/users/profil","/users/logout","/organization_form","/profil","/organization_form/request"];
   const recruteurPaths = []; //list des urls admin
 
   if (nonSecurePaths.includes(req.path)) return next();
