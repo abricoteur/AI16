@@ -4,6 +4,8 @@ var path = require('path');
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 var logger = require('morgan');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' }); // Les fichiers seront sauvegardés dans le dossier 'uploads'
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -19,6 +21,7 @@ var recruiterRouter = require('./routes/recruiter');
 var userManageRouter = require('./routes/user_management');
 var candidatureManageRouter = require('./routes/candidature');
 var offersDetailsManageRouter = require('./routes/offers_details');
+var requestRoleRouter = require('./routes/request_role');
 
 var app = express();
 
@@ -54,7 +57,7 @@ function isConnected(session, role) {
 app.all("*", function (req, res, next) {
   const nonSecurePaths = ["/js/*","/img/job-promotion.png","/favicon.ico","/stylesheets/*","/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/","/users/logout/"];
   const adminPaths = ["/users/userslist","/admin", "/organization_management","/user_management"]; //list des urls admin
-  const candidatPaths = ["/home","/users/profil","/users/logout","/organization_form","/profil","/candidature","/organization_form/request","/offers_details"]; //list des urls candidats
+  const candidatPaths = ["/home","/users/profil","/users/logout","/organization_form","/profil","/candidature","/candidature/postuler","/organization_form/request","/offers_details","/profil/update","/candidature/delete","/request_role/*"]; //list des urls candidats
   const recruteurPaths = ["/recruiter", "/offers_management", "/application_management"]; //list des urls recruter
 
   if (nonSecurePaths.includes(req.path)) return next();
@@ -90,6 +93,7 @@ app.use('/organization_management', orgManageRouter);
 app.use('/recruiter', recruiterRouter);
 app.use('/user_management', userManageRouter);
 app.use('/candidature', candidatureManageRouter);
+app.use('/request_role', requestRoleRouter);
 app.use('/offers_details', offersDetailsManageRouter);
 
 

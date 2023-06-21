@@ -4,8 +4,7 @@ var offresModel = require('../model/offres.js')
 
 router.get('/', function (req, res, next) {
     var data = req.query;
-    result=offresModel.read(data.offer_id, function(result){
-        console.log(result)
+    result=offresModel.read(data.id_offre, function(result){
         res.render('offers_details', { title: 'Page application', offer_details: result});
     });
 });
