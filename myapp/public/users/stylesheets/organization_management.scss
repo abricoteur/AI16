@@ -115,6 +115,10 @@ p {
     margin-left: 1rem;
 }
 
+.orga-form-container > .wrapper {
+    display: none;
+}
+
 .orga-form-container:hover {
     border: 2px solid colors.$light-orange;
 }
@@ -180,12 +184,15 @@ p {
 
 .data-table {
     display: flex;
+    flex-direction: column;
     flex-wrap: nowrap;
+    width: 40%;
+    height: 62vh;
+    overflow: scroll;
     align-items: flex-start;
 }
 
 .data-item {
-    margin-right: 20px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
