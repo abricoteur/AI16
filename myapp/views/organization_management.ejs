@@ -39,6 +39,9 @@
                   <li class="nav-item hov">
                     <a class="f-f nav-link active profil-item" href="profil">Mon Profil</a>
                   </li>
+                  <li class="nav-item hov">
+                    <a class="f-f nav-link active login-item" href="logout">Se déconnecter</a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -146,6 +149,10 @@
               </p>
 
               <div class="manage-orga-btns">
+                <form>
+                  <input type="hidden" name="siren" value="<%= organisation.siren %>">
+                  <button type="submit" class="delete-btn f-f">Modifier &#10005;</button>
+                </form>
                 <form action="/organization_management/delete" method="POST">
                   <input type="hidden" name="siren" value="<%= organisation.siren %>">
                   <button type="submit" class="delete-btn f-f">Supprimer &#10005;</button>
@@ -153,20 +160,53 @@
               </div>
             </div>
             <% }) %>
+        </div>
 
-            
-
+        <div class="orga-form-container">
+          <% organisations.forEach((organisation)=> { %>
+          <div class="wrapper">
+            <div class="title orga-name-form">
+              <%= organisation.nom %>
+            </div>
+            <div class="form">
+               <div class="inputfield">
+                  <label>Nom de l'entreprise</label>
+                  <input type="text" value="<%= organisation.nom %>" class="input" readonly="readonly">
+               </div>  
+               <div class="inputfield">
+                  <label>SIREN</label>
+                  <input type="text" value="<%= organisation.siren %>" class="input" readonly="readonly">
+               </div>  
+              <div class="inputfield">
+                  <label>Siège social</label>
+                  <input type="text" value="<%= organisation.siege_social %>" class="input" readonly="readonly">
+               </div> 
+                <div class="inputfield">
+                  <label>Domaine</label>
+                  <div class="custom_select">
+                    <select>
+                      <option value=""><%= organisation.domaine %></option>
+                      <option value="">Agroalimentaire</option>
+                      <option value="">Banque/Assurance</option>
+                      <option value="">Industrie pharmaceutique</option>
+                      <option value="">Informatique / Télécoms</option>
+                      <option value="">Electronique / Electricité</option>
+                      <option value="">Commerce / Distribution</option>
+                    </select>
+                  </div>
+               </div> 
+                <div class="inputfield">
+                  <label>Créé par</label>
+                  <input type="text" value="<%= organisation.createdBy %>" class="input" readonly="readonly">
+               </div>
+              <div class="inputfield">
+                <input type="submit" value="Postulez" class="btn">
+              </div>
+            </div>
+          </div>
+          <% }) %>
         </div>
         
-      </div>
-      <div class="pagination-container">
-        <div class="pagination">
-          <a href="#">&laquo;</a>
-          <a href="#" class="active">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">&raquo;</a>
-        </div>
       </div>
     </div>
 
@@ -175,9 +215,9 @@
   </main>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="js/dropdown.js">
+  <script src="js/dropdown.js"></script>
+  <script src="js/forms_visibility.js"></script>
 
-</script>
 </body>
 
 </html>

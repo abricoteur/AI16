@@ -108,6 +108,10 @@ p {
   margin-left: 1rem;
 }
 
+.orga-form-container > .wrapper {
+  display: none;
+}
+
 .orga-form-container:hover {
   border: 2px solid #e79549;
 }
@@ -171,6 +175,8 @@ p {
   flex-direction: column;
   flex-wrap: nowrap;
   width: 40%;
+  height: 62vh;
+  overflow: scroll;
   align-items: flex-start;
 }
 
@@ -233,6 +239,10 @@ p {
 
 .count {
   font-weight: bold;
+}
+
+.btn {
+  display: none;
 }
 
 .wrapper {
@@ -378,6 +388,7 @@ p {
   cursor: pointer;
   border-radius: 3px;
   outline: none;
+  display: none;
 }
 
 .wrapper .form .inputfield .btn:hover {

@@ -8,6 +8,7 @@ module.exports = {
             callback(results);
         });
     },
+    
     readall: function (callback) {
         db.query("select * from Utilisateurs", function (err, results) {
             if (err) throw err;
@@ -29,8 +30,8 @@ module.exports = {
         });
     },
 
-    update: function (email, nom, prenom, tel, status, role, id_orga, callback) {
-        db.query("update Utilisateurs set nom=?, prenom=?, tel=?, role=? where email= ?", [nom, prenom, tel, role, email], function (err, results) {
+    update: function (email, nom, mdp, prenom, tel, role, callback) {
+        db.query("update Utilisateurs set nom=?, prenom=?, mdp=?, tel=?, role=? where email= ?", [nom, prenom, mdp, tel, role, email], function (err, results) {
             if (err) throw err;
             callback(results);
         });
