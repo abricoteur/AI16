@@ -181,8 +181,6 @@ p {
     flex-direction: column;
     flex-wrap: nowrap;
     width: 40%;
-    height: 62vh;
-    overflow: scroll;
     align-items: flex-start;
 }
 
@@ -249,6 +247,10 @@ p {
 
 
 //ORGA FORM 
+
+.btn {
+    display: none;
+}
 
 .wrapper{
     width: 100%;
@@ -394,6 +396,7 @@ p {
     cursor: pointer;
     border-radius: 3px;
     outline: none;
+    display: none;
 }
 
 .wrapper .form .inputfield .btn:hover{

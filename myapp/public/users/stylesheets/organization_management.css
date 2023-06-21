@@ -57,12 +57,6 @@ p {
 .login-item {
   border-radius: 10px;
   margin-right: 2px;
-  visibility: hidden;
-}
-
-.account-item {
-  border-radius: 10px;
-  visibility: hidden;
 }
 
 .separator {
@@ -175,8 +169,6 @@ p {
   flex-direction: column;
   flex-wrap: nowrap;
   width: 40%;
-  height: 62vh;
-  overflow: scroll;
   align-items: flex-start;
 }
 
@@ -239,6 +231,10 @@ p {
 
 .count {
   font-weight: bold;
+}
+
+.btn {
+  display: none;
 }
 
 .wrapper {
@@ -384,6 +380,7 @@ p {
   cursor: pointer;
   border-radius: 3px;
   outline: none;
+  display: none;
 }
 
 .wrapper .form .inputfield .btn:hover {

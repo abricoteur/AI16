@@ -11,10 +11,9 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/update', function (req, res, next) {
-    console.log("tests");
 
     var data = req.body;
-    users.update(data.email, data.nom, data.mdp, data.prenom, data.tel, data.role, function(){
+    users.update(data.email, data.nom, data.prenom, data.tel, data.role, function(){
 
     })
 
