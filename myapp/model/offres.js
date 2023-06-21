@@ -1,7 +1,12 @@
 var db = require('./db.js');
 module.exports = {
     read: function (id_offre, callback) {
-        db.query("select * from Offres where id= ?",id_offre, function(err, results){
+        const query = `
+            SELECT Offres.*, Candidatures.message AS candidature_message 
+            FROM Offres
+            LEFT JOIN Candidatures ON Offres.id = Candidatures.id_offre
+            WHERE Offres.id = ?`;
+        db.query(query,id_offre, function(err, results){
             if(err) throw err;
             callback(results);
         });
