@@ -1,21 +1,23 @@
 -- Add rows to Organisations table
-INSERT INTO Organisations (siren, nom, createdBy, siege_social)
-VALUES (123456789, 'Google', 'admin@example.com', '1600 Amphitheatre Parkway, Mountain View, CA, USA'),
-       (987654321, 'Apple Inc', 'admin@example.com', 'One Apple Park Way, Cupertino, CA, USA'),
-       (456123789, 'Pfizer', 'admin@example.com', '235 East 42nd Street, NY, USA'),
-       (654321987, 'AXA', 'admin@example.com', '25 Avenue Matignon, Paris, France'),
-       (789456123, 'Nestle', 'admin@example.com', 'Avenue Nestlé 55, Vevey, Switzerland'),
-       (321654987, 'Amazon', 'admin@example.com', '410 Terry Ave N, Seattle, WA, USA');
+INSERT INTO Organisations (siren, nom, createdBy,type_organisation, siege_social)
+VALUES (123456789, 'Google', 'admin@example.com',"entreprise", '1600 Amphitheatre Parkway, Mountain View, CA, USA'),
+       (987654321, 'Apple Inc', 'admin@example.com',"entreprise", 'One Apple Park Way, Cupertino, CA, USA'),
+       (456123789, 'Pfizer', 'admin@example.com',"association", '235 East 42nd Street, NY, USA'),
+       (654321987, 'AXA', 'admin@example.com',"ong", '25 Avenue Matignon, Paris, France'),
+       (789456123, 'Nestle', 'admin@example.com',"ong", 'Avenue Nestlé 55, Vevey, Switzerland'),
+       (321654987, 'Amazon', 'admin@example.com',"ong", '410 Terry Ave N, Seattle, WA, USA');
 
 
 
 -- Add rows to Utilisateurs table
 INSERT INTO Utilisateurs (email, nom, mdp, prenom, role, id_orga)
-VALUES ('recruiter@example.com', 'Recruiter', 'password', 'RecruiterFirstName', 'Recruteur', 123456789);
+VALUES ('recruiter@example.com', 'Recruiter', 'password', 'RecruiterFirstName', 'Recruteur', 123456789),('recruiter2@example.com', 'Recruiter', 'password', 'RecruiterFirstName', 'Recruteur', 987654321);
 
        -- Add rows to Utilisateurs table
 INSERT INTO Utilisateurs (email, nom, mdp, prenom, role)
 VALUES ('candidate@example.com', 'Candidate', 'password', 'CandidateFirstName', 'Candidat'),
+('candidat2@example.com', 'Candidate', 'password', 'CandidateFirstName', 'Candidat'),
+('candidat3@example.com', 'Candidate', 'password', 'CandidateFirstName', 'Candidat'),
        ('admin@example.com', 'Admin', 'passoword', 'AdminFirstName', 'Administrateur');
 
 
@@ -28,10 +30,10 @@ VALUES ('recruiter@example.com', 'pending', 111111111, 'Organisation2', 'Banque/
 
 -- Add rows to Offres table
 INSERT INTO Offres (nom, responsable, lieu, status, siren, entreprise, domaine, rythme, salaire, description)
-VALUES ('Développeur', 'responsable1', 'City1', 'pending', 123456789, 'Google', 'Informatique / Télécoms', "alternance", 4000, "Développement applicatif"),
-       ('Scrum Master', 'responsable3', 'City3', 'accepted', 123456789, 'Google', 'Electronique / Electricité', "CDI",3500, "AGILE");
+VALUES ('Développeur', 'recruiter@example.com', 'City1', 'pending', 123456789, 'Google', 'Informatique / Télécoms', "alternance", 4000, "Développement applicatif"),
+       ('Scrum Master', 'recruiter2@example.com', 'City3', 'accepted', 123456789, 'Google', 'Electronique / Electricité', "CDI",3500, "AGILE");
 
 -- Add rows to Candidatures table (we will assume Offres have IDs 1,2,3 for these examples)
 INSERT INTO Candidatures (status, date, siren, id_user, id_offre)
 VALUES ('pending', CURDATE(), 123456789, 'candidate@example.com', 1),
-       ('accepted', CURDATE(), 123456789, 'candidate@example.com', 2);
+       ('accepted', CURDATE(), 123456789, 'candidat2@example.com', 2);

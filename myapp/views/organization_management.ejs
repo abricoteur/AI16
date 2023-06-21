@@ -72,11 +72,13 @@
       <div class="data-table-container">
 
         <div class="pagination">
-          <% for(let i = 1; i <= totalPages; i++) { %>
-            <a href="?page=<%= i %>" class="<%= pageNumber == i ? 'active' : '' %>"><%= i %></a>
-          <% } %>
+          <% for(let i=1; i <=totalPages; i++) { %>
+            <a href="?page=<%= i %>" class="<%= pageNumber == i ? 'active' : '' %>">
+              <%= i %>
+            </a>
+            <% } %>
         </div>
-        
+
 
         <div class="data-table">
 
@@ -86,12 +88,9 @@
                 <%= organisation.nom %>
               </p>
               <p class="f-f">
-                <span class="subtitle">PDG :</span>
-                <%= organisation.ceo %>
-                  <a class="f-f ml" href="#">
-                    <span class="subtitle">SIREN :</span>
-                    <%= organisation.siren %> &#10138;
-                  </a>
+                <a class="f-f ml" href="#"><span class="subtitle">SIREN :</span>
+                  <%= organisation.siren %> &#10138;
+                </a>
               </p>
               <p>
                 <a class="f-f" href="#">
@@ -119,7 +118,7 @@
                 <div class="form">
                   <div class="inputfield">
                     <label>SIREN</label>
-                    <input type="text" name="siren" value="<%= organisation.siren %>" class="input" readonly="readonly">
+                    <input type="number" name="siren" value="<%= organisation.siren %>" class="input" readonly="readonly">
                   </div>
                   <div class="inputfield">
                     <label>Nom de l'entreprise</label>
