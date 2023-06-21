@@ -12,6 +12,7 @@ CREATE TABLE Organisations (
     siren INT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
     createdBy VARCHAR(100) NOT NULL,
+    type_organisation ENUM('entreprise', 'association', 'ong') NOT NULL,
     siege_social VARCHAR(255)
 );
 
@@ -24,6 +25,7 @@ CREATE TABLE Utilisateurs (
     dateCreation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     tel VARCHAR(255),
     role ENUM('Recruteur', 'Candidat', 'Administrateur') NOT NULL,
+    statut_activite ENUM('actif', 'inactif') NOT NULL DEFAULT 'actif',
     id_orga INT,
     FOREIGN KEY (id_orga) REFERENCES Organisations(siren) ON DELETE CASCADE
 );
@@ -38,8 +40,9 @@ CREATE TABLE Demandes_Creation_Organisation (
     siren INT,
     nom VARCHAR(255) NOT NULL,
     domaine VARCHAR(255) NOT NULL,
-    siege_social VARCHAR(255),
-    message TEXT,
+    siege_social VARCHAR(255) NOT NULL,
+    type_organisation ENUM('entreprise', 'association', 'ong') NOT NULL,
+    message TEXT NOT NULL,
     FOREIGN KEY (requester_email) REFERENCES Utilisateurs(email) ON DELETE CASCADE
 );
 
