@@ -54,7 +54,7 @@ CREATE TABLE Offres (
     rythme VARCHAR(255),
     salaire INT(255),
     description TEXT,
-    status ENUM('pending', 'accepted') NOT NULL,
+    status ENUM('pending', 'accepted') NOT NULL DEFAULT 'pending',
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     siren INT NOT NULL,
     FOREIGN KEY (siren) REFERENCES Organisations(siren) ON DELETE CASCADE,

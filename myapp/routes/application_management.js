@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var userModel = require('../model/users.js')
+var candidaturesModel = require('../model/candidatures.js')
 
 router.get('/', function (req, res, next) {
-    result=userModel.readall(function(result){
-        res.render('application_management', { title: 'Page application', application_mangement: result});
+    candidaturesModel.readOrganisationCandidatures(req.session.user.siren, function(result){
+        res.render('application_management', { title: 'Page application', candidatures: result});
     });
 });
 

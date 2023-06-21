@@ -2,25 +2,23 @@ var db = require('./db.js');
 module.exports = {
     read: function (id_offre, callback) {
         const query = `
-            SELECT Offres.*, Candidatures.message AS candidature_message
+            SELECT Offres.*, Candidatures.message AS candidature_message 
             FROM Offres
             LEFT JOIN Candidatures ON Offres.id = Candidatures.id_offre
             WHERE Offres.id = ?`;
-    
-        db.query(query, id_offre, function(err, results) {
-            if (err) throw err;
+        db.query(query,id_offre, function(err, results){
+            if(err) throw err;
             callback(results);
         });
     },
-    
 
     readall: function (filtre_all, filtre_domaine, filtre_salaire, filtre_lieu, callback) {
-        let sql = "SELECT * FROM Offres JOIN Organisations ON Offres.siren = Organisations.siren WHERE 1=1";
+        let sql = "SELECT * FROM Offres JOIN Organisations ON Offres.siren = Organisations.siren WHERE 1=1 & status=\"pending\"";
 
         let params = [];
     
         if (filtre_all !== undefined) {
-            sql += " AND (Offres.nom LIKE ? OR Offres.responsable LIKE ? OR Offres.rythme LIKE ? OR Offres.entreprise LIKE ? OR Offres.description LIKE ? OR Offres.lieu LIKE ? OR Offres.siren LIKE ? OR Organisations.nom LIKE ?)";
+            sql += " AND (Offres.nom LIKE ? OR Offres.responsable LIKE ? OR Offres.domaine LIKE ? OR Offres.rythme LIKE ? OR Offres.entreprise LIKE ? OR Offres.description LIKE ? OR Organisations.description LIKE ? OR Offres.lieu LIKE ? OR Offres.siren LIKE ?)";
             const filterPattern = `%${filtre_all}%`;
             params.push(filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern,filterPattern,);
         }
@@ -57,8 +55,8 @@ module.exports = {
         });},
 
 
-    create: function (nom, status, responsable, type_metier, lieu, rythme, salaire, description, date, id_orga, callback) {
-        db.query("INSERT INTO Offres (nom, status, responsable, type_metier, lieu, rythme, salaire, description, date, id_orga) VALUES(?,?,?,?,?,?,?,?,?,?)",[nom, status, responsable, type_metier, lieu, rythme, salaire, description, date, id_orga], function(err,results){
+    create: function (nom, status, responsable, domaine, lieu, rythme, salaire, description, date, siren, entreprise, callback) {
+        db.query("INSERT INTO Offres (nom, status, responsable, domaine, lieu, rythme, salaire, description, date, siren, entreprise) VALUES(?,?,?,?,?,?,?,?,?,?,?)",[nom, status, responsable, domaine, lieu, rythme, salaire, description, date, siren, entreprise], function(err,results){
             if(err) throw err;
             callback(results);
         });

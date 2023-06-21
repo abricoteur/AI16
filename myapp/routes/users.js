@@ -101,7 +101,8 @@ router.post('/checkUser', function (req, res, next) {
 
         req.session.user = {
             email: user.email,
-            role: user.role
+            role: user.role,
+            siren: user.id_orga
         };
 
         if(user.role=='Administrateur'){
