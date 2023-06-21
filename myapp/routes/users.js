@@ -151,25 +151,21 @@ router.post('/checkUser', function (req, res, next) {
     });
 });
 
-router.get('/update', function (req, res, next) {
-    console.log("tests");
+router.post('/update', function (req, res, next) {
+    var data = req.body;
 
-    users.update("admin@example.com",
-                "A", 
-                "password", 
-                "Pierre", 
-                "0102030405", 
-                "Administrateur", function(results){
-        console.log(results);
+    userModel.update(data.email, data.nom, data.mdp, data.prenom, data.tel, data.role, function(){
+        console.log("user modified");
     })
 
-    /*var data = req.body;
-    users.update(data.email, data.nom, data.mdp, data.prenom, data.tel, data.role, function(){
-        console.log("user modified");
-    })*/
+    result = userModel.readall(function (result) {
+        res.render('user_management', { title: 'Admin', users: result });
+    });
+});
 
-    result=users.readall(function(result){
-        res.render('user_management', { title: 'Page admin', users: result});
+router.post('/delete', function (req, res, next) {
+    userModel.delete(req.body.email, function(){
+        console.log("user deleted");
     })
 })
 
