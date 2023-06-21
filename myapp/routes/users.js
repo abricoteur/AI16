@@ -104,7 +104,20 @@ router.post('/checkUser', function (req, res, next) {
             role: user.role
         };
 
-        return res.redirect('/home');
+        if(user.role=='Administrateur'){
+            return res.redirect('/admin');
+        }
+        else if(user.role=='Candidat')
+        {
+            return res.redirect('/home');
+        }
+        else if(user.role=='Recruteur')
+        {
+            return res.redirect('/recruiter');
+        }   
+        else {
+            return res.redirect('/users/logout');
+        }
 
         bcrypt.compare(providedPassword, hashedPassword, function (err, passwordMatch) {
             if (err) throw err;

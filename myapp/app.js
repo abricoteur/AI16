@@ -49,20 +49,26 @@ app.use(cookieParser());
 // Middleware for checking if a user is connected
 function isConnected(session, role) {
   // Check if session exists and user role matches
-  //return session && session.user && session.user.role === role;
-  return true;
+  return session && session.user && session.user.role === role;
 }
 
 // check user
 app.all("*", function (req, res, next) {
-  const nonSecurePaths = ["/js/*","/img/job-promotion.png","/favicon.ico","/stylesheets/*","/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/","/users/logout/"];
-  const adminPaths = ["/users/userslist","/admin", "/organization_management","/user_management"]; //list des urls admin
-  const candidatPaths = ["/home","/users/profil","/users/logout","/organization_form","/profil","/candidature","/candidature/postuler","/organization_form/request","/offers_details","/profil/update","/candidature/delete","/request_role/*"]; //list des urls candidats
+  const roles = ["Administrateur", "Candidat", "Recruteur"]
+  const nonSecurePaths = ["/", "/js/*", "/img/job-promotion.png", "/favicon.ico", "/stylesheets/*", "/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/", "/users/logout/"];
+  const adminPaths = ["/admin", "/organization_management", "/user_management", "/organization_management/update", "/organization_management/delete", "/users/userslist",]; //list des urls admin
+  const candidatPaths = ["/home", "/organization_form", "/candidature", "/candidature/postuler", "/organization_form/request", "/offers_details", "/candidature/delete"]; //list des urls candidats
   const recruteurPaths = ["/recruiter", "/offers_management", "/application_management"]; //list des urls recruter
+  const commonPaths = ["/profil", "/profil/update", "/request_role/recruteur", "/request_role/admin"]
+
 
   if (nonSecurePaths.includes(req.path)) return next();
 
+  if (!(req.session && req.session.user && req.session.user.role && roles.includes(req.session.user.role))) { return res.redirect("/users/connexion") };
   //authenticate user
+  if (commonPaths.includes(req.path)) {
+    return next()
+  }
   if (adminPaths.includes(req.path)) {
     if (isConnected(req.session, "Administrateur")) return next();
     else res.status(403).render("error", { message: " Unauthorized access", error: {} });

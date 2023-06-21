@@ -1,6 +1,5 @@
 -- Drop tables if they exist
-DROP TABLE IF EXISTS Demandes_Role_Administrateur;
-DROP TABLE IF EXISTS Demandes_Role_Recruteur;
+DROP TABLE IF EXISTS Demandes_Role;
 DROP TABLE IF EXISTS Pieces;
 DROP TABLE IF EXISTS Candidatures;
 DROP TABLE IF EXISTS Demandes_Creation_Organisation;
@@ -40,6 +39,7 @@ CREATE TABLE Demandes_Creation_Organisation (
     nom VARCHAR(255) NOT NULL,
     domaine VARCHAR(255) NOT NULL,
     siege_social VARCHAR(255),
+    message TEXT,
     FOREIGN KEY (requester_email) REFERENCES Utilisateurs(email) ON DELETE CASCADE
 );
 

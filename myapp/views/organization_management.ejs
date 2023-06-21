@@ -18,40 +18,43 @@
   <main>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fcfcfc;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="home"><img src="img/job-promotion.png">Happy Hire</a>
-              <div class="navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item hov title">
-                    <a class="f-f nav-link active" aria-current="page" href="admin"><p class="admin">Administration</p></a>
-                  </li>
-                  <li class="nav-item">
-                    <div class="separator"></div>
-                  </li>
-                  <li class="nav-item hov">
-                    <a class="f-f nav-link active" aria-current="page" href="user_management">Gérer les utilisateurs</a>
-                  </li>
-                  <li class="nav-item hov">
-                    <a class="f-f nav-link active" aria-current="page" href="organization_management">Gérer les organisations</a>
-                  </li>
-                  <li class="nav-item">
-                    <div class="separator"></div>
-                  </li>
-                  <li class="nav-item hov">
-                    <a class="f-f nav-link active profil-item" href="profil">Mon Profil</a>
-                  </li>
-                  <li class="nav-item hov">
-                    <a class="f-f nav-link active login-item" href="logout">Se déconnecter</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-        </nav>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand"><img src="img/job-promotion.png">Happy Hire</a>
+        <div class="navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item hov title">
+              <a class="f-f nav-link active" aria-current="page" href="admin">
+                <p class="admin">Administration</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <div class="separator"></div>
+            </li>
+            <li class="nav-item hov">
+              <a class="f-f nav-link active" aria-current="page" href="user_management">Gérer les utilisateurs</a>
+            </li>
+            <li class="nav-item hov">
+              <a class="f-f nav-link active" aria-current="page" href="organization_management">Gérer les
+                organisations</a>
+            </li>
+            <li class="nav-item">
+              <div class="separator"></div>
+            </li>
+            <li class="nav-item hov">
+              <a class="f-f nav-link active profil-item" href="profil">Mon Profil</a>
+            </li>
+            <li class="nav-item hov">
+              <a class="f-f nav-link active login-item" href="logout">Se déconnecter</a>
+            </li>
+          </ul>
+        </div>
       </div>
+    </nav>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    </div>
     </nav>
 
     <div class="navbar-main-spacer"></div>
@@ -64,61 +67,16 @@
 
       <hr>
 
-      <div class="search-container">
-
-        <div class="search-bars">
-          <div class="wh"><input placeholder="Quoi ?"></div>
-          <div class="wh"><input placeholder="Où ?"></div>
-          <div class="search-icon">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </div>
-        </div>
-
-        <div class="filters">
-
-          <span class="dropdown-el">
-            <input type="radio" name="domaine" value="Agroalimentaire" checked="checked"
-              id="sort-Agroalimentaire"><label for="sort-Agroalimentaire">Agroalimentaire</label>
-            <input type="radio" name="domaine" value="Banque/Assurance" id="sort-banque"><label
-              for="sort-banque">Banque/Assurance</label>
-            <input type="radio" name="domaine" value="Industrie pharmaceutique" id="sort-pharma"><label
-              for="sort-pharma">Industrie pharmaceutique</label>
-            <input type="radio" name="domaine" value="Informatique / Télécoms" id="sort-info"><label
-              for="sort-info">Informatique / Télécoms</label>
-            <input type="radio" name="domaine" value="Electronique / Electricité" id="sort-elec"><label
-              for="sort-elec">Electronique / Electricité</label>
-            <input type="radio" name="domaine" value="Commerce / Distribution" id="sort-commerce"><label
-              for="sort-commerce">Commerce / Distribution</label>
-          </span>
-
-          <span class="dropdown-el">
-            <input type="radio" name="taille" value="10" checked="checked" id="sort-10"><label for="sort-10">- de 10
-              employés</label>
-            <input type="radio" name="taille" value="50" id="sort-50"><label for="sort-50">10 à 50 employés</label>
-            <input type="radio" name="taille" value="100" id="sort-100"><label for="sort-100">50 de 100 employés</label>
-            <input type="radio" name="taille" value="250" id="sort-250"><label for="sort-250">100 de 250
-              employés</label>
-            <input type="radio" name="taille" value="1000" id="sort-1000"><label for="sort-1000">250 de 1000
-              employés</label>
-            <input type="radio" name="taille" value="5000" id="sort-5000"><label for="sort-5000">1000 de 5000
-              employés</label>
-          </span>
-
-          <span class="dropdown-el">
-            <input type="radio" name="recrute" value="y" checked="checked" id="sort-y"><label
-              for="sort-y">Recrute</label>
-            <input type="radio" name="recrute" value="n" id="sort-n"><label for="sort-n">Ne recrute pas</label>
-          </span>
-
-        </div>
-
-      </div>
-
-      <hr>
-
       <div class="spacer"></div>
 
       <div class="data-table-container">
+
+        <div class="pagination">
+          <% for(let i = 1; i <= totalPages; i++) { %>
+            <a href="?page=<%= i %>" class="<%= pageNumber == i ? 'active' : '' %>"><%= i %></a>
+          <% } %>
+        </div>
+        
 
         <div class="data-table">
 
@@ -147,66 +105,41 @@
                   </span>
                   Offres ouvertes &#10138;</a>
               </p>
-
-              <div class="manage-orga-btns">
-                <form>
-                  <input type="hidden" name="siren" value="<%= organisation.siren %>">
-                  <button type="submit" class="delete-btn f-f">Modifier &#10005;</button>
-                </form>
-                <form action="/organization_management/delete" method="POST">
-                  <input type="hidden" name="siren" value="<%= organisation.siren %>">
-                  <button type="submit" class="delete-btn f-f">Supprimer &#10005;</button>
-                </form>
-              </div>
             </div>
             <% }) %>
         </div>
 
         <div class="orga-form-container">
           <% organisations.forEach((organisation)=> { %>
-          <div class="wrapper">
-            <div class="title orga-name-form">
-              <%= organisation.nom %>
-            </div>
-            <div class="form">
-               <div class="inputfield">
-                  <label>Nom de l'entreprise</label>
-                  <input type="text" value="<%= organisation.nom %>" class="input" readonly="readonly">
-               </div>  
-               <div class="inputfield">
-                  <label>SIREN</label>
-                  <input type="text" value="<%= organisation.siren %>" class="input" readonly="readonly">
-               </div>  
-              <div class="inputfield">
-                  <label>Siège social</label>
-                  <input type="text" value="<%= organisation.siege_social %>" class="input" readonly="readonly">
-               </div> 
-                <div class="inputfield">
-                  <label>Domaine</label>
-                  <div class="custom_select">
-                    <select>
-                      <option value=""><%= organisation.domaine %></option>
-                      <option value="">Agroalimentaire</option>
-                      <option value="">Banque/Assurance</option>
-                      <option value="">Industrie pharmaceutique</option>
-                      <option value="">Informatique / Télécoms</option>
-                      <option value="">Electronique / Electricité</option>
-                      <option value="">Commerce / Distribution</option>
-                    </select>
-                  </div>
-               </div> 
-                <div class="inputfield">
-                  <label>Créé par</label>
-                  <input type="text" value="<%= organisation.createdBy %>" class="input" readonly="readonly">
-               </div>
-              <div class="inputfield">
-                <input type="submit" value="Postulez" class="btn">
+            <div class="wrapper">
+              <div class="title orga-name-form">
+                <%= organisation.nom %>
               </div>
+              <form action="/organization_management/update" method="POST" class="form">
+                <div class="form">
+                  <div class="inputfield">
+                    <label>SIREN</label>
+                    <input type="text" name="siren" value="<%= organisation.siren %>" class="input" readonly="readonly">
+                  </div>
+                  <div class="inputfield">
+                    <label>Nom de l'entreprise</label>
+                    <input type="text" name="nom" value="<%= organisation.nom %>" class="input">
+                  </div>
+
+                  <div class="inputfield">
+                    <label>Siège social</label>
+                    <input type="text" name="siege_social" value="<%= organisation.siege_social %>" class="input"
+                      name="siege_social">
+                  </div>
+                  <div class="inputfield">
+                    <input type="submit" value="Modifier" class="btn">
+                  </div>
+                </div>
+              </form>
             </div>
-          </div>
-          <% }) %>
+            <% }) %>
         </div>
-        
+
       </div>
     </div>
 

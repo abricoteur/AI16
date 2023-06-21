@@ -11,36 +11,89 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fcfcfc;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/home"><img src="/img/job-promotion.png">Happy Hire</a>
+      <a class="navbar-brand"><img src="/img/job-promotion.png">Happy Hire</a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
+      <% profil.forEach((profil)=> { %>
+
       <div class="navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item hov title">
-            <a class="f-f nav-link active" aria-current="page" href="home">
-              <p class="admin">Accueil</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <div class="separator"></div>
-          </li>
-          <li class="nav-item hov">
-            <a class="f-f nav-link active" aria-current="page" href="organization_form">Créer une organisation</a>
-          </li>
-          <li class="nav-item hov">
-            <a class="f-f nav-link active" aria-current="page" href="candidature">Mes candidatures</a>
-          </li>
-          <li class="nav-item">
-            <div class="separator"></div>
-          </li>
-          <li class="nav-item hov">
-            <a class="f-f nav-link active" href="logout">Se déconnecter</a>
-          </li>
-        </ul>
+        <% if (profil.role=="Candidat" ) { %>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item hov title">
+              <a class="f-f nav-link active" aria-current="page" href="home">
+                <p class="admin">Accueil</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <div class="separator"></div>
+            </li>
+            <li class="nav-item hov">
+              <a class="f-f nav-link active" aria-current="page" href="organization_form">Créer une organisation</a>
+            </li>
+            <li class="nav-item hov">
+              <a class="f-f nav-link active" aria-current="page" href="candidature">Mes candidatures</a>
+            </li>
+            <li class="nav-item">
+              <div class="separator"></div>
+            </li>
+            <li class="nav-item hov">
+              <a class="f-f nav-link active" href="profil">Mon Profil</a>
+            </li>
+            <li class="nav-item hov">
+              <a class="f-f nav-link active login-item" href="logout">Se déconnecter</a>
+            </li>
+          </ul>
+          <% } if (profil.role=="Recruteur" ){ %>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item hov title">
+                <a class="f-f nav-link active" aria-current="page" href="recruiter"><p class="admin">Recruteur</p></a>
+              </li>
+              <li class="nav-item">
+                <div class="separator"></div>
+              </li>
+
+              <li class="nav-item hov">
+                <a class="f-f nav-link active" aria-current="page" href="offers_management">Gérer les offres</a>
+              </li>
+              <li class="nav-item hov">
+                <a class="f-f nav-link active" aria-current="page" href="application_management">Voir les candidatures</a>
+              </li>
+              <li class="nav-item">
+                <div class="separator"></div>
+              </li>
+              <li class="nav-item hov">
+                <a class="f-f nav-link active profil-item" href="profil">Mon Profil</a>
+              </li>
+            </ul>
+            <% } if (profil.role=="Administrateur") {%>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item hov title">
+                  <a class="f-f nav-link active" aria-current="page" href="admin"><p class="admin">Administration</p></a>
+                </li>
+                <li class="nav-item">
+                  <div class="separator"></div>
+                </li>
+                <li class="nav-item hov">
+                  <a class="f-f nav-link active" aria-current="page" href="user_management">Gérer les utilisateurs</a>
+                </li>
+                <li class="nav-item hov">
+                  <a class="f-f nav-link active" aria-current="page" href="organization_management">Gérer les organisations</a>
+                </li>
+                <li class="nav-item">
+                  <div class="separator"></div>
+                </li>
+                <li class="nav-item hov">
+                  <a class="f-f nav-link active profil-item" href="profil">Mon Profil</a>
+                </li>
+                <li class="nav-item hov">
+                  <a class="f-f nav-link active login-item" href="logout">Se déconnecter</a>
+                </li>
+              </ul>
+              <% } %>
       </div>
     </div>
   </nav>
@@ -57,7 +110,11 @@
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="text-right">Profil</h4>
           </div>
-          <% profil.forEach((profil)=> { %>
+
+            <div class="col-md-6">
+              <label class="labels">Role</label>
+              <input type="text" class="form-control" readonly="readonly" value="<%= profil.role %>">
+            </div>
             <form action="/profil/update" method="post" enctype="multipart/form-data">
               <div class="row mt-2">
                 <div class="col-md-6">
@@ -79,8 +136,7 @@
                 </div>
                 <div class="col-md-12">
                   <label class="labels">Email</label>
-                  <input type="text" class="form-control" name="email" placeholder="Entrer une adresse"
-                    value="<%= profil.email %>">
+                  <input type="text" class="form-control" name="email" readonly="readonly" value="<%= profil.email %>">
                 </div>
               </div>
               <br>
@@ -91,7 +147,7 @@
                   <span>Fichier actuel :</span>
                   <a href="data:application/octet-stream;base64,<%= file.file.toString('base64') %>"
                     download="<%= file.filename %>">
-                     <%= file.filename %>
+                    <%= file.filename %>
                   </a>
                   <% } %>
               </div>
@@ -101,37 +157,43 @@
                 <button class="btn btn-primary profile-button" type="submit">Sauvegarder</button>
               </div>
             </form>
-            <% }) %>
+
 
         </div>
       </div>
-      <div class="col-md-3 border-right">
-        <div class="p-3 py-5">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="text-right">Demande Recruteur</h5>
-          </div>
-            <form action="" method="post" enctype="multipart/form-data">
-              <div class="row mt-3">
-                <div class="col-md-12">
-                  <label class="labels">SIREN</label>
-                  <input type="text" class="form-control" name="tel" placeholder="Entrer un SIREN">
+      <% if (profil.role!="Administrateur" ) { %>
+        <div class="col-md-3 border-right">
+          <div class="p-3 py-5">
+            <% if (profil.role!="Recruteur" ) { %>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="text-right">Demande Recruteur</h5>
+              </div>
+              <form action="/request_role/recruteur" method="post">
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <label class="labels">SIREN</label>
+                    <input type="text" class="form-control" name="siren" placeholder="Entrer un SIREN">
+                  </div>
                 </div>
-              </div>
-              <div class="mt-5 text-center">
-                <button class="btn btn-primary profile-button" type="submit">Demander à être recruteur</button>
-              </div>
-            </form>
-            <br>
-            <hr>
-            <h5 class="text-right">Demande Administrateur</h5>
-            <div class="mt-5 text-center">
-              <button class="btn btn-primary profile-button" type="submit">Demander à être administrateur</button>
-            </div>
+                <div class="mt-5 text-center">
+                  <button class="btn btn-primary profile-button" type="submit">Demander à être recruteur</button>
+                </div>
+              </form>
+              <br>
+              <hr>
+              <% } %>
+                <form action="/request_role/admin" method="post">
+                  <h5 class="text-right">Demande Administrateur</h5>
+                  <div class="mt-5 text-center">
+                    <button class="btn btn-primary profile-button" type="submit">Demander à être administrateur</button>
+                  </div>
+                </form>
+          </div>
         </div>
-      </div>
-      
-      
-  </div>
+        <% } %>
+          <% }) %>
+
+    </div>
 </body>
 
 </html>
