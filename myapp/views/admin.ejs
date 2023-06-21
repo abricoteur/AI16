@@ -53,10 +53,17 @@
 
         <div class="main-container">
 
+          <div class="orga-title-container">
+            <div class="f-f title">
+              <p>Demandes de création d'organisation en attentes</p>
+            </div>
+            <span class="dropdown-el">
+              <input type="radio" name="trie" value="default" checked="checked" id="Y"><label for="sort-X">Trier</label>
+              <input type="radio" name="trie" value="recente" id="new"><label for="new">Les + récentes</label>
+              <input type="radio" name="trie" value="ancienne" id="old"><label for="old">Les + anciennes</label>
+            </span>
+          </div> 
 
-          <div class="f-f title">
-            <p>Demandes de création d'organisation en attentes</p>
-          </div>
           <hr>
 
           <div class="messagerie-container">
@@ -107,9 +114,16 @@
 
           <div class="navbar-main-spacer"></div>
 
-          <div class="f-f title">
-            <p>Demandes compte admin</p>
-          </div>
+          <div class="orga-title-container">
+            <div class="f-f title">
+              <p>Demandes compte admin</p>
+            </div>
+            <span class="dropdown-el">
+              <input type="radio" name="trie2" value="default2" checked="checked" id="Y2"><label for="Y2">Trier</label>
+              <input type="radio" name="trie2" value="recente2" id="new2"><label for="new2">Les + récentes</label>
+              <input type="radio" name="trie2" value="ancienne2" id="old2"><label for="old2">Les + anciennes</label>
+            </span>
+          </div> 
           <hr>
 
           <div class="messagerie-container">
@@ -182,6 +196,7 @@
     </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="js/dropdown.js"></script>
 
     <% if(orgaRequest && adminRequest) { %>
       <script>
