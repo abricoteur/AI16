@@ -6,6 +6,7 @@ const sessions = require('express-session');
 var logger = require('morgan');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' }); // Les fichiers seront sauvegardés dans le dossier 'uploads'
+const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -22,6 +23,7 @@ var userManageRouter = require('./routes/user_management');
 var candidatureManageRouter = require('./routes/candidature');
 var offersDetailsManageRouter = require('./routes/offers_details');
 var requestRoleRouter = require('./routes/request_role');
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -34,6 +36,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
+app.use('/api', apiRouter);
+
+// Serve Vue.js app files
+app.use('/vue', express.static(path.join(__dirname, '../mon-projet-vue/dist')));
+
+// Redirect /vue to the Vue.js app
+app.get('/vue*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../mon-projet-vue/dist', 'index.html'));
+});
+
+// Start the server
+app.listen(3001, function () {
+  console.log('Server is listening on port 3001');
+});
 
 const deuxHeures = 1000 * 60 * 60 * 2;
 
@@ -55,7 +72,7 @@ function isConnected(session, role) {
 // check user
 app.all("*", function (req, res, next) {
   const roles = ["Administrateur", "Candidat", "Recruteur"]
-  const nonSecurePaths = ["/", "/js/*", "/img/job-promotion.png", "/favicon.ico", "/stylesheets/*", "/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/", "/users/logout/", "/users/logout"];
+  const nonSecurePaths = ["/","/vue","/api", "/js/*", "/img/job-promotion.png", "/favicon.ico", "/stylesheets/*", "/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/", "/users/logout/", "/users/logout"];
   const adminPaths = ["/admin", "/organization_management", "/user_management", "/organization_management/update", "/organization_management/delete", "/users/userslist", "/users/update", "/users/delete"]; //list des urls admin
   const candidatPaths = ["/home", "/organization_form", "/candidature", "/candidature/postuler", "/organization_form/request", "/offers_details", "/candidature/delete"]; //list des urls candidats
   const recruteurPaths = ["/recruiter", "/offers_management", "/application_management", "/offers_form", "/offers_form/request"]; //list des urls recruter
@@ -101,6 +118,7 @@ app.use('/user_management', userManageRouter);
 app.use('/candidature', candidatureManageRouter);
 app.use('/request_role', requestRoleRouter);
 app.use('/offers_details', offersDetailsManageRouter);
+app.use('/api', apiRouter);
 
 
 // catch 404 and forward to error handler

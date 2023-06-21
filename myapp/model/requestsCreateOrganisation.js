@@ -1,14 +1,14 @@
 var db = require('./db.js');
 module.exports = {
     read: function (request_id, callback) {
-        db.query("select * from demandes_creation_organisation where request_id= ?",request_id, function(err, results){
+        db.query("select * from Demandes_Creation_Organisation where request_id= ?",request_id, function(err, results){
             if(err) throw err;
             callback(results);
         });
     },
 
     readall: function (callback) {
-        db.query("select * from demandes_creation_organisation", function(err, results){
+        db.query("select * from Demandes_Creation_Organisation", function(err, results){
             if(err) throw err;
             callback(results);
         });
@@ -29,7 +29,7 @@ module.exports = {
     },
 
     updateStatus: function (request_id, status, callback) {
-        db.query("UPDATE demandes_creation_organisation SET status=? WHERE request_id=?",[status, request_id], function(err,results){
+        db.query("UPDATE Demandes_Creation_Organisation SET status=? WHERE request_id=?",[status, request_id], function(err,results){
             if(err) throw err;
             callback(results);
         });

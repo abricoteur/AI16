@@ -1,7 +1,7 @@
 var db = require('./db.js');
 module.exports = {
     readOrgaCreationRequest: function (callback) {
-        db.query("select * from demandes_creation_organisation where status=\"pending\"", function(err, results){
+        db.query("select * from Demandes_Creation_Organisation where status=\"pending\"", function(err, results){
             if(err) throw err;
             callback(results);
         });},

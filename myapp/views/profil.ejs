@@ -20,71 +20,50 @@
 
       <% profil.forEach((profil)=> { %>
 
-      <div class="navbar-collapse" id="navbarSupportedContent">
-        <% if (profil.role=="Candidat" ) { %>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item hov title">
-              <a class="f-f nav-link active" aria-current="page" href="home">
-                <p class="admin">Accueil</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <div class="separator"></div>
-            </li>
-            <li class="nav-item hov">
-              <a class="f-f nav-link active" aria-current="page" href="organization_form">Créer une organisation</a>
-            </li>
-            <li class="nav-item hov">
-              <a class="f-f nav-link active" aria-current="page" href="candidature">Mes candidatures</a>
-            </li>
-            <li class="nav-item">
-              <div class="separator"></div>
-            </li>
-            <li class="nav-item hov">
-              <a class="f-f nav-link active" href="profil">Mon Profil</a>
-            </li>
-            <li class="nav-item hov">
-              <a class="f-f nav-link active login-item" href="/users/logout">Se déconnecter</a>
-            </li>
-          </ul>
-          <% } if (profil.role=="Recruteur" ){ %>
+        <div class="navbar-collapse" id="navbarSupportedContent">
+          <% if (profil.role=="Candidat" ) { %>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item hov title">
-                <a class="f-f nav-link active" aria-current="page" href="recruiter"><p class="admin">Recruteur</p></a>
-              </li>
-              <li class="nav-item">
-                <div class="separator"></div>
-              </li>
-
-              <li class="nav-item hov">
-                <a class="f-f nav-link active" aria-current="page" href="offers_management">Gérer les offres</a>
-              </li>
-              <li class="nav-item hov">
-                <a class="f-f nav-link active" aria-current="page" href="application_management">Voir les candidatures</a>
+                <a class="f-f nav-link active" aria-current="page" href="home">
+                  <p class="admin">Accueil</p>
+                </a>
               </li>
               <li class="nav-item">
                 <div class="separator"></div>
               </li>
               <li class="nav-item hov">
-                <a class="f-f nav-link active profil-item" href="profil">Mon Profil</a>
+                <a class="f-f nav-link active" aria-current="page" href="organization_form">Créer une organisation</a>
               </li>
               <li class="nav-item hov">
-                <a class="f-f nav-link active" href="/users/logout">Se déconnecter</a>
+                <a class="f-f nav-link active" aria-current="page" href="candidature">Mes candidatures</a>
+              </li>
+              <li class="nav-item">
+                <div class="separator"></div>
+              </li>
+              <li class="nav-item hov">
+                <a class="f-f nav-link active" href="profil">Mon Profil</a>
+              </li>
+              <li class="nav-item hov">
+                <a class="f-f nav-link active login-item" href="/users/logout">Se déconnecter</a>
               </li>
             </ul>
-            <% } if (profil.role=="Administrateur") {%>
+            <% } if (profil.role=="Recruteur" ){ %>
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item hov title">
-                  <a class="f-f nav-link active" aria-current="page" href="admin"><p class="admin">Administration</p></a>
+                  <a class="f-f nav-link active" aria-current="page" href="recruiter">
+                    <p class="admin">Recruteur</p>
+                  </a>
                 </li>
                 <li class="nav-item">
                   <div class="separator"></div>
                 </li>
+
                 <li class="nav-item hov">
-                  <a class="f-f nav-link active" aria-current="page" href="user_management">Gérer les utilisateurs</a>
+                  <a class="f-f nav-link active" aria-current="page" href="offers_management">Gérer les offres</a>
                 </li>
                 <li class="nav-item hov">
-                  <a class="f-f nav-link active" aria-current="page" href="organization_management">Gérer les organisations</a>
+                  <a class="f-f nav-link active" aria-current="page" href="application_management">Voir les
+                    candidatures</a>
                 </li>
                 <li class="nav-item">
                   <div class="separator"></div>
@@ -93,11 +72,38 @@
                   <a class="f-f nav-link active profil-item" href="profil">Mon Profil</a>
                 </li>
                 <li class="nav-item hov">
-                  <a class="f-f nav-link active login-item" href="/users/logout">Se déconnecter</a>
+                  <a class="f-f nav-link active" href="/users/logout">Se déconnecter</a>
                 </li>
               </ul>
-              <% } %>
-      </div>
+              <% } if (profil.role=="Administrateur" ) {%>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item hov title">
+                    <a class="f-f nav-link active" aria-current="page" href="admin">
+                      <p class="admin">Administration</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <div class="separator"></div>
+                  </li>
+                  <li class="nav-item hov">
+                    <a class="f-f nav-link active" aria-current="page" href="user_management">Gérer les utilisateurs</a>
+                  </li>
+                  <li class="nav-item hov">
+                    <a class="f-f nav-link active" aria-current="page" href="organization_management">Gérer les
+                      organisations</a>
+                  </li>
+                  <li class="nav-item">
+                    <div class="separator"></div>
+                  </li>
+                  <li class="nav-item hov">
+                    <a class="f-f nav-link active profil-item" href="profil">Mon Profil</a>
+                  </li>
+                  <li class="nav-item hov">
+                    <a class="f-f nav-link active login-item" href="/users/logout">Se déconnecter</a>
+                  </li>
+                </ul>
+                <% } %>
+        </div>
     </div>
   </nav>
   <div class="container rounded bg-white mt-5 mb-5">
@@ -114,35 +120,36 @@
             <h4 class="text-right">Profil</h4>
           </div>
 
-            <div class="col-md-6">
-              <label class="labels">Role</label>
-              <input type="text" class="form-control" readonly="readonly" value="<%= profil.role %>">
+          <div class="col-md-6">
+            <label class="labels">Role</label>
+            <input type="text" class="form-control" readonly="readonly" value="<%= profil.role %>">
+          </div>
+          <form action="/profil/update" method="post" enctype="multipart/form-data">
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <label class="labels">Nom</label>
+                <input type="text" class="form-control" name="nom" placeholder="Entrer un nom"
+                  value="<%= profil.nom %>">
+              </div>
+              <div class="col-md-6">
+                <label class="labels">Prénom</label>
+                <input type="text" class="form-control" name="prenom" value="<%= profil.prenom %>"
+                  placeholder="Entrer un prenom">
+              </div>
             </div>
-            <form action="/profil/update" method="post" enctype="multipart/form-data">
-              <div class="row mt-2">
-                <div class="col-md-6">
-                  <label class="labels">Nom</label>
-                  <input type="text" class="form-control" name="nom" placeholder="Entrer un nom"
-                    value="<%= profil.nom %>">
-                </div>
-                <div class="col-md-6">
-                  <label class="labels">Prénom</label>
-                  <input type="text" class="form-control" name="prenom" value="<%= profil.prenom %>"
-                    placeholder="Entrer un prenom">
-                </div>
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <label class="labels">Numéro de téléphone</label>
+                <input type="text" class="form-control" name="tel" placeholder="Entrer un numéro de téléphone"
+                  value="<%= profil.tel %>">
               </div>
-              <div class="row mt-3">
-                <div class="col-md-12">
-                  <label class="labels">Numéro de téléphone</label>
-                  <input type="text" class="form-control" name="tel" placeholder="Entrer un numéro de téléphone"
-                    value="<%= profil.tel %>">
-                </div>
-                <div class="col-md-12">
-                  <label class="labels">Email</label>
-                  <input type="text" class="form-control" name="email" readonly="readonly" value="<%= profil.email %>">
-                </div>
+              <div class="col-md-12">
+                <label class="labels">Email</label>
+                <input type="text" class="form-control" name="email" readonly="readonly" value="<%= profil.email %>">
               </div>
-              <br>
+            </div>
+            <br>
+            <% if(profil.role=="Candidat") {%>
               <div class="col-md-12">
                 <label class="labels">CV</label>
                 <input type="file" class="form-control" name="myFile">
@@ -154,12 +161,13 @@
                   </a>
                   <% } %>
               </div>
+              <% } %>
 
 
               <div class="mt-5 text-center">
                 <button class="btn btn-primary profile-button" type="submit">Sauvegarder</button>
               </div>
-            </form>
+          </form>
 
 
         </div>
