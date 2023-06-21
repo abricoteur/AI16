@@ -155,9 +155,9 @@ router.post('/checkUser', function (req, res, next) {
 router.post('/update', function (req, res, next) {
     var data = req.body;
 
-    userModel.update(data.email, data.nom, data.mdp, data.prenom, data.tel, data.role, function(){
+    userModel.update(data.email, data.nom, data.prenom, data.tel, function(){
         console.log("user modified");
-    })
+    });
 
     result = userModel.readall(function (result) {
         res.render('user_management', { title: 'Admin', users: result });

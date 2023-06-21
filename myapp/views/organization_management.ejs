@@ -71,15 +71,6 @@
 
       <div class="data-table-container">
 
-        <div class="pagination">
-          <% for(let i=1; i <=totalPages; i++) { %>
-            <a href="?page=<%= i %>" class="<%= pageNumber == i ? 'active' : '' %>">
-              <%= i %>
-            </a>
-            <% } %>
-        </div>
-
-
         <div class="data-table">
 
           <% organisations.forEach((organisation)=> { %>
@@ -88,9 +79,9 @@
                 <%= organisation.nom %>
               </p>
               <p class="f-f">
-                <a class="f-f ml" href="#"><span class="subtitle">SIREN :</span>
-                  <%= organisation.siren %> &#10138;
-                </a>
+                <span class="subtitle">SIREN :</span>
+                <%= organisation.siren %>
+
               </p>
               <p>
                 <a class="f-f" href="#">
@@ -104,8 +95,22 @@
                   </span>
                   Offres ouvertes &#10138;</a>
               </p>
+              <div class="manage-orga-btns">
+                <span class="f-f modify-btn">Modifier &#9998;</span>
+                <span class="f-f delete-btn">Supprimer &#10005;</span>
+              </div>
             </div>
             <% }) %>
+
+            <div class="pagination-container">
+              <div class="pagination">
+                <a href="#">&laquo;</a>
+                <% for(let i = 1; i <= totalPages; i++) { %>
+                  <a href="?page=<%= i %>" class="<%= pageNumber == i ? 'active' : '' %>"><%= i %></a>
+                <% } %>
+                <a href="#">&raquo;</a>
+              </div>
+            </div> 
         </div>
 
         <div class="orga-form-container">
@@ -118,17 +123,16 @@
                 <div class="form">
                   <div class="inputfield">
                     <label>SIREN</label>
-                    <input type="number" name="siren" value="<%= organisation.siren %>" class="input" readonly="readonly">
+                    <input type="text" name="siren" value="<%= organisation.siren %>" class="input siren" readonly="readonly">
                   </div>
                   <div class="inputfield">
                     <label>Nom de l'entreprise</label>
-                    <input type="text" name="nom" value="<%= organisation.nom %>" class="input">
+                    <input type="text" name="nom" value="<%= organisation.nom %>" class="input" readonly="readonly">
                   </div>
 
                   <div class="inputfield">
                     <label>Siège social</label>
-                    <input type="text" name="siege_social" value="<%= organisation.siege_social %>" class="input"
-                      name="siege_social">
+                    <input type="text" name="siege_social" value="<%= organisation.siege_social %>" class="input" readonly="readonly">
                   </div>
                   <div class="inputfield">
                     <input type="submit" value="Modifier" class="btn">
@@ -149,6 +153,53 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="js/dropdown.js"></script>
   <script src="js/forms_visibility.js"></script>
+
+  <% if(organisations) { %>
+    <script>
+
+      $(".data-item").click(function() {
+        $(".wrapper > .form").children().each(function(){
+          $(this).find("input").attr("readonly",true);
+        })
+        $(".btn").css("display", "none");
+      })
+
+      $(".modify-btn").click(function(event) {
+        event.stopPropagation();
+        $(".wrapper > .form").children().each(function(){
+          $(this).find("input").attr("readonly",false);
+          $(".siren").attr("readonly",true);
+        })
+        $(".btn").css("display", "block");
+      })
+
+      $(".delete-btn").on("click", function(event) {
+        var orgaList = <%- JSON.stringify(organisations) %>;
+        console.log($(orgaList)[$(this).parent().parent().index()].siren);
+        $.post('organization_management/delete',
+        {
+          siren: $(orgaList)[$(this).parent().parent().index()].siren
+        },
+        function() {
+          location.reload(true);
+        });
+      })
+
+      $(".btn").on("click", function() {
+        var formData = $(this).parent().siblings().find('input');
+        $.post('organization_management/update', 
+        { 
+          siren: $(formData).eq(0).val(),
+          nom: $(formData).eq(1).val(),
+          siege_social: $(formData).eq(2).val(),
+        }, 
+        function(){
+          location.reload(true);
+        });
+      })
+  
+    </script>
+  <% } %>
 
 </body>
 

@@ -32,7 +32,6 @@ module.exports = {
 
     update: function (email, nom, prenom, tel, callback) {
         db.query("update Utilisateurs set nom=?, prenom=?, tel=? where email= ?", [nom, prenom, tel, email], function (err, results) {
-
             if (err) throw err;
             callback(results);
         });

@@ -23,19 +23,13 @@ router.get('/', function (req, res, next) {
 router.post('/delete', function (req, res, next) {
     var data = req.body; // Access the POST data sent from the client
     organisationsModel.delete(data.siren, function (result) {
-    });
-    organisationsModel.readAllInformations(function (organisations) {
-        res.render('organization_management?page=1', {
-            title: 'Page Admin Organization Management',
-            organisations: organisations
-        });
+        res.redirect('/organization_management?page=1');
     });
 });
 
 router.post('/update', function (req, res, next) {
     var data = req.body; // Access the POST data sent from the client
     organisationsModel.update(data.siren, data.nom, data.siege_social, function (result) {
-
         res.redirect('/organization_management?page=1');
     });
 });
