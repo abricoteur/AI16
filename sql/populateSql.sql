@@ -36,14 +36,14 @@ VALUES ('candidate@example.com', 'Candidate', 'password', 'CandidateFirstName', 
 
 -- Add rows to Demandes_Creation_Organisation table
 INSERT INTO Demandes_Creation_Organisation (requester_email, status, siren, nom, domaine,type_organisation, siege_social, message)
-VALUES ('recruiter@example.com', 'pending', 111111111, 'Organisation2', 'Banque/Assurance',"association", '456 Street, City, Country'," OK"),
-       ('recruiter@example.com', 'accepted', 222222222, 'Organisation3', 'Industrie pharmaceutique',"ong", '789 Street, City, Country',"DOS"),
-       ('recruiter@example.com', 'rejected', 333333333, 'Organisation4', 'Commerce / Distribution',"entreprise", '012 Street, City, Country',"THRES"),
-       ('candidat1@example.com', 'pending', 444444444, 'Nouvelle Association', 'Santé', 'Madrid, Spain', 'association', 'Nous souhaitons créer une nouvelle association dans le domaine de la santé.'),
-       ('candidat2@example.com', 'pending', 555555555, 'Nouvelle ONG', 'Droits de lHomme', 'Paris, France', 'ong', 'Nous souhaitons créer une nouvelle ONG axée sur la protection des droits de lHomme.'),
-       ('candidat3@example.com', 'pending', 666666666, 'Nouvelle Entreprise', 'Mode', 'New York, USA', 'entreprise', 'Nous souhaitons créer une nouvelle entreprise dans le domaine de la mode.'),
-       ('candidat4@example.com', 'pending', 777777777, 'Nouvelle Association', 'Education', 'London, UK', 'association', 'Nous souhaitons créer une nouvelle association dans le domaine de léducation.'),
-       ('candidat5@example.com', 'pending', 888888888, 'Nouvelle ONG', 'Animaux', 'Berlin, Germany', 'ong', 'Nous souhaitons créer une nouvelle ONG axée sur la protection des animaux.');
+VALUES ('recruiter@example.com', 'pending', 111111111, 'Organisation2', 'Banque/Assurance','association', '456 Street, City, Country'," OK"),
+       ('recruiter@example.com', 'accepted', 222222222, 'Organisation3', 'Industrie pharmaceutique','ong', '789 Street, City, Country',"DOS"),
+       ('recruiter@example.com', 'rejected', 333333333, 'Organisation4', 'Commerce / Distribution','entreprise', '012 Street, City, Country',"THRES"),
+       ('candidat1@example.com', 'pending', 444444444, 'Nouvelle Association', 'Santé', 'association','Madrid, Spain', 'Nous souhaitons créer une nouvelle association dans le domaine de la santé.'),
+       ('candidat2@example.com', 'pending', 555555555, 'Nouvelle ONG', 'Droits de lHomme', 'ong', 'Paris, France', 'Nous souhaitons créer une nouvelle ONG axée sur la protection des droits de lHomme.'),
+       ('candidat3@example.com', 'pending', 666666666, 'Nouvelle Entreprise', 'Mode', 'entreprise', 'New York, USA', 'Nous souhaitons créer une nouvelle entreprise dans le domaine de la mode.'),
+       ('candidat4@example.com', 'pending', 777777777, 'Nouvelle Association', 'Education', 'association', 'London, UK', 'Nous souhaitons créer une nouvelle association dans le domaine de léducation.'),
+       ('candidat5@example.com', 'pending', 888888888, 'Nouvelle ONG', 'Animaux', 'ong', 'Berlin, Germany', 'Nous souhaitons créer une nouvelle ONG axée sur la protection des animaux.');
 
 
 
