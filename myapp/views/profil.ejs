@@ -44,7 +44,7 @@
               <a class="f-f nav-link active" href="profil">Mon Profil</a>
             </li>
             <li class="nav-item hov">
-              <a class="f-f nav-link active login-item" href="logout">Se déconnecter</a>
+              <a class="f-f nav-link active login-item" href="/users/logout">Se déconnecter</a>
             </li>
           </ul>
           <% } if (profil.role=="Recruteur" ){ %>
@@ -69,7 +69,7 @@
                 <a class="f-f nav-link active profil-item" href="profil">Mon Profil</a>
               </li>
               <li class="nav-item hov">
-                <a class="f-f nav-link active" href="logout">Se déconnecter</a>
+                <a class="f-f nav-link active" href="/users/logout">Se déconnecter</a>
               </li>
             </ul>
             <% } if (profil.role=="Administrateur") {%>
@@ -93,7 +93,7 @@
                   <a class="f-f nav-link active profil-item" href="profil">Mon Profil</a>
                 </li>
                 <li class="nav-item hov">
-                  <a class="f-f nav-link active login-item" href="logout">Se déconnecter</a>
+                  <a class="f-f nav-link active login-item" href="/users/logout">Se déconnecter</a>
                 </li>
               </ul>
               <% } %>
