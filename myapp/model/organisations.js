@@ -24,19 +24,28 @@ module.exports = {
     readAllInformations: function (elementsPerPage, pageNumber, callback) {
         const offset = (pageNumber - 1) * elementsPerPage;
         const query = `
-            SELECT o.*, COUNT(u.email) AS recruterCount, COUNT(offer.id) AS offerCount
-            FROM Organisations o
-            LEFT JOIN Utilisateurs u ON u.id_orga = o.siren
-            LEFT JOIN Offres offer ON offer.siren = o.siren
-            GROUP BY o.siren
-            ORDER BY o.siren
-            LIMIT ${elementsPerPage} OFFSET ${offset}
+        SELECT o.*, coalesce(u.recruterCount, 0) as recruterCount, coalesce(offr.offerCount, 0) as offerCount
+        FROM Organisations o 
+        LEFT JOIN (
+            SELECT id_orga, COUNT(*) as recruterCount
+            FROM Utilisateurs 
+            WHERE role = 'Recruteur'
+            GROUP BY id_orga
+        ) u ON o.siren = u.id_orga
+        LEFT JOIN (
+            SELECT siren, COUNT(*) as offerCount
+            FROM Offres
+            GROUP BY siren
+        ) offr ON o.siren = offr.siren
+        ORDER BY o.siren
+        LIMIT ${elementsPerPage} OFFSET ${offset}
         `;
         db.query(query, function(err, results){
             if(err) throw err;
             callback(results);
         });
     },
+    
     
 
     create: function (siren, nom, domaine, ceo, createdBy, description, adress, siege_social, callback) {
