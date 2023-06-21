@@ -68,24 +68,72 @@
                     <table>
                       <thead></thead>
                       <tbody>
+                        
+                        <% orgaRequest.forEach((or)=> { %>
                         <tr>
-                          <div class="orga-request-template">
+                          <div class="orga-request-template org">
                             <div class="sender-object">
-                              <div class="f-f sender-mail">XXXXX@XXX.XXX</div>
-                              <div class="f-f object-mail">XXXXXXXX</div>
+                              <div class="f-f sender-mail"><%= or.requester_email %></div>
+                              <div class="f-f object-mail"><%= or.type_organisation %></div>
                             </div>
-                            <div class="f-f date-mail">XX/XX/XX</div>
+                            <div class="f-f date-mail"><%= or.date %></div>
+                            <div class="f-f status"><%= or.status %></div>
                           </div>
                         </tr>
-                        <tr>
-                          <div class="orga-request-template">
-                            <div class="sender-object">
-                              <div class="f-f sender-mail">XXXXX@XXX.XXX</div>
-                              <div class="f-f object-mail">XXXXXXXX</div>
+                        <% }) %>
+
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+
+            </div> 
+
+            
+            <div class="right-container">
+
+              <div class="email-content-container">
+                <p class="mail-content org-request-content">
+
+                </p>
+                <div class="manage-orga-btns">
+                  <span class="f-f modify-btn">Accepter &#10003;</span>
+                  <span class="f-f delete-btn">Refuser &#10005;</span>
+                </div>
+              </div>
+
+            </div> 
+          </div>
+
+          <div class="navbar-main-spacer"></div>
+
+          <div class="f-f title">
+            <p>Demandes compte admin</p>
+          </div>
+          <hr>
+
+          <div class="messagerie-container">
+            <div class="left-container">
+
+              <div class="orga-request-container">
+
+                  <div class="request-container">
+                    <table>
+                      <thead></thead>
+                      <tbody>
+
+                        <% adminRequest.forEach((ar)=> { %>
+                          <tr>
+                            <div class="orga-request-template role">
+                              <div class="sender-object">
+                                <div class="f-f sender-mail"><%= ar.requester_email %></div>
+                                <div class="f-f object-mail"><%= ar.requested_role %></div>
+                              </div>
+                              <div class="f-f date-mail"><%= ar.siren %></div>
                             </div>
-                            <div class="f-f date-mail">XX/XX/XX</div>
-                          </div>
-                        </tr>
+                          </tr>
+                        <% }) %>
+
                       </tbody>
                     </table>
                   </div>
@@ -96,15 +144,12 @@
             <div class="right-container">
 
               <div class="email-content-container">
-                <p class="mail-content">
-                  Cher/Chère [nom],\n
+                <p class="mail-content role-request-content">
 
-                  J'espère que vous vous portez bien. Je voulais simplement prendre quelques instants pour vous remercier de votre soutien et de votre aide récente. Votre contribution a été inestimable et m'a permis de surmonter certains des défis auxquels je faisais face.
-                  Je suis extrêmement reconnaissant(e) pour tout ce que vous avez fait, et je ne peux vous remercier suffisamment. Si vous avez besoin d'aide ou d'assistance à l'avenir, sachez que je suis là pour vous. N'hésitez pas à me contacter à tout moment si vous avez des questions ou des préoccupations.
-                  Encore une fois, merci beaucoup pour tout ce que vous avez fait. Je suis honoré(e) de vous connaître et de compter sur votre soutien.
-                  Sincèrement,
-
-                  [Votre nom]
+                  <div class="manage-role-btns">
+                    <span class="f-f modify-btn">Accepter &#10003;</span>
+                    <span class="f-f delete-btn">Refuser &#10005;</span>
+                  </div>
                 </p>
               </div>
 
@@ -135,5 +180,50 @@
 
 
     </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <% if(orgaRequest && adminRequest) { %>
+      <script>
+        const orgaRequestList = <%- JSON.stringify(orgaRequest) %>;
+        const adminRequestList = <%- JSON.stringify(adminRequest) %>;
+
+        $(".status").each(function(){
+          if($(this).text() == "pending"){
+            $(this).css("color", "orange");
+          }
+          else if ($(this).text() == "accepted") {
+            $(this).css("color", "green");
+          }
+          else{
+            $(this).css("color",'red');
+          }
+        })
+
+        $('.org').on("click", function(){
+          if($(this).find('.status').text() == "pending"){
+            $('.manage-orga-btns').css('display', 'block');
+          }
+          else {
+            $('.manage-orga-btns').css('display', 'none');
+          }
+          var data = orgaRequestList[$(this).index()];
+          $('.org-request-content').text("Demande de " + data.requester_email + " le " + data.date + " pour créer l'organisation suivante : \n SIREN : " + data.siren + " Nom : " + data.nom + " \n Domaine : " + data.domaine + " Type : " + data.type_organisation + " \n Siège social : " + data.siege_social + " \n Commentaire : " + data.message)
+        })
+
+        $('.role').on("click", function(){
+          if($(this).find('status').text() == "pending"){
+            $('.manage-role-btns').css('display', 'block');
+          }
+          else {
+            $('.manage-role-btns').css('display', 'none');
+          }
+          var data = adminRequestList[$(this).index()];
+          $('.admin-request-content').text("Demande de " + data.requester_email + " membre de l'organisation \n SIREN : " + data.siren + " pour le role : " + data.requested_role)
+        })
+
+      </script>
+    <% } %>
+
   </body>
 </html>

@@ -152,6 +152,46 @@ main {
   padding: 1rem;
 }
 
+.manage-orga-btns > span {
+  padding: 0.6rem;
+  border: 2px solid #e79549;
+  border-radius: 10px;
+  cursor: pointer;
+  color: black;
+  font-size: smaller;
+  margin: 5px;
+}
+
+.manage-orga-btns > span:hover {
+  background-color: #e79549;
+}
+
+.manage-orga-btns {
+  margin-bottom: 0.5rem;
+  align-self: center;
+  display: none;
+}
+
+.manage-role-btns > span {
+  padding: 0.6rem;
+  border: 2px solid #e79549;
+  border-radius: 10px;
+  cursor: pointer;
+  color: black;
+  font-size: smaller;
+  margin: 5px;
+}
+
+.manage-role-btns > span:hover {
+  background-color: #e79549;
+}
+
+.manage-role-btns {
+  margin-bottom: 0.5rem;
+  align-self: center;
+  display: none;
+}
+
 .pagination-container {
   display: flex;
   justify-content: center;

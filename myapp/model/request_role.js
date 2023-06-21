@@ -38,6 +38,13 @@ module.exports = {
     });
   },
 
+  readAllAdminRequest: function (callback) {
+    db.query("SELECT * FROM Demandes_Role WHERE requested_role = 'administrateur'", function (err, results) {
+      if (err) throw err;
+      callback(results);
+    });
+  },
+
 
 
   acceptRecruiter: function (siren, email, callback) {

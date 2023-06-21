@@ -175,7 +175,6 @@
 
       $(".delete-btn").on("click", function(event) {
         var orgaList = <%- JSON.stringify(organisations) %>;
-        console.log($(orgaList)[$(this).parent().parent().index()].siren);
         $.post('organization_management/delete',
         {
           siren: $(orgaList)[$(this).parent().parent().index()].siren
