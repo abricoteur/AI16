@@ -45,7 +45,6 @@ main {
 .login-item {
   border-radius: 10px;
   margin-right: 2px;
-  visibility: hidden;
 }
 
 .account-item {
