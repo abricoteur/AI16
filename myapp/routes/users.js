@@ -166,7 +166,7 @@ router.post('/update', function (req, res, next) {
 
 router.post('/delete', function (req, res, next) {
     userModel.delete(req.body.email, function(){
-        console.log("user deleted");
+        res.redirect('/user_management');
     })
 })
 
