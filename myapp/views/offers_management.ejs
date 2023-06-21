@@ -64,44 +64,7 @@
 
             <div class="search-container">
 
-              <div class="search-bars">
-                <div class="wh"><input placeholder="Quoi ?"></div>
-                <div class="wh"><input placeholder="Où ?"></div>
-                <div class="search-icon">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-              </div>
-
-              <div class="filters">
-
-                <span class="dropdown-el">
-                  <input type="radio" name="domaine" value="Agroalimentaire" checked="checked" id="sort-Agroalimentaire"><label for="sort-Agroalimentaire">Agroalimentaire</label>
-                  <input type="radio" name="domaine" value="Banque/Assurance" id="sort-banque"><label for="sort-banque">Banque/Assurance</label>
-                  <input type="radio" name="domaine" value="Industrie pharmaceutique" id="sort-pharma"><label for="sort-pharma">Industrie pharmaceutique</label>
-                  <input type="radio" name="domaine" value="Informatique / Télécoms" id="sort-info"><label for="sort-info">Informatique / Télécoms</label>
-                  <input type="radio" name="domaine" value="Electronique / Electricité" id="sort-elec"><label for="sort-elec">Electronique / Electricité</label>
-                  <input type="radio" name="domaine" value="Commerce / Distribution" id="sort-commerce"><label for="sort-commerce">Commerce / Distribution</label>
-                </span>
-
-                <span class="dropdown-el">
-                  <input type="radio" name="salaire" value="Y" checked="checked" id="Y"><label for="sort-X">Estimation du salaire</label>
-                  <input type="radio" name="salaire" value="1500" id="1500"><label for="1500">1500€ +</label>
-                  <input type="radio" name="salaire" value="1750" id="1750"><label for="1750">1750€ +</label>
-                  <input type="radio" name="salaire" value="2000" id="2000"><label for="2000">2000€ +</label>
-                  <input type="radio" name="salaire" value="3000" id="3000"><label for="3000">3000€ +</label>
-                  <input type="radio" name="salaire" value="5000" id="5000"><label for="sort-1000">5000€ +</label>
-                  <input type="radio" name="salaire" value="7500" id="7500"><label for="sort-5000">7500€ +</label>
-                </span>
-
-                <span class="dropdown-el">
-                  <input type="radio" name="rayon" value="1" checked="checked" id="sort-1"><label for="sort-1">Dans un rayon de 10 KM</label>
-                  <input type="radio" name="rayon" value="2" id="sort-2"><label for="sort-2">Dans un rayon de 20 KM</label>
-                  <input type="radio" name="rayon" value="4" id="sort-4"><label for="sort-4">Dans un rayon de 40 KM</label>
-                  <input type="radio" name="rayon" value="7" id="sort-7"><label for="sort-7">Dans un rayon de 75 KM</label>
-                  <input type="radio" name="rayon" value="10" id="sort-0"><label for="sort-0">Dans un rayon de 100 KM</label>
-                </span>
-
-              </div>
+            
 
           </div>
 
@@ -110,16 +73,16 @@
             <div class="spacer"></div>
 
             <div class="data-table-container">
-
+              
               <div class="data-table">
-
+                <% offers.forEach((offer)=> { %>
                 <div class="data-item">
-                  <p class="orga-name f-f">Développeur mobile H/F</p>
+                  <p class="orga-name f-f"><%= offer.nom %></p>
                   <p class="f-f">
-                    <p class="job-info"><span class="subtitle">Entreprise : </span> Thales Group </p>
-                    <p class="job-info"><span class="subtitle">Lieu : </span>Ermont </p>
-                    <p class="job-info"><span class="subtitle">Contact recruteur : </span>lucas.mennessier@mail.com </p>
-                    <p class="job-info"><span class="subtitle">Salaire : </span>2000€ + </p>
+                    <p class="job-info"><span class="subtitle">Entreprise : </span> <%= offer.entreprise %> </p>
+                    <p class="job-info"><span class="subtitle">Lieu : </span><%= offer.lieu %> </p>
+                    <p class="job-info"><span class="subtitle">Contact recruteur : </span><%= offer.responsable %> </p>
+                    <p class="job-info"><span class="subtitle">Salaire : </span><%= offer.salaire %> </p>
                   </p>
                   <p>
 
@@ -128,68 +91,28 @@
                       <span class="f-f">Supprimer X</span>
                   </div>
                 </div>
-
-                <div class="data-item">
-                  <p class="orga-name f-f">Développeur mobile H/F</p>
-                  <p class="f-f">
-                    <p class="job-info"><span class="subtitle">Entreprise : </span> Thales Group </p>
-                    <p class="job-info"><span class="subtitle">Lieu : </span>Ermont </p>
-                    <p class="job-info"><span class="subtitle">Contact recruteur : </span>lucas.mennessier@mail.com </p>
-                    <p class="job-info"><span class="subtitle">Salaire : </span>2000€ + </p>
-                  </p>
-                  <p>
-
-                    <div class="manage-orga-btns">
-                      <span class="f-f">Modifier &#10138;</span>
-                      <span class="f-f">Supprimer X</span>
-                  </div>
-                </div>
-
-                <div class="data-item">
-                  <p class="orga-name f-f">Développeur mobile H/F</p>
-                  <p class="f-f">
-                    <p class="job-info"><span class="subtitle">Entreprise : </span> Thales Group </p>
-                    <p class="job-info"><span class="subtitle">Lieu : </span>Ermont </p>
-                    <p class="job-info"><span class="subtitle">Contact recruteur : </span>lucas.mennessier@mail.com </p>
-                    <p class="job-info"><span class="subtitle">Salaire : </span>2000€ + </p>
-                  </p>
-                  <p>
-
-                    <div class="manage-orga-btns">
-                      <span class="f-f">Modifier &#10138;</span>
-                      <span class="f-f">Supprimer X</span>
-                  </div>
-                </div>
-
-                <div class="pagination-container">
-                  <div class="pagination">
-                    <a href="#">&laquo;</a>
-                    <a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">&raquo;</a>
-                  </div>
-                </div> 
-
+                <% }) %>
               </div>
+              
 
               <div class="orga-form-container">
+                <% offers.forEach((offer)=> { %>
                 <div class="wrapper">
                   <div class="title orga-name-form">
-                    Intitulé du Poste
+                    <%= offer.nom %>
                   </div>
                   <div class="form">
                      <div class="inputfield">
                         <label>Nom de l'entreprise</label>
-                        <input type="text" class="input" readonly="readonly">
+                        <input type="text" value="<%= offer.entreprise %>" class="input" readonly="readonly">
                      </div>  
                      <div class="inputfield">
                         <label>Contact du recruteur</label>
-                        <input type="text" class="input" readonly="readonly">
+                        <input type="text" value="<%= offer.responsable %>" class="input" readonly="readonly">
                      </div>  
                     <div class="inputfield">
                         <label>Lieu</label>
-                        <input type="text" class="input" readonly="readonly">
+                        <input type="text" value="<%= offer.lieu %>" class="input" readonly="readonly">
                      </div> 
                       <div class="inputfield">
                         <label>Domaine</label>
@@ -207,21 +130,22 @@
                      </div> 
                       <div class="inputfield">
                         <label>Salaire</label>
-                        <input type="text" class="input" readonly="readonly">
+                        <input type="text" value="<%= offer.salaire %>" class="input" readonly="readonly">
                      </div> 
                     <div class="inputfield">
                         <label>Date de publication</label>
-                        <input type="text" class="input" readonly="readonly">
+                        <input type="text" value="<%= offer.date %>" class="input" readonly="readonly">
                      </div> 
                     <div class="inputfield">
                         <label>Description</label>
-                        <textarea class="textarea" readonly="readonly"></textarea>
+                        <textarea class="textarea" value="<%= offer.description %>" readonly="readonly"></textarea>
                      </div> 
                     <div class="inputfield">
                       <input type="submit" value="Confirmer les modifications" class="btn">
                     </div>
                   </div>
                 </div>
+                <% }) %>
               </div>
 
             </div>
@@ -234,5 +158,54 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="js/dropdown.js"></script>
+    <script src="js/forms_visibility.js"></script>
+
+    <% if(offers) { %>
+      <script>
+
+        $(".data-item").click(function() {
+          $(".wrapper > .form").children().each(function(){
+            $(this).find("input").attr("readonly",true);
+          })
+          $(".btn").css("display", "none");
+        })
+
+        $(".modify-btn").click(function(event) {
+          event.stopPropagation();
+          $(".wrapper > .form").children().each(function(){
+            $(this).find("input").attr("readonly",false);
+          })
+          $(".btn").css("display", "block");
+        })
+
+        $(".delete-btn").on("click", function(event) {
+          var offersList = <%- JSON.stringify(offers) %>;
+          console.log(userList);
+          $.post('users/delete',
+          {
+            email: $(offersList)[$(this).parent().parent().index()].email
+          },
+          function() {
+            location.reload(true);
+          });
+        })
+
+        $(".btn").on("click", function() {
+          var formData = $(this).parent().siblings().find('input');
+          var mail = $(this).parent().parent().siblings().find('p').text();
+          $.post('users/update', 
+          { email: mail,
+            nom: $(formData).eq(0).val(),
+            prenom: $(formData).eq(1).val(),
+            tel: $(formData).eq(2).val(),
+          }, 
+          function(){
+            location.reload(true);
+          });
+        })
+    
+      </script>
+    <% } %>
+
   </body>
 </html>

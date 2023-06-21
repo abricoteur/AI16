@@ -48,8 +48,8 @@ module.exports = {
 
 
 
-    offreFromOrga: function (siren, callback) {
-        db.query("select * from Offres where siren= ?, status=\"pending\"", siren, function (err, results) {
+    offresFromOrga: function (siren, callback) {
+        db.query("select * from Offres where siren= ?", siren, function (err, results) {
             if (err) throw err;
             callback(results);
         });
@@ -85,8 +85,8 @@ module.exports = {
         });
     },
 
-    delete: function (id_offre, callback) {
-        db.query("DELETE FROM Offres WHERE id = ?", [id_offre], function (err, results) {
+    delete: function (id_offre, siren, callback) {
+        db.query("DELETE FROM Offres WHERE id = ? & siren=?", [id_offre,siren], function (err, results) {
             if (err) throw err;
             callback(results);
         });

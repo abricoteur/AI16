@@ -5,9 +5,11 @@ var orgaRequest = require('../model/requestsCreateOrganisation.js')
 var adminRequest = require('../model/request_role.js');
 
 router.get('/', function (req, res, next) {
-    orgaRequest.readall(function(orgaRequest){
-        adminRequest.readAllAdminRequest(function(adminRequest){
-            res.render('admin', { title: 'Page admin', orgaRequest: orgaRequest, adminRequest: adminRequest});
+    var trie1 = req.query.trie1 || 'recent';
+    var trie2 = req.query.trie2 || 'recent';
+    orgaRequest.readall(trie1, function (orgaRequest) {
+        adminRequest.readAllAdminRequest(trie2, function (adminRequest) {
+            res.render('admin', { title: 'Page admin', orgaRequest: orgaRequest, adminRequest: adminRequest });
         });
     });
 });

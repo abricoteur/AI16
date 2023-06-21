@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var userModel = require('../model/users.js')
+var offresModel = require('../model/offres.js')
 
 router.get('/', function (req, res, next) {
-    result=userModel.readall(function(result){
-        res.render('offers_management', { title: 'Gérer les offres', offers_management: result});
+    offresModel.offresFromOrga(req.session.user.siren,function(result){
+        res.render('offers_management', { title: 'Gérer les offres', offers: result});
     });
 });
 

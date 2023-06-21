@@ -7,12 +7,15 @@ module.exports = {
         });
     },
 
-    readall: function (callback) {
-        db.query("select * from Demandes_Creation_Organisation", function(err, results){
-            if(err) throw err;
-            callback(results);
+    readall: function (trie, callback) {
+        var orderBy = (trie == "recent") ? "ORDER BY date DESC" : "ORDER BY date ASC";
+      
+        db.query("SELECT * FROM Demandes_Creation_Organisation " + orderBy, function(err, results) {
+          if (err) throw err;
+          callback(results);
         });
-    },
+      },
+      
 
     create: function (email, siren, siege_social, domaine, nom, message,type_organisation, callback) {
         db.query("INSERT INTO Demandes_Creation_Organisation (requester_email, siren, siege_social, domaine, nom, message,type_organisation) VALUES(?,?,?,?,?,?,?)",[email, siren, siege_social, domaine, nom,message,type_organisation], function(err,results){

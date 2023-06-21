@@ -39,7 +39,6 @@ CREATE TABLE Demandes_Creation_Organisation (
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     siren INT,
     nom VARCHAR(255) NOT NULL,
-    domaine VARCHAR(255) NOT NULL,
     siege_social VARCHAR(255) NOT NULL,
     type_organisation ENUM('entreprise', 'association', 'ong') NOT NULL,
     message TEXT NOT NULL,
@@ -94,7 +93,16 @@ CREATE TABLE Demandes_Role (
     requester_email VARCHAR(100) NOT NULL,
     requested_role ENUM('Recruteur', 'Administrateur') NOT NULL,
     siren INT,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(requester_email),
     FOREIGN KEY (requester_email) REFERENCES Utilisateurs(email) ON DELETE CASCADE,
     FOREIGN KEY (siren) REFERENCES Organisations(siren) ON DELETE CASCADE
+);
+
+CREATE TABLE Registre_Demandes_Role (
+    requester_email VARCHAR(100) NOT NULL,
+    requested_role ENUM('Recruteur', 'Administrateur') NOT NULL,
+    siren INT,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('accepted', 'rejected', 'aborted') NOT NULL,
 );

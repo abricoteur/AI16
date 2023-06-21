@@ -24,12 +24,6 @@ module.exports = {
     );
   },
 
-  delete: function (user_email, callback) {
-    db.query("DELETE FROM Demandes_Role WHERE email = ?", user_email, function (err, results) {
-      if (err) throw err;
-      callback(results);
-    });
-  },
 
   readRecruiter: function (siren, callback) {
     db.query("SELECT * FROM Demandes_Role WHERE siren = ?", siren, function (err, results) {
@@ -38,8 +32,9 @@ module.exports = {
     });
   },
 
-  readAllAdminRequest: function (callback) {
-    db.query("SELECT * FROM Demandes_Role WHERE requested_role = 'administrateur'", function (err, results) {
+  readAllAdminRequest: function (trie, callback) {
+    var orderBy = (trie == "recent") ? "ORDER BY date DESC" : "ORDER BY date ASC";
+    db.query("SELECT * FROM Demandes_Role WHERE requested_role = 'administrateur'" + orderBy, function (err, results) {
       if (err) throw err;
       callback(results);
     });
@@ -51,14 +46,22 @@ module.exports = {
     db.query("SELECT requester_email FROM Demandes_Role WHERE siren = ? & requester_email = ?", [siren, email], function (err, results) {
       if (err) throw err;
 
-      // Check if the request exists.
       if (results.length > 0) {
         var requester_email = results[0].requester_email;
+        db.query("INSERT INTO Registre_Demandes_Role SELECT *, 'accepted' AS status FROM Demandes_Role WHERE requester_email = ?", [requester_email], function (err, insertResults) {
+          if (err) throw err;
+        }
+        );
 
-        // Then, update the user's role in the Utilisateurs table.
         db.query("UPDATE Utilisateurs SET role = 'Recruteur', siren = ? WHERE email = ?", [siren, requester_email], function (err, updateResults) {
           if (err) throw err;
           callback(updateResults);
+        });
+
+        db.query("DELETE FROM Demandes_Role WHERE requester_email = ?", [requester_email], function (err, deleteResults) {
+          if (err) throw err;
+
+          callback(rowToCopy);
         });
       } else {
         callback(null);
@@ -67,10 +70,50 @@ module.exports = {
   },
 
   refuseRecruiter: function (siren, email, callback) {
-    db.query("DELETE FROM Demandes_Role WHERE siren = ? & requester_email = ?", [siren, email], function (err, results) {
+    db.query("SELECT requester_email FROM Demandes_Role WHERE siren = ? & requester_email = ?", [siren, email], function (err, results) {
       if (err) throw err;
-      callback(results);
+      db.query("INSERT INTO Registre_Demandes_Role SELECT *, 'rejected' AS status FROM Demandes_Role WHERE requester_email = ?", [email], function (err, insertResults) {
+        if (err) throw err;
+
+        db.query("DELETE FROM Demandes_Role WHERE requester_email = ?", [email], function (err, deleteResults) {
+          if (err) throw err;
+
+          callback(rowToCopy);
+        });
+      });
+    } );
+  },
+
+
+  acceptAdmin: function (email, callback) {
+
+    db.query("INSERT INTO Registre_Demandes_Role SELECT *, 'accepted' AS status FROM Demandes_Role WHERE requester_email = ?", [email], function (err, insertResults) {
+      if (err) throw err;
+    }
+    );
+
+    db.query("UPDATE Utilisateurs SET role = 'Administrateur' WHERE email = ?", [email], function (err, updateResults) {
+      if (err) throw err;
+      callback(updateResults);
     });
+
+    db.query("DELETE FROM Demandes_Role WHERE requester_email = ?", [email], function (err, deleteResults) {
+      if (err) throw err;
+
+      callback(rowToCopy);
+    });
+  },
+
+  refuseAdmin: function (siren, email, callback) {
+      db.query("INSERT INTO Registre_Demandes_Role SELECT *, 'rejected' AS status FROM Demandes_Role WHERE requester_email = ?", [email], function (err, insertResults) {
+        if (err) throw err;
+
+        db.query("DELETE FROM Demandes_Role WHERE requester_email = ?", [email], function (err, deleteResults) {
+          if (err) throw err;
+
+          callback(rowToCopy);
+        });
+      });
   }
 
 }
