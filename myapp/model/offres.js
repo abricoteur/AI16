@@ -8,7 +8,7 @@ module.exports = {
     },
 
     readall: function (filtre_all, filtre_domaine, filtre_salaire, filtre_lieu, callback) {
-        let sql = "SELECT * FROM Offres JOIN Organisations ON Offres.siren = Organisations.siren WHERE 1=1";
+        let sql = "SELECT * FROM Offres JOIN Organisations ON Offres.siren = Organisations.siren WHERE 1=1 & status=\"pending\"";
 
         let params = [];
     

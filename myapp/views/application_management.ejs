@@ -58,77 +58,23 @@
 
             <hr>
 
-            <div class="search-container">
-
-              <div class="search-bars">
-                <div class="wh"><input placeholder="Nom de l'offre"></div>
-                <div class="wh"><input placeholder="Nom du candidat"></div>
-                <div class="search-icon">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-              </div>
-
-            </div>
-
-            <hr>
 
             <div class="spacer"></div>
 
             <div class="data-table-container">
 
               <div class="data-table">
+                <% candidatures.forEach((candidature)=> { %>
 
                 <div class="data-item">
-                  <p class="orga-name f-f">Mennessier Lucas</p>
+                  <p class="orga-name f-f"><%=candidature.nom %></p>
                   <p class="f-f">
                     <span class="subtitle">Candidate à l'offre :</span>
                     <a class="f-f" href="offers_management">
                       Nom de l'offre &#10138;</a>
                   </p>
-
-                  <div class="manage-orga-btns">
-                      <span class="f-f">Voir le détail &#10138;</span>
-                      <span class="f-f">Ignorer &#10005;</span>
-                  </div>
                 </div>
-
-                <div class="data-item">
-                  <p class="orga-name f-f">Mennessier Lucas</p>
-                  <p class="f-f">
-                    <span class="subtitle">Candidate à l'offre :</span>
-                    <a class="f-f" href="offers_management">
-                      Nom de l'offre &#10138;</a>
-                  </p>
-
-                  <div class="manage-orga-btns">
-                      <span class="f-f">Voir le détail &#10138;</span>
-                      <span class="f-f">Ignorer &#10005;</span>
-                  </div>
-                </div>
-                <div class="data-item">
-                  <p class="orga-name f-f">Mennessier Lucas</p>
-                  <p class="f-f">
-                    <span class="subtitle">Candidate à l'offre :</span>
-                    <a class="f-f" href="offers_management">
-                      Nom de l'offre &#10138;</a>
-                  </p>
-
-                  <div class="manage-orga-btns">
-                      <span class="f-f">Voir le détail &#10138;</span>
-                      <span class="f-f">Ignorer &#10005;</span>
-                  </div>
-                </div>
-
-                <div class="pagination-container">
-                  <div class="pagination">
-                    <a href="#">&laquo;</a>
-                    <a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">&raquo;</a>
-                  </div>
-                </div> 
-
+                <% }) %>
               </div>
 
               <div class="orga-form-container">

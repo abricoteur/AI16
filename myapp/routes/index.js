@@ -3,7 +3,6 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  console.log(req.session.user.role)
   if (req.session && req.session.user) {
     var role = req.session.user.role;
     if (role == 'Administrateur') {

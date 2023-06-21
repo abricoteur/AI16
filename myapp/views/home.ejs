@@ -102,8 +102,8 @@
             <input type="radio" name="salaire" value="1750" id="1750"><label for="1750">1750€ +</label>
             <input type="radio" name="salaire" value="2000" id="2000"><label for="2000">2000€ +</label>
             <input type="radio" name="salaire" value="3000" id="3000"><label for="3000">3000€ +</label>
-            <input type="radio" name="salaire" value="5000" id="5000"><label for="sort-1000">5000€ +</label>
-            <input type="radio" name="salaire" value="7500" id="7500"><label for="sort-5000">7500€ +</label>
+            <input type="radio" name="salaire" value="5000" id="5000"><label for="5000">5000€ +</label>
+            <input type="radio" name="salaire" value="7500" id="7500"><label for="7000">7500€ +</label>
           </span>
 
         </div>
@@ -145,9 +145,6 @@
               </p>
               </p>
               <p>
-              <div class="manage-orga-btns">
-                <span class="f-f">Voir le détail &#10138;</span>
-              </div>
             </div>
             <% }) %>
         </div>
@@ -174,12 +171,12 @@
           </div> 
           <div class="inputfield">
             <label>Domaine</label>
-            <div class="custom_select">
-              <select name="type_metier">
-                <option value=""><%= offre.type_metier %></option>
-              </select>
-            </div>
+            <input type="text" value="<%= offre.domaine %>" class="input" readonly="readonly">
           </div> 
+          <div class="inputfield">
+            <label>Rythme</label>
+            <input type="text" value="<%= offre.rythme %>" class="input" readonly="readonly">
+          </div>
           <div class="inputfield">
             <label>Salaire</label>
             <input type="text" value="<%= offre.salaire %>" class="input" readonly="readonly">
