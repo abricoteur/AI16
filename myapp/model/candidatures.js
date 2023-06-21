@@ -30,12 +30,12 @@ module.exports = {
     },
 
     readOrganisationCandidatures: function (siren, callback) {
-        db.query("select * from Candidatures where siren= ?", siren, function (err, results) {
+        db.query("SELECT c.*, o.*, u.*, p.* FROM Candidatures c INNER JOIN Offres o ON c.id_offre = o.id INNER JOIN Utilisateurs u ON c.id_user = u.email LEFT JOIN Pieces p ON c.id_user = p.user_email WHERE c.siren = ?;", [siren], function (err, results) {
             if (err) throw err;
             callback(results);
         });
     },
-
+     
 
     updateStatus: function (id_candidature, status, callback) {
         db.query("UPDATE Candidatures SET status=? WHERE id=?", [status, id_candidature], function (err, results) {
@@ -67,8 +67,8 @@ module.exports = {
             });
         });
     }
-    
-    
-    
-    
+
+
+
+
 }
