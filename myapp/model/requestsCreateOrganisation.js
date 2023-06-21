@@ -14,8 +14,8 @@ module.exports = {
         });
     },
 
-    create: function (email, siren, siege_social, domaine, nom, message, callback) {
-        db.query("INSERT INTO Demandes_Creation_Organisation (requester_email, siren, siege_social, domaine, nom, message) VALUES(?,?,?,?,?,?)",[email, siren, siege_social, domaine, nom,message], function(err,results){
+    create: function (email, siren, siege_social, domaine, nom, message,type_organisation, callback) {
+        db.query("INSERT INTO Demandes_Creation_Organisation (requester_email, siren, siege_social, domaine, nom, message,type_organisation) VALUES(?,?,?,?,?,?,?)",[email, siren, siege_social, domaine, nom,message,type_organisation], function(err,results){
             if(err) throw err;
             callback(results);
         });

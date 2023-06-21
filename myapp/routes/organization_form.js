@@ -9,9 +9,9 @@ router.get('/', function (req, res, next) {
 router.post('/request', function (req, res, next) {
     var data = req.body; // Access the POST data sent from the client
     var email = req.session.user.email;
+    if(data.siren=="" || data.siege_social=="" || data.domaine=="" || data.nom=="" || data.message=="" || data.type_organisation=="" ) return res.redirect('/home');
 
-    result = requestsCreateOrganisationModel.create(email, data.siren, data.siege_social, data.domaine, data.nom, data.message, function (result) {
-
+    result = requestsCreateOrganisationModel.create(email, data.siren, data.siege_social, data.domaine, data.nom, data.message, data.type_organisation, function (result) {
         res.redirect('/home');
     });
 });

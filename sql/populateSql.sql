@@ -20,10 +20,10 @@ VALUES ('candidate@example.com', 'Candidate', 'password', 'CandidateFirstName', 
 
 
 -- Add rows to Demandes_Creation_Organisation table
-INSERT INTO Demandes_Creation_Organisation (requester_email, status, siren, nom, domaine, siege_social)
-VALUES ('recruiter@example.com', 'pending', 111111111, 'Organisation2', 'Banque/Assurance', '456 Street, City, Country'),
-       ('recruiter@example.com', 'accepted', 222222222, 'Organisation3', 'Industrie pharmaceutique', '789 Street, City, Country'),
-       ('recruiter@example.com', 'rejected', 333333333, 'Organisation4', 'Commerce / Distribution', '012 Street, City, Country');
+INSERT INTO Demandes_Creation_Organisation (requester_email, status, siren, nom, domaine,type_organisation, siege_social, message)
+VALUES ('recruiter@example.com', 'pending', 111111111, 'Organisation2', 'Banque/Assurance',"association", '456 Street, City, Country'," OK"),
+       ('recruiter@example.com', 'accepted', 222222222, 'Organisation3', 'Industrie pharmaceutique',"ong", '789 Street, City, Country',"DOS"),
+       ('recruiter@example.com', 'rejected', 333333333, 'Organisation4', 'Commerce / Distribution',"entreprise", '012 Street, City, Country',"THRES");
 
 
 -- Add rows to Offres table

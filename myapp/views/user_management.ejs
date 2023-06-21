@@ -73,11 +73,6 @@
                       <span class="subtitle">Rôle :</span><%= user.role %>
                       <span class="subtitle">Inscrit depuis :</span><%= user.dateCreation %>
                     </p>
-                    <p>
-                      <a class="f-f" href="#">
-                        <span class="count">X</span>
-                        Organisations acceptées &#10138;</a></p>
-  
                     <div class="manage-orga-btns">
                         <span class="f-f modify-btn">Modifier &#9998;</span>
                         <span class="f-f delete-btn">Supprimer &#10005;</span>
@@ -103,10 +98,6 @@
                         <input type="text" value="<%= user.prenom %>" class="input" readonly="readonly">
                      </div>  
                      <div class="inputfield">
-                        <label>Mot de passe</label>
-                        <input type="text" value="<%= user.mdp %>" class="input" readonly="readonly">
-                     </div>
-                     <div class="inputfield">
                       <label>Numéro de téléphone</label>
                       <input type="text" value="<%= user.tel %>" class="input" readonly="readonly">
                    </div>  
@@ -114,6 +105,10 @@
                       <label>Rôle</label>
                       <input type="text" value="<%= user.role %>" class="input" readonly="readonly">
                     </div>
+                    <div class="inputfield">
+                      <label>SIREN</label>
+                      <input type="text" value="<%= user.id_orga %>" class="input" readonly="readonly">
+                   </div>
                     <div class="inputfield">
                       <input type="submit" value="Confirmer" class="btn">
                     </div>
@@ -170,10 +165,8 @@
           $.post('users/update', 
           { email: mail,
             nom: $(formData).eq(0).val(),
-            prenom: $(formData).eq(1).val(),
-            mdp: $(formData).eq(2).val(),
-            tel: $(formData).eq(3).val(),
-            role: $(formData).eq(4).val()
+            prenom: $(formData).eq(4).val(),
+            tel: $(formData).eq(5).val(),
           }, 
           function(){
             location.reload(true);

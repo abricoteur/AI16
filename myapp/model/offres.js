@@ -1,16 +1,16 @@
 var db = require('./db.js');
 module.exports = {
-    read: function (id_offre, callback) {
+    read: function (email, id_offre, callback) {
         const query = `
             SELECT Offres.*, Candidatures.message AS candidature_message 
             FROM Offres
             LEFT JOIN Candidatures ON Offres.id = Candidatures.id_offre
-            WHERE Offres.id = ?`;
-        db.query(query,id_offre, function(err, results){
+            WHERE Offres.id = ? AND Candidatures.id_user = ?`;
+        db.query(query,[id_offre, email], function(err, results){
             if(err) throw err;
             callback(results);
         });
-    },
+    },    
 
     readall: function (filtre_all, filtre_domaine, filtre_salaire, filtre_lieu, callback) {
         let sql = "SELECT * FROM Offres JOIN Organisations ON Offres.siren = Organisations.siren WHERE 1=1 & status=\"pending\"";
@@ -18,9 +18,9 @@ module.exports = {
         let params = [];
     
         if (filtre_all !== undefined) {
-            sql += " AND (Offres.nom LIKE ? OR Offres.responsable LIKE ? OR Offres.domaine LIKE ? OR Offres.rythme LIKE ? OR Offres.entreprise LIKE ? OR Offres.description LIKE ? OR Organisations.description LIKE ? OR Offres.lieu LIKE ? OR Offres.siren LIKE ?)";
+            sql += " AND (Offres.nom LIKE ? OR Offres.responsable LIKE ? OR Offres.domaine LIKE ? OR Offres.rythme LIKE ? OR Offres.entreprise LIKE ? OR Offres.description LIKE ? OR Offres.lieu LIKE ? OR Offres.siren LIKE ?)";
             const filterPattern = `%${filtre_all}%`;
-            params.push(filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern,filterPattern,);
+            params.push(filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern, filterPattern,);
         }
         
         
