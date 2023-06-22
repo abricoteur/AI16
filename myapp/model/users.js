@@ -57,7 +57,6 @@ module.exports = {
     updateRole: function (email, role, id_orga, callback) {
         db.query("update Utilisateurs set role=?, id_orga=? where email= ?", [role, id_orga, email], function (err, results) {
             if (err) throw err;
-            callback(results);
         });
     },
 

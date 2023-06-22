@@ -38,8 +38,8 @@ module.exports = {
       
      
 
-    updateStatus: function (id_candidature, status, callback) {
-        db.query("UPDATE Candidatures SET status=? WHERE id=?", [status, id_candidature], function (err, results) {
+    updateStatus: function (id_candidature,siren, status, callback) {
+        db.query("UPDATE Candidatures SET status=? WHERE id=? AND siren=?", [status, id_candidature, siren], function (err, results) {
             if (err) throw err;
             callback(results);
         });

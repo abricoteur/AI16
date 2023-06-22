@@ -34,6 +34,22 @@ router.get('/delete', function (req, res, next) {
         });
 });
 
+router.get('/accept', function (req, res, next) {
+    const candidature_id = req.query.candidature_id;
+    const siren = req.session.user.siren;
+    candidaturesModel.updateStatus(candidature_id,siren, 'accepted', function (result) {
+        res.redirect('/application_management');
+    });
+});
+
+router.get('/refuse', function (req, res, next) {
+    const candidature_id = req.query.candidature_id;
+    const siren = req.session.user.siren;
+    candidaturesModel.updateStatus(candidature_id,siren, 'rejected', function (result) {
+        res.redirect('/application_management');
+    });
+});
+
 
 
 

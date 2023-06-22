@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
     var trie2 = req.query.trie2 || 'recent';
     orgaRequest.readall(trie1, function (orgaRequest) {
         adminRequest.readAllAdminRequest(trie2, function (adminRequest) {
-            res.render('admin', { title: 'Page admin', orgaRequest: orgaRequest, adminRequest: adminRequest });
+            return res.render('admin', { title: 'Page admin', orgaRequest: orgaRequest, adminRequest: adminRequest });
         });
     });
 });
@@ -22,12 +22,12 @@ router.post('/orgaRequestUpdateStatus', function(req, res, next) {
         if(data.status == "accepted"){
             orga.create(data.siren, data.nom, data.email, data.type, data.siege, function(){
                 user.updateRole(data.email, "recruteur", data.siren, function(){
-                    res.redirect('/admin');
+                    return res.redirect('/admin');
                 })
             })
-        }
-        res.redirect('/admin');
+        }   
     })
+    return res.redirect('/admin');
 })
 
 router.post('/adminRequestUpdateStatus', function(req, res, next) {
