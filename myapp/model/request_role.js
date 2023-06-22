@@ -55,18 +55,14 @@ module.exports = {
         var requester_email = results[0].requester_email;
         db.query("INSERT INTO Registre_Demandes_Role SELECT *, 'accepted' AS status FROM Demandes_Role WHERE requester_email = ?", [requester_email], function (err, insertResults) {
           if (err) throw err;
-        }
-        );
+          db.query("UPDATE Utilisateurs SET role = 'Recruteur', id_orga = ? WHERE email = ?", [siren, requester_email], function (err, updateResults) {
+            if (err) throw err;
+            db.query("DELETE FROM Demandes_Role WHERE requester_email = ?", [requester_email], function (err, deleteResults) {
+              if (err) throw err;
 
-        db.query("UPDATE Utilisateurs SET role = 'Recruteur', siren = ? WHERE email = ?", [siren, requester_email], function (err, updateResults) {
-          if (err) throw err;
-          callback(updateResults);
-        });
-
-        db.query("DELETE FROM Demandes_Role WHERE requester_email = ?", [requester_email], function (err, deleteResults) {
-          if (err) throw err;
-
-          callback(deleteResults);
+              callback(deleteResults);
+            });
+          });
         });
       } else {
         callback(null);

@@ -35,7 +35,7 @@ router.get('/acceptRecruiter', function (req, res, next) {
     var email = req.query.email;
 
     request_roleModel.acceptRecruiter(req.session.user.siren,email, function(){
-        
+        res.redirect('/recruiter');
     })
 })
 
@@ -51,7 +51,7 @@ router.get('/refuseRecruiter', function (req, res, next) {
     var email = req.query.email;
 
     request_roleModel.refuseRecruiter(req.session.user.siren, email, function(){
-        
+        res.redirect('/recruiter');
     })
 })
 
