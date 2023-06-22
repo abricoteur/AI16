@@ -13,15 +13,16 @@ module.exports = {
     },
 
     readAll: function (callback) {
-        const query = "SELECT * FROM Offres JOIN Organisations ON Offres.siren = Organisations.siren";
+        const query = "SELECT Offres.*, Organisations.nom AS orga_nom FROM Offres JOIN Organisations ON Offres.siren = Organisations.siren WHERE status='pending'";
         db.query(query, function(err, results) {
-            if (err) throw err;
-            callback(results);
-        })
-    },
+          if (err) throw err;
+          callback(results);
+        });
+      },
+      
 
     readFilter: function (filtre_all, filtre_domaine, filtre_salaire, filtre_lieu, callback) {
-        let sql = "SELECT * FROM Offres JOIN Organisations ON Offres.siren = Organisations.siren WHERE 1=1 & status=\"pending\"";
+        let sql = "SELECT Offres.*, Organisations.nom AS orga_nom FROM Offres JOIN Organisations ON Offres.siren = Organisations.siren WHERE 1=1 AND status=\"pending\"";
 
         let params = [];
 
@@ -33,7 +34,7 @@ module.exports = {
 
 
         if (filtre_domaine !== undefined) {
-            sql += " AND domaine = ?";
+            sql += " AND Offres.domaine = ?";
             params.push(filtre_domaine);
         }
 
