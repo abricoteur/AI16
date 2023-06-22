@@ -70,11 +70,11 @@
                 <% candidatures.forEach((candidature)=> { %>
 
                 <div class="data-item">
-                  <p class="orga-name f-f"><%=candidature.nom %></p>
+                  <p class="orga-name f-f"><%=candidature.offre_nom %></p>
                   <p class="f-f">
                     <span class="subtitle">Candidate à l'offre :</span>
                     <a class="f-f" href="offers_management">
-                      Nom de l'offre &#10138;</a>
+                      <%= candidature.email%> &#10138;</a>
                   </p>
                 </div>
                 <% }) %>
