@@ -3,7 +3,11 @@
 
 # myapp
 
-C'est le répertoire principal du projet Express. Il peut avoir n'importe quel nom.
+C'est le répertoire principal de notre projet Express.
+
+# mon-projet-vue
+
+C'est le répertoire principal de notre projet Vue.
 
 # Fichiers de configuration
 
@@ -14,7 +18,7 @@ package-lock.json : Ce fichier est généré automatiquement et contient des inf
 app.js : Ce fichier est le point d'entrée principal de notre application Express. Il configure et lance le serveur Express.
 
 
-# Dossiers
+# myapp - Fichiers
 
 node_modules : Ce dossier contient les dépendances installées via npm et est généralement généré automatiquement.
 
@@ -27,6 +31,15 @@ routes : Ce dossier contient les fichiers qui définissent les routes et les con
 models : Ce dossier contient les modèles de données de l’application, si on utilise un système de base de données.
 Dans ce dossier, on a un fichier db.js qui correspond aux informations de connexion à notre base de données. Ce fichier est importé dans tous les autres fichiers js afin que les données puissent être récupérées.
 
+# mon-projet-vue - Fichiers
+
+dist : Build créé par Vue.JS qu'on exploitera dans notre application Express.
+
+src : Contient le code source utilisé pour généré le build.
+
+src/components : Composants Vue qui sont importés dans l'App.vue afin d'avoir une SPA.
+
+src/app : Fichier principal qui démarre l'application Vue.js
 
 # Fichiers supplémentaires
 
