@@ -134,6 +134,11 @@
                     <input type="text" name="offre" value="<%= candidature.offre_nom%>" class="input"
                       readonly="readonly">
                   </div>
+                  <div class="inputfield">
+                    <label>Message</label>
+                    <input type="text" name="message" value="<%= candidature.message%>" class="input"
+                      readonly="readonly">
+                  </div>
 
                   <% if (candidature.file) { %>
                     <span>Fichier actuel :</span>
