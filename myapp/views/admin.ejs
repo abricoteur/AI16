@@ -149,26 +149,14 @@
                               </div>
                               <div class="f-f date-mail"><%= ar.siren %></div>
                             </div>
+                            <button>Accepter</button>
+                            <button>Refuser</button>
                           </tr>
                         <% }) %>
 
                       </tbody>
                     </table>
                   </div>
-              </div>
-
-            </div> 
-
-            <div class="right-container">
-
-              <div class="email-content-container">
-                <p class="mail-content admin-request-content">
-
-                  <div class="manage-role-btns">
-                    <span class="f-f modify-btn">Accepter &#10003;</span>
-                    <span class="f-f delete-btn">Refuser &#10005;</span>
-                  </div>
-                </p>
               </div>
 
             </div> 
@@ -268,22 +256,20 @@
         })
 
         $('.role').on("click", function(){
-          if($(this).find('.status').text() == "pending"){
-            $('.manage-role-btns').css('display', 'block');
-          }
-          else {
-            $('.manage-role-btns').css('display', 'none');
-          }
+          $('.manage-role-btns').css('display', 'block');
           var data = adminRequestList[$(this).index()];
-          $('.admin-request-content').html("<p> Demande de" + data.request_email + "<p> <br>Pour le role de " + data.requester_role + " <br> SIREN : " + data.siren)
+          console.log(data);
+          $('.admin-request-content').html("Demande de <p>" + data.requester_email + "</p> <br>Pour le role de " + data.requested_role + " <br> SIREN : " + data.siren)
         })
 
         $('.manage-role-btns > .modify-btn').on("click", function(){
-          var data = adminRequestList[$(this).parent().siblings().find('p').text()]
-          $.post('admin/orgaRequestUpdateStatus',
+          console.log($(this).parent().siblings())
+          var data = adminRequestList[$(this).parent().siblings().children().eq(0).find('p').text()]
+          console.log(data);
+
+          $.post('request_role/acceptAdmin',
           {
             requester_email: data.requester_email,
-            requested_role: data.requested_role
           },
           function() {
             location.reload(true);
@@ -292,10 +278,9 @@
 
         $('.manage-role-btns > .delete-btn').on("click", function(){
           var data = adminRequestList[$(this).parent().siblings().find('p').text()]
-          $.post('admin/orgaRequestUpdateStatus',
+          $.post('request_role/refuseAdmin',
           {
             requester_email: data.requester_email,
-            requested_role: data.requested_role
           },
           function() {
             location.reload(true);

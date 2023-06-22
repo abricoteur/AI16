@@ -23,4 +23,36 @@ router.post('/recruteur', function (req, res, next) {
     });
 });
 
+router.post('/acceptAdmin', function (req, res, next) {
+    var data = req.body;
+
+    request_roleModel.acceptAdmin(data.requester_email, function(){
+        
+    })
+})
+
+router.post('/acceptRecruiter', function (req, res, next) {
+    var data = req.body;
+
+    request_roleModel.acceptRecruiter(data.siren, data.requester_email, function(){
+        
+    })
+})
+
+router.post('/refuseAdmin', function (req, res, next) {
+    var data = req.body;
+
+    request_roleModel.refuseAdmin(data.requester_email, function(){
+        
+    })
+})
+
+router.post('/refuseRecruiter', function (req, res, next) {
+    var data = req.body;
+
+    request_roleModel.refuseRecruiter(data.siren, data.requester_email, function(){
+        
+    })
+})
+
 module.exports = router;

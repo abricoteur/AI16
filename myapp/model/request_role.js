@@ -109,7 +109,7 @@ module.exports = {
     });
   },
 
-  refuseAdmin: function (siren, email, callback) {
+  refuseAdmin: function (email, callback) {
       db.query("INSERT INTO Registre_Demandes_Role SELECT *, 'rejected' AS status FROM Demandes_Role WHERE requester_email = ?", [email], function (err, insertResults) {
         if (err) throw err;
 

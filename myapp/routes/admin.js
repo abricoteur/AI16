@@ -20,12 +20,13 @@ router.post('/orgaRequestUpdateStatus', function(req, res, next) {
 
     orgaRequest.updateStatus(data.request_id, data.status, function(){
         if(data.status == "accepted"){
-            orga.create(data.siren, data.nom, data.email, data.type_organisation, data.siege_social, function(){
+            orga.create(data.siren, data.nom, data.email, data.type, data.siege, function(){
                 user.updateRole(data.email, "recruteur", data.siren, function(){
                     res.redirect('/admin');
                 })
             })
         }
+        res.redirect('/admin');
     })
 })
 
