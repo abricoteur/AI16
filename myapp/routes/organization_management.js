@@ -3,10 +3,18 @@ var router = express.Router();
 var organisationsModel = require('../model/organisations.js')
 
 router.get('/', function (req, res, next) {
-    organisationsModel.readAllInformations(function (organisations) {
-        res.render('organization_management', {
-            title: 'Page Admin Organization Management',
-            organisations: organisations
+    elementsPerPage = 3;
+    pageNumber = req.query.page;
+    if (pageNumber === undefined) {
+        pageNumber = 1;
+    }
+    organisationsModel.readAllInformations(elementsPerPage, pageNumber, function (organisations) {
+        organisationsModel.count(function (count) {
+            const totalPages = Math.ceil(count / elementsPerPage);
+            res.render('organization_management', {
+                title: 'Page Admin Organization Management',
+                organisations: organisations, totalPages, pageNumber
+            });
         });
     });
 });
@@ -15,21 +23,14 @@ router.get('/', function (req, res, next) {
 router.post('/delete', function (req, res, next) {
     var data = req.body; // Access the POST data sent from the client
     organisationsModel.delete(data.siren, function (result) {
-
-
-    });
-    organisationsModel.readAllInformations(function (organisations) {
-        res.render('organization_management', {
-            title: 'Page Admin Organization Management',
-            organisations: organisations
-        });
+        res.redirect('/organization_management?page=1');
     });
 });
 
-router.get('/update', function (req, res, next) {
+router.post('/update', function (req, res, next) {
     var data = req.body; // Access the POST data sent from the client
-    result = organisationsModel.update(data.siren, data.nom, data.domaine, data.ceo, data.description, data.adress, data.siege_social, function (result) {
-        res.render('organization_management_update_confirmation', { title: 'Page Admin Organization Update Confirmation', result: result });
+    organisationsModel.update(data.siren, data.nom, data.siege_social, function (result) {
+        res.redirect('/organization_management?page=1');
     });
 });
 

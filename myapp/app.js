@@ -4,6 +4,9 @@ var path = require('path');
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 var logger = require('morgan');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' }); // Les fichiers seront sauvegardés dans le dossier 'uploads'
+const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -17,6 +20,10 @@ var orgFormRouter = require('./routes/organization_form');
 var orgManageRouter = require('./routes/organization_management');
 var recruiterRouter = require('./routes/recruiter');
 var userManageRouter = require('./routes/user_management');
+var candidatureManageRouter = require('./routes/candidature');
+var offersDetailsManageRouter = require('./routes/offers_details');
+var requestRoleRouter = require('./routes/request_role');
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -29,6 +36,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
+app.use('/api', apiRouter);
+
+// Serve Vue.js app files
+app.use('/vue', express.static(path.join(__dirname, '../mon-projet-vue/dist')));
+
+// Redirect /vue to the Vue.js app
+app.get('/vue*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../mon-projet-vue/dist', 'index.html'));
+});
+
+// Start the server
+app.listen(3001, function () {
+  console.log('Server is listening on port 3001');
+});
 
 const deuxHeures = 1000 * 60 * 60 * 2;
 
@@ -49,23 +71,31 @@ function isConnected(session, role) {
 
 // check user
 app.all("*", function (req, res, next) {
-  const nonSecurePaths = ["/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/","/users/logout/"];
-  const adminPaths = ["/users/userslist"]; //list des urls admin
-  const userPaths = ["/users/profil","/users/logout"]; //list des urls admin
-  const recruteurPaths = []; //list des urls admin
+  const roles = ["Administrateur", "Candidat", "Recruteur"]
+  const nonSecurePaths = ["/","/vue","/api", "/js/*", "/img/job-promotion.png", "/favicon.ico", "/stylesheets/*", "/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/", "/users/logout/", "/users/logout"];
+  const adminPaths = ["/admin", "/organization_management", "/user_management", "/organization_management/update", "/organization_management/delete", "/users/userslist", "/users/update", "/users/delete", "/admin/orgaRequestUpdateStatus", "/users/updateRole", "/request_role/acceptAdmin", "/request_role/refuseAdmin"]; //list des urls admin
+  const candidatPaths = ["/home", "/organization_form", "/candidature", "/candidature/postuler", "/organization_form/request", "/offers_details", "/candidature/delete"]; //list des urls candidats
+  const recruteurPaths = ["/recruiter", "/offers_management", "/application_management", "/offers_form", "/offers_form/request", "/offers_management/update", "/offers_management/delete","/request_role/acceptRecruiter", "/request_role/refuseRecruiter","/candidature/accept","/candidature/refuse"]; //list des urls recruter
+  const commonPaths = ["/profil", "/profil/update", "/request_role/recruteur", "/request_role/admin"]
+
+
   if (nonSecurePaths.includes(req.path)) return next();
 
+  if (!(req.session && req.session.user && req.session.user.role && roles.includes(req.session.user.role))) { return res.redirect("/users/connexion") };
   //authenticate user
+  if (commonPaths.includes(req.path)) {
+    return next()
+  }
   if (adminPaths.includes(req.path)) {
-    if (isConnected(req.session, "Admin")) return next();
+    if (isConnected(req.session, "Administrateur")) return next();
     else res.status(403).render("error", { message: " Unauthorized access", error: {} });
   }
-  else if (userPaths.includes(req.path)) {
+  else if (candidatPaths.includes(req.path)) {
     if (isConnected(req.session, "Candidat")) return next();
     else res.status(403).render("error", { message: " Unauthorized access", error: {} });
   }
   else if (recruteurPaths.includes(req.path)) {
-    if (isConnected(req.session, "Recuteur")) return next();
+    if (isConnected(req.session, "Recruteur")) return next();
     else res.status(403).render("error", { message: " Unauthorized access", error: {} });
   } else {
     res.redirect("/users/connexion");
@@ -85,6 +115,11 @@ app.use('/organization_form', orgFormRouter);
 app.use('/organization_management', orgManageRouter);
 app.use('/recruiter', recruiterRouter);
 app.use('/user_management', userManageRouter);
+app.use('/candidature', candidatureManageRouter);
+app.use('/request_role', requestRoleRouter);
+app.use('/offers_details', offersDetailsManageRouter);
+app.use('/api', apiRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

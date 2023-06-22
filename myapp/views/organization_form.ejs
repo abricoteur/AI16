@@ -1,80 +1,94 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="stylesheets/organization_form.css">
-        <title>Happy Hire</title>
-    </head>
-    <body>
-      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fcfcfc;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img src="../../img/job-promotion.png">Happy Hire</a>
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="users/stylesheets/organization_form.css">
+  <title>Happy Hire</title>
+</head>
 
-          <div class="navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item hov title">
-                <a class="f-f nav-link active" aria-current="page" href="home"><p class="admin">Accueil</p></a>
-              </li>
-              <li class="nav-item">
-                <div class="separator"></div>
-              </li>
-              <li class="nav-item hov">
-                <a class="f-f nav-link active" aria-current="page" href="organization_form">Créer une organisation</a>
-              </li>
-              <li class="nav-item hov">
-                <a class="f-f nav-link active" href="profil">Mon Profil</a>
-              </li>
-              <li class="nav-item">
-                <div class="separator"></div>
-              </li>
-              <li class="nav-item hov">
-                <a class="f-f nav-link active login-item" href="connexion">Se connecter</a>
-              </li>
-              <li class="nav-item hov">
-                <a class="f-f nav-link active account-item" href="connexion">Créer un compte</a>
-              </li>
-            </ul>
-          </div>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fcfcfc;">
+    <div class="container-fluid">
+      <a class="navbar-brand"><img src="img/job-promotion.png">Happy Hire</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item hov title">
+            <a class="f-f nav-link active" aria-current="page" href="home">
+              <p class="admin">Accueil</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <div class="separator"></div>
+          </li>
+          <li class="nav-item hov">
+            <a class="f-f nav-link active" aria-current="page" href="organization_form">Créer une organisation</a>
+          </li>
+          <li class="nav-item hov">
+            <a class="f-f nav-link active" aria-current="page" href="candidature">Mes candidatures</a>
+          </li>
+          <li class="nav-item">
+            <div class="separator"></div>
+          </li>
+          <li class="nav-item hov">
+            <a class="f-f nav-link active" href="profil">Mon Profil</a>
+          </li>
+          <li class="nav-item hov">
+            <a class="f-f nav-link active login-item" href="/users/logout">Se déconnecter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <div class="wrapper">
+    <div class="title">
+      Créer une organisation
+    </div>
+    <form action="organization_form/request" method="POST" class="form">
+      <div class="inputfield">
+        <label>Nom</label>
+        <input name="nom" type="text" class="input">
+      </div>
+      <div class="inputfield">
+        <label>SIREN</label>
+        <input name="siren" type="number" class="input">
+      </div>
+      <div class="inputfield">
+        <label>Siège social</label>
+        <input name="siege_social" type="text" class="input">
+      </div>
+
+      <div class="inputfield">
+        <label>Message</label>
+        <textarea name="message" class="textarea"></textarea>
+      </div>
+
+      <div class="inputfield">
+        <label>Domaine d'activité</label>
+        <div class="custom_select">
+          <select name="type_organisation">
+            <option value="">Type d'activité</option>
+            <option value="entreprise">Entreprise</option>
+            <option value="association">Association</option>
+            <option value="ong">ONG</option>
+          </select>
         </div>
-    </nav>
+      </div>
+      <div class="inputfield">
+        <input type="submit" value="Soumettre" class="btn">
+      </div>
+    </form>
+  </div>
+</body>
 
-    
-        <div class="wrapper">
-            <div class="title">
-              Créer une organisation
-            </div>
-            <form action="" method="POST" class="form">
-               <div class="inputfield">
-                  <label>Nom</label>
-                  <input type="text" class="input">
-               </div>  
-                <div class="inputfield">
-                  <label>SIREN</label>
-                  <input type="text" class="input">
-               </div>  
-               <div class="inputfield">
-                  <label>Siège social</label>
-                  <input type="text" class="input">
-               </div>  
-                <div class="inputfield">
-                  <label>Type d'organisation</label>
-                  <div class="custom_select">
-                    <select>
-                      <option value="">Selectionner</option>
-                      <option value="male">Lucratif</option>
-                      <option value="female">Non lucratif</option>
-                    </select>
-                  </div>
-               </div> 
-              <div class="inputfield">
-                <input type="submit" value="Soumettre" class="btn">
-              </div>
-            </form>
-        </div>
-    </body>
 </html>

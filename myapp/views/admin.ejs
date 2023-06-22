@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin</title>
-    <link rel="stylesheet" href="stylesheets/admin.css">
+    <link rel="stylesheet" href="users/stylesheets/admin.css">
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Latest compiled JavaScript -->
@@ -15,7 +15,7 @@
     <main>
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fcfcfc;">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img src="../../img/job-promotion.png">Happy Hire</a>
+          <a class="navbar-brand"><img src="img/job-promotion.png">Happy Hire</a>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,17 +35,14 @@
               <li class="nav-item hov">
                 <a class="f-f nav-link active" aria-current="page" href="organization_management">Gérer les organisations</a>
               </li>
-              <li class="nav-item hov">
-                <a class="f-f nav-link active" href="profil">Mon Profil</a>
-              </li>
               <li class="nav-item">
                 <div class="separator"></div>
               </li>
               <li class="nav-item hov">
-                <a class="f-f nav-link active login-item" href="connexion">Se connecter</a>
+                <a class="f-f nav-link active profil-item" href="profil">Mon Profil</a>
               </li>
               <li class="nav-item hov">
-                <a class="f-f nav-link active account-item" href="connexion">Créer un compte</a>
+                <a class="f-f nav-link active login-item" href="/users/logout">Se déconnecter</a>
               </li>
             </ul>
           </div>
@@ -56,10 +53,19 @@
 
         <div class="main-container">
 
+          <div class="orga-title-container">
+            <div class="f-f title">
+              <p>Demandes de création d'organisation en attentes</p>
+            </div>
+            <form action="/admin" method="GET" class="form">
+            <span class="dropdown-el">
+              <input type="radio" name="trie1" value="recent" checked="checked" id="recent"><label for="recent">Les + récentes</label>
+              <input type="radio" name="trie1" value="old" id="old"><label for="old">Les + anciennes</label>
+            </span>
+              <input type="submit" value="Trier" class="btn">
+            </form>
+          </div> 
 
-          <div class="f-f title">
-            <p>Demandes de création d'organisation en attentes</p>
-          </div>
           <hr>
 
           <div class="messagerie-container">
@@ -71,54 +77,87 @@
                     <table>
                       <thead></thead>
                       <tbody>
+                        
+                        <% orgaRequest.forEach((or)=> { %>
                         <tr>
-                          <div class="orga-request-template">
+                          <div class="orga-request-template org">
                             <div class="sender-object">
-                              <div class="f-f sender-mail">XXXXX@XXX.XXX</div>
-                              <div class="f-f object-mail">XXXXXXXX</div>
+                              <div class="f-f sender-mail"><%= or.requester_email %></div>
+                              <div class="f-f object-mail"><%= or.type_organisation %></div>
                             </div>
-                            <div class="f-f date-mail">XX/XX/XX</div>
+                            <div class="f-f date-mail"><%= or.date %></div>
+                            <div class="f-f status"><%= or.status %></div>
                           </div>
                         </tr>
-                        <tr>
-                          <div class="orga-request-template">
-                            <div class="sender-object">
-                              <div class="f-f sender-mail">XXXXX@XXX.XXX</div>
-                              <div class="f-f object-mail">XXXXXXXX</div>
-                            </div>
-                            <div class="f-f date-mail">XX/XX/XX</div>
-                          </div>
-                        </tr>
+                        <% }) %>
+
                       </tbody>
                     </table>
                   </div>
-
-                  <div class="pagination-container">
-                    <div class="pagination">
-                      <a href="#">&laquo;</a>
-                      <a href="#" class="active">1</a>
-                      <a href="#">2</a>
-                      <a href="#">3</a>
-                      <a href="#">&raquo;</a>
-                    </div>
-                  </div>  
               </div>
 
             </div> 
 
+            
             <div class="right-container">
 
               <div class="email-content-container">
-                <p class="mail-content">
-                  Cher/Chère [nom],\n
+                <p class="mail-content org-request-content">
 
-                  J'espère que vous vous portez bien. Je voulais simplement prendre quelques instants pour vous remercier de votre soutien et de votre aide récente. Votre contribution a été inestimable et m'a permis de surmonter certains des défis auxquels je faisais face.
-                  Je suis extrêmement reconnaissant(e) pour tout ce que vous avez fait, et je ne peux vous remercier suffisamment. Si vous avez besoin d'aide ou d'assistance à l'avenir, sachez que je suis là pour vous. N'hésitez pas à me contacter à tout moment si vous avez des questions ou des préoccupations.
-                  Encore une fois, merci beaucoup pour tout ce que vous avez fait. Je suis honoré(e) de vous connaître et de compter sur votre soutien.
-                  Sincèrement,
-
-                  [Votre nom]
                 </p>
+                <div class="manage-orga-btns">
+                  <span class="f-f modify-btn">Accepter &#10003;</span>
+                  <span class="f-f delete-btn">Refuser &#10005;</span>
+                </div>
+              </div>
+
+            </div> 
+          </div>
+
+          <div class="navbar-main-spacer"></div>
+
+          <div class="orga-title-container">
+            <div class="f-f title">
+              <p>Demandes compte admin</p>
+            </div>
+            <form action="/admin" method="GET" class="form">
+              <span class="dropdown-el">
+                <input type="radio" name="trie2" value="recent" checked="checked" id="recent2"><label for="recent2">Les + récentes</label>
+              <input type="radio" name="trie2" value="old" id="old2"><label for="old2">Les + anciennes</label>
+              </span>
+                <input type="submit" value="Trier" class="btn">
+              </form>
+          </div> 
+          <hr>
+
+          <div class="messagerie-container">
+            <div class="left-container">
+
+              <div class="orga-request-container">
+
+                  <div class="request-container">
+                    <table>
+                      <thead></thead>
+                      <tbody>
+
+                        <% adminRequest.forEach((ar)=> { %>
+                          <tr>
+                            <div class="orga-request-template role">
+                              <div class="sender-object">
+                                <div class="f-f sender-mail"><%= ar.requester_email %></div>
+                                <div class="f-f object-mail"><%= ar.requested_role %></div>
+                              </div>
+                              <div class="f-f date-mail"><%= ar.siren %></div>
+                              <a href="/request_role/acceptAdmin?email=<%=ar.requester_email%>">Accepter</a>
+                              <a href="/request_role/refuseAdmin?email=<%=ar.requester_email%>">Refuser</a>  
+                            </div>       
+                           </tr>
+                        <% }) %>
+                        
+
+                      </tbody>
+                    </table>
+                  </div>
               </div>
 
             </div> 
@@ -133,31 +172,12 @@
             </div>
             <hr>
 
-            <div class="stat-container">
-              <div class="user-count">
-                <p class="f-f stat-title">Nombre d'utilisateurs</p>
-                <p class="f-f stat-number">239 293</p>
-              </div>
-              <div class="orga-count">
-                <p class="f-f stat-title">Nombre d'entreprises</p>
-                <p class="f-f stat-number">1294</p>
-              </div>
-              <div class="application-count">
-                <p class="f-f stat-title">Nombre de candidatures</p>
-                <p class="f-f stat-number">14 584</p>
-              </div>
-              <div class="recruiter-count">
-                <p class="f-f stat-title">Nombre de recruteurs</p>
-                <p class="f-f stat-number">328</p>
-              </div>
-            </div>
-
             <div class="management-choices-container">
               <div class="f-f manage-user-button">
-                  <a href="user_management.html">Gérer les utilisateurs</a>
+                  <a href="/user_management">Gérer les utilisateurs</a>
               </div>
               <div class="f-f manage-orga-button">
-                  <a href="organization_management.html">Gérer les organisations</a>
+                  <a href="/organization_management">Gérer les organisations</a>
               </div>
             </div>
 
@@ -167,5 +187,109 @@
 
 
     </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="js/dropdown.js"></script>
+
+    <% if(orgaRequest && adminRequest) { %>
+      <script>
+        const orgaRequestList = <%- JSON.stringify(orgaRequest) %>;
+        const adminRequestList = <%- JSON.stringify(adminRequest) %>;
+
+        $(".status").each(function(){
+          if($(this).text() == "pending"){
+            $(this).css("color", "orange");
+          }
+          else if ($(this).text() == "accepted") {
+            $(this).css("color", "green");
+          }
+          else{
+            $(this).css("color",'red');
+          }
+        })
+
+        $('.org').on("click", function(){
+          if($(this).find('.status').text() == "pending"){
+            $('.manage-orga-btns').css('display', 'block');
+          }
+          else {
+            $('.manage-orga-btns').css('display', 'none');
+          }
+          var data = orgaRequestList[$(this).index()];
+
+          $('.org-request-content').html("<p class="+ $(this).index() +">" + data.request_id + "<p> <br>Demande de " + data.requester_email + " le " + data.date + " pour créer l'organisation suivante : <br> SIREN : " + data.siren + " Nom : " + data.nom + " <br> Domaine : " + data.domaine + " Type : " + data.type_organisation + " <br> Siège social : " + data.siege_social + " <br> Commentaire : " + data.message)
+        })
+
+        $('.manage-orga-btns > .modify-btn').on("click", function(){
+          console.log($(this).parent().siblings().find('p').attr("class"))
+          var data = orgaRequestList[$(this).parent().siblings().find('p').attr("class")]
+          console.log(data);
+          $.post('admin/orgaRequestUpdateStatus',
+          {
+            request_id: data.request_id,
+            status: "accepted",
+            email: data.requester_email,
+            siren: data.siren,
+            nom: data.nom,
+            siege: data.siege_social,
+            type: data.type_organisation
+          },
+          function() {
+            location.reload(true);
+          });
+        })
+
+        $('.manage-orga-btns > .delete-btn').on("click", function(){
+          var data = orgaRequestList[$(this).parent().siblings().find('p').attr("class")]
+          $.post('admin/orgaRequestUpdateStatus',
+          {
+            request_id: data.request_id,
+            status: "rejected",
+            email: data.requester_email,
+            siren: data.siren,
+            nom: data.nom,
+            siege: data.siege_social,
+            type: data.type_organisation
+          },
+          function() {
+            location.reload(true);
+          });
+        })
+
+        $('.role').on("click", function(){
+          $('.manage-role-btns').css('display', 'block');
+          var data = adminRequestList[$(this).index()];
+          console.log(data);
+          $('.admin-request-content').html("Demande de <p>" + data.requester_email + "</p> <br>Pour le role de " + data.requested_role + " <br> SIREN : " + data.siren)
+        })
+
+        $('.manage-role-btns > .modify-btn').on("click", function(){
+          console.log($(this).parent().siblings())
+          var data = adminRequestList[$(this).parent().siblings().children().eq(0).find('p').text()]
+          console.log(data);
+
+          $.post('request_role/acceptAdmin',
+          {
+            requester_email: data.requester_email,
+          },
+          function() {
+            location.reload(true);
+          });
+        })
+
+        $('.manage-role-btns > .delete-btn').on("click", function(){
+          var data = adminRequestList[$(this).parent().siblings().find('p').text()]
+          $.post('request_role/refuseAdmin',
+          {
+            requester_email: data.requester_email,
+          },
+          function() {
+            location.reload(true);
+          });
+        })
+
+      </script>
+    <% } %>
+
   </body>
 </html>

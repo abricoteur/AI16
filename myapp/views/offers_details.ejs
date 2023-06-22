@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="users/stylesheets/organization_form.css">
+  <title>Happy Hire</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fcfcfc;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="img/job-promotion.png">Happy Hire</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item hov title">
+            <a class="f-f nav-link active" aria-current="page" href="home">
+              <p class="admin">Accueil</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <div class="separator"></div>
+          </li>
+          <li class="nav-item hov">
+            <a class="f-f nav-link active" aria-current="page" href="organization_form">Créer une organisation</a>
+          </li>
+          <li class="nav-item hov">
+            <a class="f-f nav-link active" aria-current="page" href="candidature">Mes candidatures</a>
+          </li>
+          <li class="nav-item">
+            <div class="separator"></div>
+          </li>
+          <li class="nav-item hov">
+            <a class="f-f nav-link active" href="profil">Mon Profil</a>
+          </li>
+          <li class="nav-item hov">
+            <a class="f-f nav-link active" href="/users/logout">Se déconnecter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <% offer_details.forEach((offre)=> { %>
+    <div class="orga-form-container">
+      <div class="wrapper">
+        <div class="form">
+          <div class="inputfield">
+            <label>Nom</label>
+            <input style="border: none;" type="text" value="<%= offre.nom %>" class="input" readonly="readonly">
+          </div>
+          <div class="inputfield">
+            <label>Responsable</label>
+            <input style="border: none;" type="text" value="<%= offre.responsable %>" class="input" readonly="readonly">
+          </div>
+          <div class="inputfield">
+            <label>Lieu</label>
+            <input style="border: none;" type="text" value="<%= offre.lieu %>" class="input" readonly="readonly">
+          </div>
+          <div class="inputfield">
+            <label>Salaire</label>
+            <input style="border: none;" type="text" value="<%= offre.salaire %>" class="input" readonly="readonly">
+          </div>
+          <div class="inputfield">
+            <label>Date</label>
+            <input style="border: none;" type="text" value="<%= offre.date %>" class="input" readonly="readonly">
+          </div>
+          <div class="inputfield">
+            <label>Entreprise</label>
+            <input style="border: none;" type="text" value="<%= offre.entreprise %>" class="input" readonly="readonly">
+          </div>
+          <div class="inputfield">
+            <label>Rythme</label>
+            <input style="border: none;" type="text" value="<%= offre.rythme %>" class="input" readonly="readonly">
+          </div>
+          <div class="inputfield">
+            <label>Type Métier</label>
+            <input style="border: none;" type="text" value="<%= offre.type_metier %>" class="input" readonly="readonly">
+          </div>
+          <div class="inputfield">
+            <label>Description</label>
+            <textarea style="border: none;" class="textarea" readonly="readonly">
+              <%= offre.description %>
+                </textarea>
+          </div>
+        </div>
+
+      </div>
+      <form action="/candidature/postuler" method="POST" class="form">
+        <div class="orga-form-container">
+          <div class="wrapper">
+            <div class="form">
+              <div class="inputfield">
+                <label>Message</label>
+                <textarea name="message" class="textarea"><%= offre.candidature_message %></textarea>
+              </div>
+              <input type="hidden" name="id_offre" value="<%= offre.id %>">
+              <input type="hidden" name="siren" value="<%= offre.siren %>">
+              <button type="submit" class="btn btn-primary">Mettre à jour</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <% }) %>
+
+
+</body>
+
+</html>

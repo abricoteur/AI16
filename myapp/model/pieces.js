@@ -1,32 +1,23 @@
 var db = require('./db.js');
 module.exports = {
-    read: function (email, callback) {
-        //todo
-        return false;
+    read: function (user_email, callback) {
+        db.query("SELECT file, filename FROM Pieces WHERE user_email = ?", user_email, function (err, results) {
+            if (err) throw err;
+            callback(results);
+        });
     },
 
-    readall: function (callback) {
-        //todo
-        return false;
-    },
+    upload: function (email, file, callback) {
+        const fs = require('fs');
+        const fileBuffer = fs.readFileSync(file.path);
+        const fileBlob = fileBuffer.toString('base64');
 
-    areValid: function (email, password, callback) {
-        //todo
-        return false;
-    },
+        // Upload the file to the database
+        let uploadFileQuery = `INSERT INTO Pieces (user_email, file, filename) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE file = ?, filename = ?`;
 
-    create: function (email, nom, prenom, pwd, type, callback) {
-        //todo
-        return false;
+        db.query(uploadFileQuery, [email, fileBlob, file.originalname, fileBlob, file.originalname], function (err, results) {
+            if (err) throw err;
+            callback(results);
+        });
     },
-
-    update: function (email, nom, prenom, password, type, callback) {
-        //todo
-        return false;
-    },
-
-    delete: function(email, nom, prenom, password, type, callback) {
-        //todo
-        return false;
-    }
 }

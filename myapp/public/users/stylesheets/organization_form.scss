@@ -11,6 +11,24 @@
 body{
   background: colors.$light-orange;
 }
+
+.manage-orga-btns > span {
+  padding: 0.6rem;
+  border: 2px solid colors.$light-orange;
+  border-radius: 10px;
+  cursor: pointer;
+  color: black;
+  font-size: smaller;
+}
+
+.manage-orga-btns > span:hover {
+  background-color: colors.$light-orange;
+}
+
+.manage-orga-btns {
+  margin-bottom: 0.5rem;
+}
+
 .navbar-brand {
   font-weight: bold;
   font-style: italic;
@@ -68,7 +86,7 @@ body{
   font-weight: bolder;
 }
 .wrapper{
-  max-width: 500px;
+  max-width: 1000px;
   width: 100%;
   background: #fff;
   margin: 50px auto;
