@@ -32,6 +32,7 @@ module.exports = {
     readOrganisationCandidatures: function (siren, callback) {
         db.query("SELECT c.*, o.nom AS offre_nom, u.*, p.* FROM Candidatures c INNER JOIN Offres o ON c.id_offre = o.id INNER JOIN Utilisateurs u ON c.id_user = u.email LEFT JOIN Pieces p ON c.id_user = p.user_email WHERE c.siren = ?;", [siren], function (err, results) {
           if (err) throw err;
+          console.log(results);
           callback(results);
         });
       },

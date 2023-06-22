@@ -17,15 +17,15 @@ module.exports = {
       },
       
 
-    create: function (email, siren, siege_social, domaine, nom, message,type_organisation, callback) {
-        db.query("INSERT INTO Demandes_Creation_Organisation (requester_email, siren, siege_social, domaine, nom, message,type_organisation) VALUES(?,?,?,?,?,?,?)",[email, siren, siege_social, domaine, nom,message,type_organisation], function(err,results){
+    create: function (email, siren, siege_social, nom, message,type_organisation, callback) {
+        db.query("INSERT INTO Demandes_Creation_Organisation (requester_email, siren, siege_social, nom, message,type_organisation) VALUES(?,?,?,?,?,?)",[email, siren, siege_social, nom,message,type_organisation], function(err,results){
             if(err) throw err;
             callback(results);
         });
     },
 
-    update: function (siren, status, nom, domaine, ceo, description, adress, siege_social, callback) {
-        db.query("UPDATE Organisations SET nom=?, status=?, domaine=?, ceo=?, description=?, adress=?, siege_social=? WHERE siren=?",[nom,status, domaine, ceo, description, adress, siege_social, siren], function(err,results){
+    update: function (siren, status, nom, ceo, description, adress, siege_social, callback) {
+        db.query("UPDATE Organisations SET nom=?, status=?, ceo=?, description=?, adress=?, siege_social=? WHERE siren=?",[nom,status, ceo, description, adress, siege_social, siren], function(err,results){
             if(err) throw err;
             callback(results);
         });

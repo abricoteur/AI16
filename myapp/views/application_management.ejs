@@ -66,13 +66,16 @@
       <form action="/application_management" method="GET" class="form">
 
         <span class="dropdown-el radio-container">
-          <input type="radio" name="offer" value="" id="placeholder" disabled checked hidden><label for="placeholder">Cibler une offre</label>
-          <% offres.forEach((offre) => { %>
-            <input type="radio" name="offer" value="<%= offre.id %>" id="<%= offre.id %>"><label for="<%= offre.id %>"><%= offre.nom %></label>
-          <% }) %>
+          <input type="radio" name="offer" value="" id="placeholder" disabled checked hidden><label
+            for="placeholder">Cibler une offre</label>
+          <% offres.forEach((offre)=> { %>
+            <input type="radio" name="offer" value="<%= offre.id %>" id="<%= offre.id %>"><label for="<%= offre.id %>">
+              <%= offre.nom %>
+            </label>
+            <% }) %>
         </span>
-        
-        
+
+
         <input type="submit" value="Filter" class="btn">
       </form>
 
@@ -131,13 +134,22 @@
                     <input type="text" name="offre" value="<%= candidature.offre_nom%>" class="input"
                       readonly="readonly">
                   </div>
-                  <% if (candidature.status=="pending") { %>
-                   
-                  <div class="inputfield">
-                    <a href="/candidature/accept?candidature_id=<%=candidature.id%>"  class="btn">Accepter</a>
-                    <a href="/candidature/refuse?candidature_id=<%=candidature.id%>"  class="btn">Refuser</a>
-                  </div>
-                  <% } %>
+
+                  <% if (candidature.file) { %>
+                    <span>Fichier actuel :</span>
+                    <a href="data:application/octet-stream;base64,<%= candidature.file.toString('base64') %>"
+                      download="<%= candidature.filename %>">
+                      <%= candidature.filename %>
+                    </a>
+                    <% } %>
+
+                      <% if (candidature.status=="pending" ) { %>
+
+                        <div class="inputfield">
+                          <a href="/candidature/accept?candidature_id=<%=candidature.id%>" class="btn">Accepter</a>
+                          <a href="/candidature/refuse?candidature_id=<%=candidature.id%>" class="btn">Refuser</a>
+                        </div>
+                        <% } %>
                 </div>
               </form>
             </div>
@@ -162,26 +174,31 @@
 
 <style>
   .radio-container {
-  height: 200px; /* Adjust the height as needed */
-  overflow-y: auto; /* Enable vertical scrolling */
-}
+    height: 200px;
+    /* Adjust the height as needed */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+  }
 
-.radio-container::-webkit-scrollbar {
-  width: 8px; /* Adjust the width of the scrollbar */
-}
+  .radio-container::-webkit-scrollbar {
+    width: 8px;
+    /* Adjust the width of the scrollbar */
+  }
 
-.radio-container::-webkit-scrollbar-track {
-  background-color: #f1f1f1; /* Set the background color of the scrollbar track */
-}
+  .radio-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Set the background color of the scrollbar track */
+  }
 
-.radio-container::-webkit-scrollbar-thumb {
-  background-color: #888; /* Set the color of the scrollbar thumb */
-  border-radius: 4px; /* Add border-radius to the scrollbar thumb */
-}
+  .radio-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Set the color of the scrollbar thumb */
+    border-radius: 4px;
+    /* Add border-radius to the scrollbar thumb */
+  }
 
-.radio-container::-webkit-scrollbar-thumb:hover {
-  background-color: #555; /* Set the color of the scrollbar thumb on hover */
-}
-
-
+  .radio-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Set the color of the scrollbar thumb on hover */
+  }
 </style>
