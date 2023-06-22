@@ -106,6 +106,33 @@ p {
   border: 2px solid #e79549;
 }
 
+.title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.new-offer-btn > a {
+  text-decoration: none;
+  color: #e79549;
+  padding: 20px;
+}
+
+.new-offer-btn > a:hover {
+  color: #e79549;
+}
+
+.new-offer-btn {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.new-offer-btn:hover {
+  border: 2px solid #e79549;
+}
+
 .search-bars {
   display: flex;
   width: 100%;
@@ -354,12 +381,20 @@ p {
   display: none;
 }
 
+.orga-form-container > .wrapper {
+  display: none;
+}
+
 .wrapper .form .inputfield .check input[type=checkbox]:checked ~ .checkmark {
   background: #fec107;
 }
 
 .wrapper .form .inputfield .check input[type=checkbox]:checked ~ .checkmark:before {
   display: block;
+}
+
+.btn {
+  margin: 5px;
 }
 
 .wrapper .form .inputfield .btn {
