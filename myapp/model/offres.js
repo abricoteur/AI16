@@ -85,8 +85,25 @@ module.exports = {
         });
     },
 
+    updateOffers: function (entreprise, responsable, lieu, domaine, salaire, description, id, callback) {
+        console.log("db");
+        db.query("UPDATE Offres SET entreprise=?, responsable=?, lieu=?, domaine=?, salaire=?, description=? WHERE id=?", [entreprise, responsable, lieu, domaine, salaire, description, id], function (err, results) {
+            if (err) throw err;
+            callback(results);
+        });
+        console.log('db done');
+    },
+
+    
     delete: function (id_offre, siren, callback) {
         db.query("DELETE FROM Offres WHERE id = ? & siren=?", [id_offre,siren], function (err, results) {
+            if (err) throw err;
+            callback(results);
+        });
+    },
+
+    deleteOffers: function (id, callback) {
+        db.query("DELETE FROM Offres WHERE id = ?", [id], function (err, results) {
             if (err) throw err;
             callback(results);
         });

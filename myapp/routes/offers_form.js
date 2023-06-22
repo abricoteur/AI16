@@ -18,4 +18,5 @@ router.post('/request', function (req, res, next) {
         res.redirect('/recruiter');
     });
 });
+
 module.exports = router;
