@@ -158,7 +158,7 @@
             <div class="right-container">
 
               <div class="email-content-container">
-                <p class="mail-content role-request-content">
+                <p class="mail-content admin-request-content">
 
                   <div class="manage-role-btns">
                     <span class="f-f modify-btn">Accepter &#10003;</span>
@@ -223,18 +223,79 @@
             $('.manage-orga-btns').css('display', 'none');
           }
           var data = orgaRequestList[$(this).index()];
-          $('.org-request-content').text("Demande de " + data.requester_email + " le " + data.date + " pour créer l'organisation suivante : \n SIREN : " + data.siren + " Nom : " + data.nom + " \n Domaine : " + data.domaine + " Type : " + data.type_organisation + " \n Siège social : " + data.siege_social + " \n Commentaire : " + data.message)
+
+          $('.org-request-content').html("<p class="+ $(this).index() +">" + data.request_id + "<p> <br>Demande de " + data.requester_email + " le " + data.date + " pour créer l'organisation suivante : <br> SIREN : " + data.siren + " Nom : " + data.nom + " <br> Domaine : " + data.domaine + " Type : " + data.type_organisation + " <br> Siège social : " + data.siege_social + " <br> Commentaire : " + data.message)
+        })
+
+        $('.manage-orga-btns > .modify-btn').on("click", function(){
+          console.log($(this).parent().siblings().find('p').attr("class"))
+          var data = orgaRequestList[$(this).parent().siblings().find('p').attr("class")]
+          console.log(data);
+          $.post('admin/orgaRequestUpdateStatus',
+          {
+            request_id: data.request_id,
+            status: "accepted",
+            email: data.requester_email,
+            siren: data.siren,
+            nom: data.nom,
+            siege: data.siege_social,
+            type: data.type_organisation
+          },
+          function() {
+            location.reload(true);
+          });
+        })
+
+        $('.manage-orga-btns > .delete-btn').on("click", function(){
+          var data = orgaRequestList[$(this).parent().siblings().find('p').attr("class")]
+          $.post('admin/orgaRequestUpdateStatus',
+          {
+            request_id: data.request_id,
+            status: "rejected",
+            email: data.requester_email,
+            siren: data.siren,
+            nom: data.nom,
+            siege: data.siege_social,
+            type: data.type_organisation
+          },
+          function() {
+            location.reload(true);
+          });
         })
 
         $('.role').on("click", function(){
-          if($(this).find('status').text() == "pending"){
+          if($(this).find('.status').text() == "pending"){
             $('.manage-role-btns').css('display', 'block');
           }
           else {
             $('.manage-role-btns').css('display', 'none');
           }
           var data = adminRequestList[$(this).index()];
-          $('.admin-request-content').text("Demande de " + data.requester_email + " membre de l'organisation \n SIREN : " + data.siren + " pour le role : " + data.requested_role)
+          $('.admin-request-content').html("<p> Demande de" + data.request_email + "<p> <br>Pour le role de " + data.requester_role + " <br> SIREN : " + data.siren)
+        })
+
+        $('.manage-role-btns > .modify-btn').on("click", function(){
+          var data = adminRequestList[$(this).parent().siblings().find('p').text()]
+          $.post('admin/orgaRequestUpdateStatus',
+          {
+            requester_email: data.requester_email,
+            requested_role: data.requested_role
+          },
+          function() {
+            location.reload(true);
+          });
+        })
+
+        $('.manage-role-btns > .delete-btn').on("click", function(){
+          var data = adminRequestList[$(this).parent().siblings().find('p').text()]
+          $.post('admin/orgaRequestUpdateStatus',
+          {
+            requester_email: data.requester_email,
+            requested_role: data.requested_role
+          },
+          function() {
+            location.reload(true);
+          });
         })
 
       </script>
