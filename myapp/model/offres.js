@@ -12,7 +12,15 @@ module.exports = {
         });
     },
 
-    readall: function (filtre_all, filtre_domaine, filtre_salaire, filtre_lieu, callback) {
+    readAll: function (callback) {
+        const query = "SELECT * FROM Offres JOIN Organisations ON Offres.siren = Organisations.siren";
+        db.query(query, function(err, results) {
+            if (err) throw err;
+            callback(results);
+        })
+    },
+
+    readFilter: function (filtre_all, filtre_domaine, filtre_salaire, filtre_lieu, callback) {
         let sql = "SELECT * FROM Offres JOIN Organisations ON Offres.siren = Organisations.siren WHERE 1=1 & status=\"pending\"";
 
         let params = [];

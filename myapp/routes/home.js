@@ -10,10 +10,23 @@ router.get('/', function (req, res, next) {
 
     const filtre_lieu = req.query.ou;
     const filtre_all = req.query.quoi;
+    console.log(filtre_lieu);
+    console.log(filtre_salaire);
+    console.log(filtre_domaine);
+    console.log(filtre_all);
 
-    result=offres.readall(filtre_all,filtre_domaine,filtre_salaire,filtre_lieu, function(result){
-        res.render('home', { title: 'Page accueil', offres: result});
-    });
+    if(filtre_all != undefined || filtre_lieu != undefined || filtre_domaine != undefined || filtre_salaire != undefined){
+        result=offres.readFilter(filtre_all,filtre_domaine,filtre_salaire,filtre_lieu, function(result){
+            console.log("m")
+            res.render('home', { title: 'Page accueil', offres: result});
+        });
+    }
+    else {
+        result=offres.readAll(function(result){
+            console.log(result)
+            res.render('home', { title: 'Page accueil', offres: result});
+        });
+    }
 });
 
 module.exports = router;
