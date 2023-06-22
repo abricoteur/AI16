@@ -40,7 +40,12 @@ module.exports = {
     });
   },
 
-
+  updateStatus: function(email, role, callback) {
+    db.query("UPDATE Utilisateurs SET role =? WHERE email = ?", [role, email], function (err, results) {
+      if (err) throw err;
+      callback(results);
+    });
+  },
 
   acceptRecruiter: function (siren, email, callback) {
     db.query("SELECT requester_email FROM Demandes_Role WHERE siren = ? & requester_email = ?", [siren, email], function (err, results) {

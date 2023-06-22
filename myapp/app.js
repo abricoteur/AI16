@@ -73,7 +73,7 @@ function isConnected(session, role) {
 app.all("*", function (req, res, next) {
   const roles = ["Administrateur", "Candidat", "Recruteur"]
   const nonSecurePaths = ["/","/vue","/api", "/js/*", "/img/job-promotion.png", "/favicon.ico", "/stylesheets/*", "/users/checkUser", "/users/nvUser", "/users/connexion", "/users/register", "/users/", "/users/logout/", "/users/logout"];
-  const adminPaths = ["/admin", "/organization_management", "/user_management", "/organization_management/update", "/organization_management/delete", "/users/userslist", "/users/update", "/users/delete"]; //list des urls admin
+  const adminPaths = ["/admin", "/organization_management", "/user_management", "/organization_management/update", "/organization_management/delete", "/users/userslist", "/users/update", "/users/delete", "/admin/orgaRequestUpdateStatus", "/users/updateRole"]; //list des urls admin
   const candidatPaths = ["/home", "/organization_form", "/candidature", "/candidature/postuler", "/organization_form/request", "/offers_details", "/candidature/delete"]; //list des urls candidats
   const recruteurPaths = ["/recruiter", "/offers_management", "/application_management", "/offers_form", "/offers_form/request"]; //list des urls recruter
   const commonPaths = ["/profil", "/profil/update", "/request_role/recruteur", "/request_role/admin"]
