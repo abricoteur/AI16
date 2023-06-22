@@ -104,5 +104,5 @@ CREATE TABLE Registre_Demandes_Role (
     requested_role ENUM('Recruteur', 'Administrateur') NOT NULL,
     siren INT,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status ENUM('accepted', 'rejected', 'aborted') NOT NULL,
+    status ENUM('accepted', 'rejected', 'aborted') NOT NULL
 );

@@ -397,6 +397,10 @@ p {
     display: none;
 }
 
+.orga-form-container > .wrapper {
+    display: none;
+}
+
 .wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark{
     background: #fec107;
 }
@@ -405,6 +409,9 @@ p {
     display: block;
 }
 
+.btn {
+    display: none;
+}
 .wrapper .form .inputfield .btn{
     width: 100%;
     padding: 8px 10px;
@@ -415,6 +422,7 @@ p {
     cursor: pointer;
     border-radius: 3px;
     outline: none;
+    display: none;
 }
 
 .wrapper .form .inputfield .btn:hover{
