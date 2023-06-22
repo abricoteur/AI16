@@ -1,4 +1,5 @@
 -- Drop tables if they exist
+DROP TABLE IF EXISTS Registre_Demandes_Role;
 DROP TABLE IF EXISTS Demandes_Role;
 DROP TABLE IF EXISTS Pieces;
 DROP TABLE IF EXISTS Candidatures;

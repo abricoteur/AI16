@@ -74,16 +74,19 @@
               <table>
                 <thead></thead>
                 <tbody>
-                  <tr>
-                    <% demandes.forEach((demande)=> { %>
+                  <% demandes.forEach((demande)=> { %>
+                    <tr>
                       <div class="orga-request-template">
                         <div class="sender-object">
                           <div class="f-f sender-mail">
                             <%= demande.requester_email %>
                           </div>
                         </div>
-                        <% }) %>
-                  </tr>
+                        <a href="/request_role/acceptRecruteur?email=<%=demande.requester_email%>">Accepter</a>
+                        <a href="/request_role/refuseRecruteur?email=<%=demande.requester_email%>">Refuser</a>
+                      </div>
+                    </tr>
+                    <% }) %>
                 </tbody>
               </table>
             </div>
@@ -92,26 +95,6 @@
         </div>
 
         <div class="right-container">
-
-          <div class="email-content-container">
-            <p class="mail-content">
-              Cher/Chère [nom],\n
-
-              J'espère que vous vous portez bien. Je voulais simplement prendre quelques instants pour vous remercier de
-              votre soutien et de votre aide récente. Votre contribution a été inestimable et m'a permis de surmonter
-              certains des défis auxquels je faisais face.
-              Je suis extrêmement reconnaissant(e) pour tout ce que vous avez fait, et je ne peux vous remercier
-              suffisamment. Si vous avez besoin d'aide ou d'assistance à l'avenir, sachez que je suis là pour vous.
-              N'hésitez pas à me contacter à tout moment si vous avez des questions ou des préoccupations.
-              Encore une fois, merci beaucoup pour tout ce que vous avez fait. Je suis honoré(e) de vous connaître et de
-              compter sur votre soutien.
-              Sincèrement,
-
-              [Votre nom]
-            </p>
-            <button>Valider</button>
-            <button>Refuser</button>
-          </div>
 
         </div>
       </div>

@@ -148,11 +148,12 @@
                                 <div class="f-f object-mail"><%= ar.requested_role %></div>
                               </div>
                               <div class="f-f date-mail"><%= ar.siren %></div>
-                            </div>
-                            <button>Accepter</button>
-                            <button>Refuser</button>
-                          </tr>
+                              <a href="/request_role/acceptAdmin?email=<%=ar.requester_email%>">Accepter</a>
+                              <a href="/request_role/refuseAdmin?email=<%=ar.requester_email%>">Refuser</a>  
+                            </div>       
+                           </tr>
                         <% }) %>
+                        
 
                       </tbody>
                     </table>

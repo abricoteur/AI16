@@ -40,7 +40,7 @@ module.exports = {
     });
   },
 
-  updateStatus: function(email, role, callback) {
+  updateStatus: function (email, role, callback) {
     db.query("UPDATE Utilisateurs SET role =? WHERE email = ?", [role, email], function (err, results) {
       if (err) throw err;
       callback(results);
@@ -66,7 +66,7 @@ module.exports = {
         db.query("DELETE FROM Demandes_Role WHERE requester_email = ?", [requester_email], function (err, deleteResults) {
           if (err) throw err;
 
-          callback(rowToCopy);
+          callback(deleteResults);
         });
       } else {
         callback(null);
@@ -83,10 +83,10 @@ module.exports = {
         db.query("DELETE FROM Demandes_Role WHERE requester_email = ?", [email], function (err, deleteResults) {
           if (err) throw err;
 
-          callback(rowToCopy);
+          callback(deleteResults);
         });
       });
-    } );
+    });
   },
 
 
@@ -94,31 +94,32 @@ module.exports = {
 
     db.query("INSERT INTO Registre_Demandes_Role SELECT *, 'accepted' AS status FROM Demandes_Role WHERE requester_email = ?", [email], function (err, insertResults) {
       if (err) throw err;
-    }
-    );
-
-    db.query("UPDATE Utilisateurs SET role = 'Administrateur' WHERE email = ?", [email], function (err, updateResults) {
-      if (err) throw err;
-      callback(updateResults);
-    });
-
-    db.query("DELETE FROM Demandes_Role WHERE requester_email = ?", [email], function (err, deleteResults) {
-      if (err) throw err;
-
-      callback(rowToCopy);
-    });
-  },
-
-  refuseAdmin: function (email, callback) {
-      db.query("INSERT INTO Registre_Demandes_Role SELECT *, 'rejected' AS status FROM Demandes_Role WHERE requester_email = ?", [email], function (err, insertResults) {
+      db.query("UPDATE Utilisateurs SET role = 'Administrateur' WHERE email = ?", [email], function (err, updateResults) {
         if (err) throw err;
-
         db.query("DELETE FROM Demandes_Role WHERE requester_email = ?", [email], function (err, deleteResults) {
           if (err) throw err;
 
-          callback(rowToCopy);
+          callback(deleteResults);
         });
       });
+    }
+    );
+
+
+
+
+  },
+
+  refuseAdmin: function (email, callback) {
+    db.query("INSERT INTO Registre_Demandes_Role SELECT *, 'rejected' AS status FROM Demandes_Role WHERE requester_email = ?", [email], function (err, insertResults) {
+      if (err) throw err;
+
+      db.query("DELETE FROM Demandes_Role WHERE requester_email = ?", [email], function (err, deleteResults) {
+        if (err) throw err;
+
+        callback(deleteResults);
+      });
+    });
   }
 
 }

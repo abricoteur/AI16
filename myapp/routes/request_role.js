@@ -23,34 +23,34 @@ router.post('/recruteur', function (req, res, next) {
     });
 });
 
-router.post('/acceptAdmin', function (req, res, next) {
-    var data = req.body;
+router.get('/acceptAdmin', function (req, res, next) {
+    var email = req.query.email;
 
-    request_roleModel.acceptAdmin(data.requester_email, function(){
+    request_roleModel.acceptAdmin(email, function(){
+        res.redirect('/admin');
+    })
+})
+
+router.get('/acceptRecruiter', function (req, res, next) {
+    var email = req.query.email;
+
+    request_roleModel.acceptRecruiter(req.session.user.siren,email, function(){
         
     })
 })
 
-router.post('/acceptRecruiter', function (req, res, next) {
-    var data = req.body;
+router.get('/refuseAdmin', function (req, res, next) {
+    var email = req.query.email;
 
-    request_roleModel.acceptRecruiter(data.siren, data.requester_email, function(){
-        
+    request_roleModel.refuseAdmin(email, function(){
+        res.redirect('/admin');
     })
 })
 
-router.post('/refuseAdmin', function (req, res, next) {
-    var data = req.body;
+router.get('/refuseRecruiter', function (req, res, next) {
+    var email = req.query.email;
 
-    request_roleModel.refuseAdmin(data.requester_email, function(){
-        
-    })
-})
-
-router.post('/refuseRecruiter', function (req, res, next) {
-    var data = req.body;
-
-    request_roleModel.refuseRecruiter(data.siren, data.requester_email, function(){
+    request_roleModel.refuseRecruiter(req.session.user.siren, email, function(){
         
     })
 })
