@@ -170,6 +170,7 @@
           event.stopPropagation();
           $(".wrapper > .form").children().each(function(){
             $(this).find("input").attr("readonly",false);
+            $(this).find("textarea").attr("readonly",false);
           })
           $(".btn").css("display", "block");
         })
@@ -189,10 +190,8 @@
           var offersList = <%- JSON.stringify(offers) %>;
           var formData = $(this).parent().siblings().find('input');
           var selectData = $(this).parent().parent().find('select');
-          console.log(selectData);
-          console.log(formData);
           $.post('offers_management/update', 
-          { 
+          {   
             entreprise: $(formData).eq(0).val(),
             responsable: $(formData).eq(1).val(),
             lieu: $(formData).eq(2).val(),
